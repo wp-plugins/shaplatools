@@ -13,8 +13,10 @@ class ShaplaTools_Portfolio {
 		add_action( 'init', array( $this, 'portfolio_taxonomy' ) );
 		add_action( 'add_meta_boxes', array( $this, 'portfolio_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
+		add_action( 'manage_portfolio_posts_custom_column', array( $this, 'portfolio_columns_content' ) );
+		add_filter( 'manage_edit-portfolio_columns', array( $this, 'portfolio_columns_head' ) );
 	}
-	public function portfolio_post_type() {
+	public static function portfolio_post_type() {
 
 		$labels = array(
 			'name'                => _x( 'Portfolios', 'Post Type General Name', 'shaplatools' ),
@@ -164,9 +166,6 @@ class ShaplaTools_Portfolio {
 		$client = get_post_meta( $post->ID, '_shaplatools_portfolio_client', true );
 		$date = get_post_meta( $post->ID, '_shaplatools_portfolio_date', true );
 		$url = get_post_meta( $post->ID, '_shaplatools_portfolio_url', true );
-
-		//if there is previously saved value then retrieve it, else set it to the current time
-		$date = ! empty( $date ) ? $date : time();
 		
 		?>
 		<table class="form-table">
@@ -216,6 +215,43 @@ class ShaplaTools_Portfolio {
 			</tr>
 		</table>
 		<?php
+	}
+	/**
+	 * Custom columns head
+	 * @param  array $defaults The default columns in the post admin
+	 */
+	public function portfolio_columns_head( $defaults ) {
+		unset( $defaults['date'] );
+
+		$defaults['project_date'] = __( 'Project Date', 'shaplatools' );
+		$defaults['project_client'] = __( 'Client', 'shaplatools' );
+		$defaults['project_url'] = __( 'Project URL', 'shaplatools' );
+
+		return $defaults;
+	}
+	/**
+	 * Custom columns content
+	 * @param  string 	$column_name The name of the current column
+	 * @param  int 		$post_id     The id of the current post
+	 */
+	public function portfolio_columns_content( $column_name ) {
+
+		global $post;
+
+		if ( 'project_date' == $column_name ) {
+			$portfolio_date = get_post_meta( $post->ID, '_shaplatools_portfolio_date', true );
+			echo date( 'F d, Y', $portfolio_date );
+		}
+
+		if ( 'project_client' == $column_name ) {
+			$portfolio_client = get_post_meta( $post->ID, '_shaplatools_portfolio_client', true );
+			echo $portfolio_client;
+		}
+
+		if ( 'project_url' == $column_name ) {
+			$project_url = get_post_meta( $post->ID, '_shaplatools_portfolio_url', true );
+			echo $project_url;
+		}
 	}
 }
 
