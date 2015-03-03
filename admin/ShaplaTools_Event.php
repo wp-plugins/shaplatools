@@ -15,7 +15,7 @@ class ShaplaTools_Event {
 		add_action( 'manage_event_posts_custom_column', array( $this, 'event_columns_content' ) );
 		add_filter( 'manage_edit-event_columns', array( $this, 'event_columns_head' ) );
 	}
-	public function event_post_type() {
+	public static function event_post_type() {
 
 		$labels = array(
 			'name'                => _x( 'Events', 'Post Type General Name', 'shaplatools' ),

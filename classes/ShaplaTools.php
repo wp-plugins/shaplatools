@@ -115,6 +115,11 @@ class ShaplaTools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Event.php';
 
 		/**
+		 * The class responsible for defining all actions that occur in the Dashboard.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Testimonial.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */

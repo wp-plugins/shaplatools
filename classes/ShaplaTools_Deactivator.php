@@ -21,6 +21,9 @@ class ShaplaTools_Deactivator {
 	 */
 	public static function deactivate() {
 
+		ShaplaTools_Portfolio::portfolio_post_type();
+		ShaplaTools_Event::event_post_type();
+
 		flush_rewrite_rules();
 
 	}
