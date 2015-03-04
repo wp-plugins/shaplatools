@@ -61,6 +61,7 @@ class ShaplaTools {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->show_custom_post();
 
 	}
 
@@ -82,57 +83,37 @@ class ShaplaTools {
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/ShaplaTools_Loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/ShaplaTools_i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/ShaplaTools_Settings.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Gallery.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Portfolio.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Event.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Testimonial.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/shaplatools-gallery-slider.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/ShaplaTools_Public.php';
 
 		$this->loader = new ShaplaTools_Loader();
 
+	}
+
+	private function show_custom_post(){
+		$this->options = get_option( 'shaplatools_options' );
+
+		if ( isset($this->options['show_portfolio']) && '1' == $this->options['show_portfolio'] ) {
+			new ShaplaTools_Portfolio();
+		}
+
+		if ( isset($this->options['show_event']) && '1' == $this->options['show_event'] ) {
+			new ShaplaTools_Event();
+		}
+
+		if ( isset($this->options['show_testimonial']) && '1' == $this->options['show_testimonial'] ) {
+			new ShaplaTools_Testimonial();
+		}
 	}
 
 	/**
