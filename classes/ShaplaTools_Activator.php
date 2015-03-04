@@ -24,8 +24,14 @@ class ShaplaTools_Activator {
 		ShaplaTools_Portfolio::portfolio_post_type();
 		ShaplaTools_Event::event_post_type();
 		ShaplaTools_Testimonial::testimonial_post_type();
+		ShaplaTools_Slider::slider_post_type();
 		
 		flush_rewrite_rules();
+
+		if (is_admin() && isset($_GET['activated'])){
+			wp_redirect(admin_url('options-general.php?page=shaplatools'));
+			exit;
+		}
 		
 	}
 

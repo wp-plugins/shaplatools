@@ -24,6 +24,7 @@ class ShaplaTools_Deactivator {
 		ShaplaTools_Portfolio::portfolio_post_type();
 		ShaplaTools_Event::event_post_type();
 		ShaplaTools_Testimonial::testimonial_post_type();
+		ShaplaTools_Slider::slider_post_type();
 
 		flush_rewrite_rules();
 
