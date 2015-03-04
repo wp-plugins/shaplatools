@@ -9,5 +9,6 @@
 	width: 50px;
 	background: url('../images/back-top.png') no-repeat 0 0;
 	opacity: 0.4;
+	outline: none;
 }
 #scrollUp:hover{opacity: 1;}
