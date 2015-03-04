@@ -15,6 +15,15 @@ ShaplaTools is a powerful plugin to extend functionality to your WordPress theme
 
 This plugin is actually for theme developer to include some features in WordPress theme. No implementation is available with this plugin.  So if you are not a WordPress developer, this plugin is not for you.
 
+= Custom Post Types =
+
+<ul>
+	<li>Slider (for jQuery NIVO Slider)</li>
+	<li>Testimonial</li>
+	<li>Portfolio</li>
+	<li>Event</li>
+</ul>
+
 == Installation ==
 
 Installing the plugins is just like installing other WordPress plugins. If you don't know how to install plugins, please review the three options below:
