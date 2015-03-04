@@ -129,7 +129,7 @@ class ShaplaTools_Settings
         </p>
         <p>
             <label for="show_event">
-                <input type="checkbox" name="shaplatools_options[show_event]" id="show_event" value="1" <?php if ( isset($this->options['show_testimonial']) && '1' == $this->options['show_event'] ) echo 'checked'; ?>>Show Event
+                <input type="checkbox" name="shaplatools_options[show_event]" id="show_event" value="1" <?php if ( isset($this->options['show_event']) && '1' == $this->options['show_event'] ) echo 'checked'; ?>>Show Event
             </label>
         </p>
         <p>
