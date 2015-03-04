@@ -63,6 +63,8 @@ class ShaplaTools_Public {
 		 * class.
 		 */
 
+		wp_enqueue_style( $this->shaplatools, plugin_dir_url( __FILE__ ) . 'css/shaplatools.css', array(), $this->version, 'all' );
+
 		wp_enqueue_style( $this->shaplatools.'-animate', plugin_dir_url( __FILE__ ) . 'library/animate/animate.min.css', array(), $this->version, 'all' );
 
 		wp_enqueue_style( $this->shaplatools.'-carousel', plugin_dir_url( __FILE__ ) . 'library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
@@ -88,6 +90,8 @@ class ShaplaTools_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		wp_enqueue_script( $this->shaplatools, plugin_dir_url( __FILE__ ) . 'js/shaplatools.js', array( 'jquery' ), $this->version, true );
 
 		wp_enqueue_script( $this->shaplatools.'-carousel', plugin_dir_url( __FILE__ ) . 'library/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
 
