@@ -97,6 +97,9 @@ class ShaplaTools_Settings
         if( isset( $input['show_event'] ) )
             $new_input['show_event'] = sanitize_text_field( $input['show_event'] );
 
+        if( isset( $input['show_slider'] ) )
+            $new_input['show_slider'] = sanitize_text_field( $input['show_slider'] );
+
         return $new_input;
     }
 
@@ -127,6 +130,11 @@ class ShaplaTools_Settings
         <p>
             <label for="show_event">
                 <input type="checkbox" name="shaplatools_options[show_event]" id="show_event" value="1" <?php if ( isset($this->options['show_testimonial']) && '1' == $this->options['show_event'] ) echo 'checked'; ?>>Show Event
+            </label>
+        </p>
+        <p>
+            <label for="show_slider">
+                <input type="checkbox" name="shaplatools_options[show_slider]" id="show_slider" value="1" <?php if ( isset($this->options['show_slider']) && '1' == $this->options['show_slider'] ) echo 'checked'; ?>>Show Slider
             </label>
         </p>
         <?php

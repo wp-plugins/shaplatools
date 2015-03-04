@@ -92,6 +92,7 @@ class ShaplaTools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Portfolio.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Event.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Testimonial.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Slider.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/shaplatools-gallery-slider.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/ShaplaTools_Public.php';
@@ -113,6 +114,10 @@ class ShaplaTools {
 
 		if ( isset($this->options['show_testimonial']) && '1' == $this->options['show_testimonial'] ) {
 			new ShaplaTools_Testimonial();
+		}
+
+		if ( isset($this->options['show_slider']) && '1' == $this->options['show_slider'] ) {
+			new ShaplaTools_Slider();
 		}
 	}
 
