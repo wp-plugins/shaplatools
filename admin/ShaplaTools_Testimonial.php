@@ -215,5 +215,3 @@ class ShaplaTools_Testimonial {
 		}
 	}
 }
-
-new ShaplaTools_Testimonial();

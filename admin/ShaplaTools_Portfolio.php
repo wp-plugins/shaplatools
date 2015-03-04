@@ -254,5 +254,3 @@ class ShaplaTools_Portfolio {
 		}
 	}
 }
-
-new ShaplaTools_Portfolio();

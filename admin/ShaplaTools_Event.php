@@ -188,5 +188,3 @@ class ShaplaTools_Event {
 		}
 	}
 }
-
-new ShaplaTools_Event();
