@@ -166,6 +166,9 @@ class ShaplaTools_Portfolio {
 		$client = get_post_meta( $post->ID, '_shaplatools_portfolio_client', true );
 		$date = get_post_meta( $post->ID, '_shaplatools_portfolio_date', true );
 		$url = get_post_meta( $post->ID, '_shaplatools_portfolio_url', true );
+
+		//if there is previously saved value then retrieve it, else set it to the current time
+		$date = ! empty( $date ) ? $date : time();
 		
 		?>
 		<table class="form-table">
