@@ -22,6 +22,30 @@ This plugin is actually for theme developer to include some features in WordPres
 	<li>Testimonial</li>
 	<li>Portfolio</li>
 	<li>Event</li>
+	<li>Team</li>
+</ul>
+
+= Widgets =
+
+<ul>
+	<li>Testimonial</li>
+</ul>
+
+= Shortcodes =
+
+<ul>
+	<li>Alerts</li>
+	<li>Buttons ( optionally, with font icons )</li>
+	<li>Columns</li>
+	<li>Divider / Horizontal Ruler</li>
+	<li>Dropcaps</li>
+	<li>Intro Text</li>
+	<li>Tabs</li>
+	<li>Toggle</li>
+	<li>Font Icons by Font Awesome</li>
+	<li>Google Maps with 5 predefined styles</li>
+	<li>Image with CSS3 filters</li>
+	<li>Videos ( supports Embeds )</li>
 </ul>
 
 == Installation ==
