@@ -1,6 +1,6 @@
 === ShaplaTools ===
 Contributors: sayful
-Tags: custom post type, widgets, shortcodes
+Tags: widget, shortcode, images,image,admin, sidebar, custom post type
 Requires at least: 3.8
 Tested up to: 4.1
 Stable tag: 1.0.0
