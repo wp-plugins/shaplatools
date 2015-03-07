@@ -62,6 +62,7 @@ class ShaplaTools {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->show_custom_post();
+		$this->includes();
 
 	}
 
@@ -89,10 +90,14 @@ class ShaplaTools {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Admin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Gallery.php';
+
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Portfolio.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Event.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Testimonial.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Slider.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Team.php';
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ShaplaTools_Team.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/shaplatools-gallery-slider.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/ShaplaTools_Public.php';
@@ -119,6 +124,41 @@ class ShaplaTools {
 		if ( isset($this->options['show_slider']) && '1' == $this->options['show_slider'] ) {
 			new ShaplaTools_Slider();
 		}
+
+		if ( isset($this->options['show_team']) && '1' == $this->options['show_team'] ) {
+			new ShaplaTools_Team();
+		}
+	}
+
+	public function includes(){
+
+		if ( is_admin() ){
+			$this->admin_includes();
+		}
+		if( !is_admin() ){
+			$this->frontend_includes();
+		}
+
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-testimonials.php';
+	}
+
+	/**
+	* Include admin files.
+	*
+	* @return void
+	*/
+	public function admin_includes(){
+		//include_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/shapla-shortcodes.php';
+	}
+
+	/**
+	 * Include frontend files.
+	 *
+	 * @return void
+	 */
+	public function frontend_includes(){
+		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/shortcodes.php';
 	}
 
 	/**
