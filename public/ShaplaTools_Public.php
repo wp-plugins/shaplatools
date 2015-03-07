@@ -70,6 +70,13 @@ class ShaplaTools_Public {
 		wp_enqueue_style( $this->shaplatools.'-carousel', plugin_dir_url( __FILE__ ) . 'library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
 		wp_enqueue_style( $this->shaplatools.'-carousel-theme', plugin_dir_url( __FILE__ ) . 'library/owl-carousel/owl.theme.green.css', array(), $this->version, 'all' );
 
+
+		wp_register_style( 'font-awesome', plugin_dir_url( dirname( __FILE__ ) ) . '/assets/css/font-awesome.css' , '', '4.1.0', 'all' );
+		wp_register_style( 'shapla-shortcode-styles', plugin_dir_url( dirname( __FILE__ ) ) . '/assets/css/shapla-shortcodes.css' , array( 'font-awesome' ), $this->version, 'all' );
+
+		wp_enqueue_style( 'font-awesome' );
+		wp_enqueue_style( 'shapla-shortcode-styles' );
+
 	}
 
 	/**
@@ -94,6 +101,11 @@ class ShaplaTools_Public {
 		wp_enqueue_script( $this->shaplatools, plugin_dir_url( __FILE__ ) . 'js/shaplatools.js', array( 'jquery' ), $this->version, true );
 
 		wp_enqueue_script( $this->shaplatools.'-carousel', plugin_dir_url( __FILE__ ) . 'library/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
+
+
+
+		wp_register_script( 'shapla-shortcode-scripts', plugin_dir_url( dirname( __FILE__ ) ). '/assets/js/shapla-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
+		wp_enqueue_script( 'shapla-shortcode-scripts' );
 
 	}
 

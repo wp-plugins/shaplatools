@@ -42,7 +42,7 @@ class ShaplaTools_Testimonial {
 			'label'               => __( 'testimonial', 'shaplatools' ),
 			'description'         => __( 'A list of upcoming testimonials.', 'shaplatools' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail', 'comments' ),
+			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
@@ -108,59 +108,62 @@ class ShaplaTools_Testimonial {
 
 		/* OK, its safe for us to save the data now. */
 
-		// Sanitize the user input.
-		$start_date = sanitize_text_field( $_POST['shaplatools_testimonial_client_name'] );
-		$client_source = sanitize_text_field( $_POST['shaplatools_testimonial_client_source'] );
-		$client_link = sanitize_text_field( $_POST['shaplatools_testimonial_client_link'] );
+		if ( ! empty( $_POST['shaplatools_testimonial'] ) ) {
 
-		// Update the meta field.
-		update_post_meta( $post_id, '_shaplatools_testimonial_client_name', $start_date );
-		update_post_meta( $post_id, '_shaplatools_testimonial_client_source', $client_source );
-		update_post_meta( $post_id, '_shaplatools_testimonial_client_link', $client_link );
+			$testimonial['client_name'] = sanitize_text_field( $_POST['shaplatools_testimonial']['client_name'] );
+			$testimonial['client_source'] = sanitize_text_field( $_POST['shaplatools_testimonial']['client_source'] );
+			$testimonial['client_link'] = sanitize_text_field( $_POST['shaplatools_testimonial']['client_link'] );
+
+			update_post_meta( $post_id, '_shaplatools_testimonial', $testimonial );
+		} else {
+			delete_post_meta( $post_id, '_shaplatools_testimonial' );
+		}
+
 	}
 
 	public function meta_box_callback($post){
 
+		$testimonial = get_post_meta( $post->ID, '_shaplatools_testimonial', true );
+
+		$client_name = ( empty( $testimonial['client_name'] ) ) ? '' : $testimonial['client_name'];
+		$client_source = ( empty( $testimonial['client_source'] ) ) ? '' : $testimonial['client_source'];
+		$client_link = ( empty( $testimonial['client_link'] ) ) ? '' : $testimonial['client_link'];
+
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'shaplatools_testimonial_custom_box', 'shaplatools_testimonial_custom_box_nonce' );
-
-		// Use get_post_meta to retrieve an existing value from the database.
-		$client_name = get_post_meta( $post->ID, '_shaplatools_testimonial_client_name', true );
-		$client_source = get_post_meta( $post->ID, '_shaplatools_testimonial_client_source', true );
-		$client_link = get_post_meta( $post->ID, '_shaplatools_testimonial_client_link', true );
 
 		?>
 		<table class="form-table">
 			<tr valign="top">
                 <th scope="row">
-                    <label for="shaplatools_testimonial_client_name">
+                    <label for="client_name">
                         <?php _e('Client\'s Name (optional)','shaplatools') ?>
                     </label>
                 </th>
 				<td>
-					<input type="text" class="regular-text" id="shaplatools_testimonial_client_name" name="shaplatools_testimonial_client_name" value="<?php echo esc_attr( $client_name ); ?>" style="width:100% !important">
+					<input type="text" class="regular-text" id="client_name" name="shaplatools_testimonial[client_name]" value="<?php echo esc_attr( $client_name ); ?>" style="width:100% !important">
                     <p><?php _e('','shaplatools'); ?></p>
 				</td>
 			</tr>
 			<tr valign="top">
                 <th scope="row">
-                    <label for="shaplatools_testimonial_client_source">
+                    <label for="client_source">
                         <?php _e('Business/Site Name (optional)','shaplatools') ?>
                     </label>
                 </th>
 				<td>
-					<input type="text" class="regular-text" id="shaplatools_testimonial_client_source" name="shaplatools_testimonial_client_source" value="<?php echo esc_attr( $client_source ); ?>" style="width:100% !important">
+					<input type="text" class="regular-text" id="client_source" name="shaplatools_testimonial[client_source]" value="<?php echo esc_attr( $client_source ); ?>" style="width:100% !important">
                     <p><?php _e('','shaplatools'); ?></p>
 				</td>
 			</tr>
 			<tr valign="top">
                 <th scope="row">
-                    <label for="shaplatools_testimonial_client_link">
+                    <label for="client_link">
                         <?php _e('Link (optional)','shaplatools') ?>
                     </label>
                 </th>
 				<td>
-					<input type="text" class="regular-text" id="shaplatools_testimonial_client_link" name="shaplatools_testimonial_client_link" value="<?php echo esc_attr( $client_link ); ?>" style="width:100% !important">
+					<input type="text" class="regular-text" id="client_link" name="shaplatools_testimonial[client_link]" value="<?php echo esc_attr( $client_link ); ?>" style="width:100% !important">
                     <p><?php _e('','shaplatools'); ?></p>
 				</td>
 			</tr>
@@ -176,12 +179,11 @@ class ShaplaTools_Testimonial {
 		$defaults = array(
 			'cb' 			=> '<input type="checkbox">',
 			'title' 		=> 'Title',
+			'post_id' 		=> 'Testimonial ID',
 			'testimonial' 	=> 'Testimonial',
 			'client_name' 	=> 'Client\'s Name',
 			'client_source'	=> 'Business/Site',
-			'client_link'	=> 'Link',
-			'author' 		=> 'Posted by',
-			'date' 			=> 'Date'
+			'client_link'	=> 'Link'
 		);
 
 		return $defaults;
@@ -195,23 +197,29 @@ class ShaplaTools_Testimonial {
 
 		global $post;
 
+		$testimonial = get_post_meta( $post->ID, '_shaplatools_testimonial', true );
+
+		if ( 'post_id' == $column_name ) {
+			echo $post->ID;
+		}
+
 		if ( 'testimonial' == $column_name ) {
 			the_excerpt();
 		}
 
 		if ( 'client_name' == $column_name ) {
-			$client_name = get_post_meta( $post->ID, '_shaplatools_testimonial_client_name', true );
-			echo $client_name;
+			if ( ! empty( $testimonial['client_name'] ) )
+			echo $testimonial['client_name'];
 		}
 
 		if ( 'client_source' == $column_name ) {
-			$client_source = get_post_meta( $post->ID, '_shaplatools_testimonial_client_source', true );
-			echo $client_source;
+			if ( ! empty( $testimonial['client_source'] ) )
+			echo $testimonial['client_source'];
 		}
 
 		if ( 'client_link' == $column_name ) {
-			$client_link = get_post_meta( $post->ID, '_shaplatools_testimonial_client_link', true );
-			echo $client_link;
+			if ( ! empty( $testimonial['client_link'] ) )
+			echo $testimonial['client_link'];
 		}
 	}
 }

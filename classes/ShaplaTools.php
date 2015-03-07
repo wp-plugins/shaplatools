@@ -149,7 +149,7 @@ class ShaplaTools {
 	* @return void
 	*/
 	public function admin_includes(){
-		//include_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/shapla-shortcodes.php';
+		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/shapla-shortcodes.php';
 	}
 
 	/**
@@ -158,7 +158,7 @@ class ShaplaTools {
 	 * @return void
 	 */
 	public function frontend_includes(){
-		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/shortcodes.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/shortcodes.php';
 	}
 
 	/**

@@ -168,7 +168,12 @@ class ShaplaTools_Portfolio {
 		$url = get_post_meta( $post->ID, '_shaplatools_portfolio_url', true );
 
 		//if there is previously saved value then retrieve it, else set it to the current time
-		$date = ! empty( $date ) ? $date : time();
+		if (! empty( $date )) {
+			$date = date( 'F d, Y', $date );
+		} else {
+			$date = '';
+		}
+		
 		
 		?>
 		<table class="form-table">
@@ -212,7 +217,7 @@ class ShaplaTools_Portfolio {
                     </label>
                 </th>
 				<td>
-					<input type="text" class="" id="shaplatools_portfolio_date" name="shaplatools_portfolio_date" value="<?php echo date( 'F d, Y', $date ); ?>">
+					<input type="text" class="" id="shaplatools_portfolio_date" name="shaplatools_portfolio_date" value="<?php echo $date; ?>">
                     <p><?php _e('Choose the project date.','shaplatools'); ?></p>
 				</td>
 			</tr>
@@ -243,7 +248,12 @@ class ShaplaTools_Portfolio {
 
 		if ( 'project_date' == $column_name ) {
 			$portfolio_date = get_post_meta( $post->ID, '_shaplatools_portfolio_date', true );
-			echo date( 'F d, Y', $portfolio_date );
+			if (! empty( $portfolio_date )) {
+				$portfolio_date = date( 'F d, Y', $portfolio_date );
+			} else {
+				$portfolio_date = '';
+			}
+			echo $portfolio_date;
 		}
 
 		if ( 'project_client' == $column_name ) {
