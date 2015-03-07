@@ -12,3 +12,38 @@
 	outline: none;
 }
 #scrollUp:hover{opacity: 1;}
+
+/* 
+ * 	Core Testimonial CSS File
+ *	v1.0.0
+ */
+.testimonial{
+	padding-left:30px;
+	position:relative;
+	z-index:0;
+	font-size:16px
+}
+.testimonial .quote{
+	position:absolute;
+	left:0;top:-25px;
+	font-size:200px;
+	font-family:Georgia,serif;
+	color:#f2f2f2;
+	z-index:-1;
+	line-height:1
+}
+.testimonial-text{
+	font-style:italic
+}
+.testimonial-client-name{
+	text-align:right;
+	font-size:14px
+}
+.testimonial-client-name cite{
+	font-style:normal
+}
+.testimonial-slide img{
+	max-width:120px;
+	max-height:120px;
+	float:left
+}
