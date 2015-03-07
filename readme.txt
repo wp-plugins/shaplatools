@@ -22,6 +22,13 @@ This plugin is actually for theme developer to include some features in WordPres
 	<li>Testimonial</li>
 	<li>Portfolio</li>
 	<li>Event</li>
+	<li>Team</li>
+</ul>
+
+= Widgets =
+
+<ul>
+	<li>Testimonial</li>
 </ul>
 
 == Installation ==
