@@ -141,6 +141,7 @@ class ShaplaTools {
 
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-testimonials.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-fb_like_box.php';
 	}
 
 	/**

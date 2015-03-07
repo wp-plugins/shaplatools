@@ -28,6 +28,7 @@ This plugin is actually for theme developer to include some features in WordPres
 = Widgets =
 
 <ul>
+	<li>Facebook Like Box</li>
 	<li>Testimonial</li>
 </ul>
 
