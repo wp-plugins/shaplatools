@@ -1,55 +1,52 @@
 <?php
 
-add_action( 'widgets_init', create_function( '', 'return register_widget( "stag_twitter_widget" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "Shapla_Tweet_Widget" );' ) );
 
-class stag_twitter_widget extends WP_Widget{
+class Shapla_Tweet_Widget extends WP_Widget{
 
-	function stag_twitter_widget() {
-		$widget_ops = array( 'classname' => 'stag-twitter', 'description' => __( 'Display your latest tweets', 'stag' ) );
-		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'stag-twitter' );
-		$this->WP_Widget( 'stag-twitter', __( 'Stag Twitter Feed', 'stag' ), $widget_ops, $control_ops );
+	/**
+	 * Register widget with WordPress.
+	 */
+	public function __construct() {
+		parent::__construct(
+			'shapla-latest-tweets', // Base ID
+			__( 'Shapla Latest Tweets', 'shapla' ), // Name
+			array( 'description' => __( 'Displays your latest tweets from Twitter.', 'shapla' ), ) // Args
+		);
 	}
 
 	function widget( $args, $instance ) {
 		extract($args);
 
-		$title              = apply_filters('widget_title', $instance['title'] );
-		$cache_time         = $instance['cache_time'];
-		$twitter_username   = $instance['twitter_username'];
-		$tweet_count        = $instance['tweet_count'];
-		$show_retweets      = $instance['show_retweets'];
-		$show_replies       = $instance['show_replies'];
-		$show_follow_button = $instance['show_follow_button'];
+	    $title                     = apply_filters( 'widget_title', $instance['title'] );
+	    $twitter_username          = $instance['twitter_username'];
+	    $limit                     = $instance['update_count'];
+	    $oauth_access_token        = $instance['oauth_access_token'];
+	    $oauth_access_token_secret = $instance['oauth_access_token_secret'];
+	    $consumer_key              = $instance['consumer_key'];
+	    $consumer_secret           = $instance['consumer_secret'];
 
 		echo $before_widget;
 
 	?>
 
-	<div class="stag-twitter-widget">
+	<div class="shapla-twitter-widget">
 		<?php
 
 		if ( $title ) { echo $before_title . $title . $after_title; }
 
-		$stag_options = array(
-			'consumer_key' => 'Ddgolor8EvcwKMBFfb0jG0c8G', 
-			'consumer_secret' => '3oxqd2zCoaVWdjc7BkmTtri2B2vEGzG5PYXwZaqfchkyRNPLKp', 
-			'access_key' => '451130627-NIuxHkxYVlKSzHJz7gQN280Th02bzieiGnXxQl2M', 
-			'access_secret' => 'tTUVBAdol2UzQ9gfCE9MexzTrFy3j2owCpWhBsTDUbMp9', 
-		);
-
-		if( empty($stag_options['consumer_key']) || empty($stag_options['consumer_secret']) || empty($stag_options['access_key']) || empty($stag_options['access_secret']) ) {
-			echo '<strong>' . __( 'Please fill all widget settings.', 'stag' ) . '</strong></div>' . $after_widget;
+		if( empty($consumer_key) || empty($consumer_secret) || empty($oauth_access_token) || empty($oauth_access_token_secret) ) {
+			echo '<strong>' . __( 'Please fill all widget settings.', 'shapla' ) . '</strong></div>' . $after_widget;
 			return;
 		}
 
-		$tw_helper = new StagTWHelper();
-		$transient = 'stag_twitter_widget_' . $twitter_username;
-		$timeout = $cache_time * HOUR_IN_SECONDS;
+		$tw_helper = new shaplaTWHelper();
+		$transient = 'shapla_twitter_widget_' . $twitter_username;
 
 		if ( false === get_transient( $transient ) ) {
-			$connection = $tw_helper->getConnectionWithAccessToken( $stag_options['consumer_key'], $stag_options['consumer_secret'], $stag_options['access_key'], $stag_options['access_secret'] );
+			$connection = $tw_helper->getConnectionWithAccessToken( $consumer_key, $consumer_secret, $oauth_access_token, $oauth_access_token_secret );
 
-			$url = add_query_arg( array( 'screen_name' => $instance['twitter_username'], 'count' => $instance['tweet_count'] ), 'https://api.twitter.com/1.1/statuses/user_timeline.json' );
+			$url = add_query_arg( array( 'screen_name' => $twitter_username, 'count' => $limit ), 'https://api.twitter.com/1.1/statuses/user_timeline.json' );
 
 			if( $instance['show_replies'] == 1 ) {
 				$url = add_query_arg( array( 'exclude_replies' => "false" ), $url );
@@ -66,7 +63,7 @@ class stag_twitter_widget extends WP_Widget{
 			$tweets = $connection->get( $url );
 
 			if( !$tweets ) {
-				_e( "Couldn't retrieve tweets! Wrong username!", "stag" );
+				_e( "Couldn't retrieve tweets! Wrong username!", "shapla" );
 				echo '</div>' . $after_widget;
 				return;
 			}
@@ -74,7 +71,7 @@ class stag_twitter_widget extends WP_Widget{
 
 			if( !empty( $tweets->errors ) ) {
 				if( $tweets->errors[0]->message == 'Invalid or expired token' ) {
-					echo '<strong>' . $tweets->errors[0]->message . '!</strong>' . __( 'You will need to regenerate it <a href="//dev.twitter.com/apps">here</a>.', 'stag' ) . $after_widget;
+					echo '<strong>' . $tweets->errors[0]->message . '!</strong>' . __( 'You will need to regenerate it <a href="//dev.twitter.com/apps">here</a>.', 'shapla' ) . $after_widget;
 				}else{
 					echo '<strong>' . $tweets->errors[0]->message . '</strong>' . $after_widget;
 				}
@@ -112,15 +109,11 @@ class stag_twitter_widget extends WP_Widget{
 				$output .= '<p><time datetime="'. $tweet['created_at'] .'" class="time"><a href="'. $protocol .'//twitter.com/'. $twitter_username .'/statuses/'. $tweet['status_id'] .'" target="_blank">'. $tw_helper->twitter_widget_relative_time( $tweet['created_at'] ) .'</a></time></p>';
 				$output .= '</li>';
 
-				if( $count == $instance['tweet_count'] ) { break; }
+				if( $count == $limit ) { break; }
 				$count++;
 			}
 
 			$output .= '</ul>';
-
-			if ( (bool) $show_follow_button == 1 ) {
-				$output .= "<a class='button twitter-follow-button' href='". esc_url( 'https://twitter.com/'. $twitter_username ) ."'>". __( 'Follow', 'stag' ) ."</a>";
-			}
 
 			echo $output;
 		}
@@ -135,74 +128,90 @@ class stag_twitter_widget extends WP_Widget{
 
 	}
 
-	function update( $new_instance, $old_instance) {
-		$instance                       = $old_instance;
-		$instance['title']              = strip_tags( $new_instance['title'] );
-		$instance['cache_time']         = strip_tags( $new_instance['cache_time'] );
-		$instance['twitter_username']   = strip_tags( $new_instance['twitter_username'] );
-		$instance['tweet_count']        = strip_tags( $new_instance['tweet_count'] );
-		$instance['show_retweets']      = strip_tags( $new_instance['show_retweets'] );
-		$instance['show_replies']       = strip_tags( $new_instance['show_replies'] );
-		$instance['show_follow_button'] = strip_tags( $new_instance['show_follow_button'] );
+	/**
+	 * Sanitize widget form values as they are saved.
+	 *
+	 * @see WP_Widget::update()
+	 *
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previously saved values from database.
+	 *
+	 * @return array Updated safe values to be saved.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+	    $instance['twitter_username'] = ( ! empty( $new_instance['twitter_username'] ) ) ? strip_tags( $new_instance['twitter_username'] ) : '';
+	    $instance['update_count'] = ( ! empty( $new_instance['update_count'] ) ) ? strip_tags( $new_instance['update_count'] ) : '';
+	    $instance['oauth_access_token'] = ( ! empty( $new_instance['oauth_access_token'] ) ) ? strip_tags( $new_instance['oauth_access_token'] ) : '';
+	    $instance['oauth_access_token_secret'] = ( ! empty( $new_instance['oauth_access_token_secret'] ) ) ? strip_tags( $new_instance['oauth_access_token_secret'] ) : '';
+	    $instance['consumer_key'] = ( ! empty( $new_instance['consumer_key'] ) ) ? strip_tags( $new_instance['consumer_key'] ) : '';
+	    $instance['consumer_secret'] = ( ! empty( $new_instance['consumer_secret'] ) ) ? strip_tags( $new_instance['consumer_secret'] ) : '';
 
 		return $instance;
 	}
 
-	function form( $instance ) {
-		$defaults = array(
-			'title'              => __( 'Tweets', 'stag' ),
-			'cache_time'         => 2,
-			'twitter_username'   => '',
-			'tweet_count'        => 3,
-			'show_retweets'      => '',
-			'show_replies'       => '',
-			'show_follow_button' => ''
-		);
-
-		$instance = wp_parse_args( (array) $instance, $defaults );
+	/**
+	 * Back-end widget form.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	public function form( $instance ) {
+     	$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Latest Tweets', 'sistweets' );
+     	$twitter_username = ! empty( $instance['twitter_username'] ) ? $instance['twitter_username'] : '';
+     	$update_count = ! empty( $instance['update_count'] ) ? $instance['update_count'] : '';
+     	$oauth_access_token = ! empty( $instance['oauth_access_token'] ) ? $instance['oauth_access_token'] : '';
+     	$oauth_access_token_secret = ! empty( $instance['oauth_access_token_secret'] ) ? $instance['oauth_access_token_secret'] : '';
+     	$consumer_key = ! empty( $instance['consumer_key'] ) ? $instance['consumer_key'] : '';
+     	$consumer_secret = ! empty( $instance['consumer_secret'] ) ? $instance['consumer_secret'] : '';
 		?>
-		<br>
-		<p class="description">
-			<?php echo sprintf( __( 'Make sure you have filled your twitter oAuth keys under %s.', 'stag' ), '<a href="'.admin_url( 'options-general.php?page=stagtools' ).'">settings</a>' ); ?>
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'stag' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>">
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('twitter_username'); ?>"><?php _e( 'Twitter Handle:', 'stag' ); ?></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id('twitter_username'); ?>" name="<?php echo $this->get_field_name('twitter_username'); ?>" value="<?php echo $instance['twitter_username']; ?>">
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('cache_time'); ?>"><?php _e( 'Cache tweets in every ', 'stag' ); ?></label>
-			<input type="number" class="small-text" id="<?php echo $this->get_field_id('cache_time'); ?>" name="<?php echo $this->get_field_name('cache_time'); ?>" value="<?php echo $instance['cache_time']; ?>">
-			<?php _e( 'hours', 'stag' ); ?>
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('tweet_count'); ?>"><?php _e( 'Number of tweets to show:', 'stag' ); ?></label>
-			<input type="number" class="widefat" id="<?php echo $this->get_field_id('tweet_count'); ?>" name="<?php echo $this->get_field_name('tweet_count'); ?>" value="<?php echo $instance['tweet_count']; ?>">
-		</p>
-
-		<p>
-			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_retweets'); ?>" name="<?php echo $this->get_field_name('show_retweets'); ?>" value="1" <?php checked( $instance['show_retweets'], 1); ?>>
-			<label for="<?php echo $this->get_field_id('show_retweets'); ?>"><?php _e( 'Show retweets?', 'stag' ); ?></label>
-		</p>
-
-		<p>
-			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_replies'); ?>" name="<?php echo $this->get_field_name('show_replies'); ?>" value="1" <?php checked( $instance['show_replies'], 1); ?>>
-			<label for="<?php echo $this->get_field_id('show_replies'); ?>"><?php _e( 'Show replies?', 'stag' ); ?></label>
-		</p>
-
-		<p>
-			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_follow_button'); ?>" name="<?php echo $this->get_field_name('show_follow_button'); ?>" value="1" <?php checked( $instance['show_follow_button'], 1); ?>>
-			<label for="<?php echo $this->get_field_id('show_follow_button'); ?>"><?php _e( 'Show Follow Button?', 'stag' ); ?></label>
-		</p>
-
-		<?php
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'title' ); ?>">
+	            <?php echo __( 'Title', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php if(isset($title)){echo esc_attr( $title );} ?>" />
+	    </p>
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'twitter_username' ); ?>">
+	            <?php echo __( 'Twitter Username (without @)', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'twitter_username' ); ?>" name="<?php echo $this->get_field_name( 'twitter_username' ); ?>" type="text" value="<?php if(isset($twitter_username)){echo esc_attr( $twitter_username );} ?>" />
+	    </p>
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'update_count' ); ?>">
+	            <?php echo __( 'Number of Tweets to Display', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'update_count' ); ?>" name="<?php echo $this->get_field_name( 'update_count' ); ?>" type="number" value="<?php if(isset($update_count)){echo esc_attr( $update_count );} ?>" />
+	    </p>
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'consumer_key' ); ?>">
+	            <?php echo __( 'Consumer Key', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'consumer_key' ); ?>" name="<?php echo $this->get_field_name( 'consumer_key' ); ?>" type="text" value="<?php if(isset($consumer_key)){echo esc_attr( $consumer_key );} ?>" />
+	        <small>Don't know your Consumer Key, Consumer Secret, Access Token and Access Token Secret? <a target="_blank" href="http://sayful1.wordpress.com/2014/06/14/how-to-generate-twitter-api-key-api-secret-access-token-access-token-secret/">Click here to get help.</a></small>
+	    </p>
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'consumer_secret' ); ?>">
+	            <?php echo __( 'Consumer Secret', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'consumer_secret' ); ?>" name="<?php echo $this->get_field_name( 'consumer_secret' ); ?>" type="text" value="<?php if(isset($consumer_secret)){echo esc_attr( $consumer_secret );} ?>" />
+	    </p>
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'oauth_access_token' ); ?>">
+	            <?php echo __( 'Access Token', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'oauth_access_token' ); ?>" name="<?php echo $this->get_field_name( 'oauth_access_token' ); ?>" type="text" value="<?php if(isset($oauth_access_token)){echo esc_attr( $oauth_access_token );} ?>" />
+	    </p>
+	    <p>
+	        <label for="<?php echo $this->get_field_id( 'oauth_access_token_secret' ); ?>">
+	            <?php echo __( 'Access Token Secret', 'sistweets' ) . ':'; ?>
+	        </label>
+	        <input class="widefat" id="<?php echo $this->get_field_id( 'oauth_access_token_secret' ); ?>" name="<?php echo $this->get_field_name( 'oauth_access_token_secret' ); ?>" type="text" value="<?php if(isset($oauth_access_token_secret)){echo esc_attr( $oauth_access_token_secret );} ?>" />
+	    </p>
+		<?php 
 	}
 }
 

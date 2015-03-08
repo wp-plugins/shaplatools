@@ -1117,7 +1117,7 @@ class TwitterOAuth {
 }
 
 
-class StagTWHelper{
+class shaplaTWHelper{
     function getConnectionWithAccessToken( $cons_key, $cons_secret, $oauth_token, $oauth_token_secret ) {
       $connection = new TwitterOAuth( $cons_key, $cons_secret, $oauth_token, $oauth_token_secret );
       return $connection;
@@ -1135,31 +1135,31 @@ class StagTWHelper{
       if( is_numeric($d) && $d > 0 ) {
           
           //if less then 3 seconds
-        if($d < 3) return __('right now', 'stag');
+        if($d < 3) return __('right now', 'shapla');
           
           //if less then minute
-        if($d < $minute) return floor($d) . __(" seconds ago", 'stag');
+        if($d < $minute) return floor($d) . __(" seconds ago", 'shapla');
           
           //if less then 2 minutes
-        if($d < $minute * 2) return __('About 1 minute ago', 'stag');
+        if($d < $minute * 2) return __('About 1 minute ago', 'shapla');
           
           //if less then hour
-        if($d < $hour) return floor($d / $minute) . __(' minutes ago', 'stag');
+        if($d < $hour) return floor($d / $minute) . __(' minutes ago', 'shapla');
           
           //if less then 2 hours
-        if($d < $hour * 2) return __('about 1 hour ago', 'stag');
+        if($d < $hour * 2) return __('about 1 hour ago', 'shapla');
           
           //if less then day
-        if($d < $day) return floor($d / $hour) . __(' hours ago', 'stag');
+        if($d < $day) return floor($d / $hour) . __(' hours ago', 'shapla');
           
           //if more then day, but less then 2 days
-        if($d > $day && $d < $day * 2) return __('Yesterday', 'stag');
+        if($d > $day && $d < $day * 2) return __('Yesterday', 'shapla');
           
           //if less then year
-        if($d < $day * 365) return floor($d / $day) . __(' days ago', 'stag');
+        if($d < $day * 365) return floor($d / $day) . __(' days ago', 'shapla');
           
           //else return more than a year
-        return __('over a year ago', 'stag');
+        return __('over a year ago', 'shapla');
       }
     }
 }
