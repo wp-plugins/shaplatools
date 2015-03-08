@@ -1,6 +1,6 @@
 === ShaplaTools ===
 Contributors: sayful
-Tags: widget, shortcode, images,image,admin, sidebar, custom post type
+Tags: custom post type,
 Requires at least: 3.8
 Tested up to: 4.1
 Stable tag: 1.0.0
@@ -28,7 +28,6 @@ This plugin is actually for theme developer to include some features in WordPres
 = Widgets =
 
 <ul>
-	<li>Facebook Like Box</li>
 	<li>Testimonial</li>
 </ul>
 
