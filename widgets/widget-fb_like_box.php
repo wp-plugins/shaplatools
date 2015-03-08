@@ -34,8 +34,6 @@ class Shapla_FB_Like_Box extends WP_Widget {
 	    $stream 		= ($instance['stream'] == "1" ? "true" : "false");
 	    $showborder 	= ($instance['showborder'] == "1" ? "true" : "false");
 	 
-	    add_action('wp_footer', array(&$this,'fb_like_box_js'));
-	 
 	    /* Display the widget title if one was input (before and after defined by themes). */
 	    echo $args['before_widget'];
 	 
@@ -55,24 +53,17 @@ class Shapla_FB_Like_Box extends WP_Widget {
 				data-stream="<?php echo $stream; ?>"
 				data-show-border="<?php echo $showborder; ?>">
 			</div>
-	        </aside>
-	    <?php
-
-	    echo $args['after_widget'];
-	}
-	/**
-	 * Add Facebook javascripts
-	 */
-	public function fb_like_box_js() {
-		
-		echo '<div id="fb-root"></div>
+			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;
 			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId='.$app_id.'&version=v2.0";
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=<?php echo $app_id; ?>&version=v2.0";
 			  fjs.parentNode.insertBefore(js, fjs);
-			}(document, \'script\', \'facebook-jssdk\'));</script>';
+			}(document, 'script', 'facebook-jssdk'));</script>
+	    <?php
+
+	    echo $args['after_widget'];
 	}
  
     /**
