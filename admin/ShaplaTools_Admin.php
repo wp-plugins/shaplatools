@@ -109,4 +109,32 @@ class ShaplaTools_Admin {
 		}
 	}
 
+	/**
+	 * Widget styles.
+	 *
+	 * @return void
+	 */
+	public function widget_styles() {
+		global $pagenow;
+		if( $pagenow != 'widgets.php' ) return;
+		?>
+		<style type="text/css">
+		div[id*="_shapla"] .widget-top{
+		  background: #C8E5F3 !important;
+		  border-color: #B4D0DD !important;
+		  box-shadow: inset 0 1px 0 white !important;
+		  -webkit-box-shadow: inset 0 1px 0 white !important;
+		  -moz-box-shadow: inset 0 1px 0 white !important;
+		  -ms-box-shadow: inset 0 1px 0 white !important;
+		  -o-box-shadow: inset 0 1px 0 white !important;
+		  background: -moz-linear-gradient(top,  #EAF8FF 0%, #C8E5F3 100%) !important;
+		  background: -webkit-linear-gradient(top, #EAF8FF 0%,#C8E5F3 100%) !important;
+		  background: linear-gradient(to bottom, #EAF8FF 0%,#C8E5F3 100%) !important;
+		  border-bottom: 1px solid #98B3C0 !important;
+		  margin-top: 0px;
+		}
+		</style>
+		<?php
+	}
+
 }
