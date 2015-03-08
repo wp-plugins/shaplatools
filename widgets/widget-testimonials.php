@@ -2,10 +2,10 @@
 /**
  * Testimonials Widget
  */
-class Testimonial_Widget extends WP_Widget {
+class Shapla_Testimonial_Widget extends WP_Widget {
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'testimonial_widget', 'description' => 'Display testimonial post type' );
-		parent::__construct( 'testimonial_widget', 'Shapla Testimonials', $widget_ops );
+		$widget_ops = array( 'classname' => 'shapla_testimonial', 'description' => 'Display testimonial post type' );
+		parent::__construct( 'shapla_testimonial', 'Shapla Testimonials', $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -104,5 +104,5 @@ add_action( 'widgets_init', 'register_testimonials_widget' );
  * This functions is attached to the 'widgets_init' action hook.
  */
 function register_testimonials_widget() {
-	register_widget( 'Testimonial_Widget' );
+	register_widget( 'Shapla_Testimonial_Widget' );
 }
