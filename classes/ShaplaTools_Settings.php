@@ -142,7 +142,7 @@ class ShaplaTools_Settings
         </p>
         <p>
             <label for="show_team">
-                <input type="checkbox" name="shaplatools_options[show_team]" id="show_team" value="1" <?php if ( isset($this->options['show_team']) && '1' == $this->options['show_team'] ) echo 'checked'; ?>>Show Slider
+                <input type="checkbox" name="shaplatools_options[show_team]" id="show_team" value="1" <?php if ( isset($this->options['show_team']) && '1' == $this->options['show_team'] ) echo 'checked'; ?>>Show Team
             </label>
         </p>
         <?php
