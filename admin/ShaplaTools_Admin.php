@@ -137,4 +137,21 @@ class ShaplaTools_Admin {
 		<?php
 	}
 
+	public function shapla_register_widget(){
+
+		$this->options = get_option( 'shaplatools_options' );
+
+		if ( isset($this->options['show_event']) && '1' == $this->options['show_event'] ) {
+
+			register_widget( 'Shapla_Event' );
+
+		}
+
+		if ( isset($this->options['show_testimonial']) && '1' == $this->options['show_testimonial'] ) {
+
+			register_widget( 'Shapla_Testimonial' );
+			
+		}
+	}
+
 }

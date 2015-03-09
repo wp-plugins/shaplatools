@@ -2,7 +2,7 @@
 /**
  * Testimonials Widget
  */
-class Shapla_Testimonial_Widget extends WP_Widget {
+class Shapla_Testimonial extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array( 'classname' => 'shapla_testimonial', 'description' => 'Display testimonial post type' );
 		parent::__construct( 'shapla_testimonial', 'Shapla Testimonials', $widget_ops );
@@ -95,14 +95,4 @@ class Shapla_Testimonial_Widget extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'testimonial_id' ); ?>" name="<?php echo $this->get_field_name( 'testimonial_id' ); ?>" type="text" value="<?php echo $testimonial_id; ?>" /></p>
 		<?php
 	}
-}
-
-add_action( 'widgets_init', 'register_testimonials_widget' );
-/**
- * Register widget
- *
- * This functions is attached to the 'widgets_init' action hook.
- */
-function register_testimonials_widget() {
-	register_widget( 'Shapla_Testimonial_Widget' );
 }

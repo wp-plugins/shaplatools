@@ -89,13 +89,3 @@ class Shapla_Event extends WP_Widget {
 		<?php
 	}
 }
-
-add_action( 'widgets_init', 'shapla_event_widget' );
-/**
- * Register widget
- *
- * This functions is attached to the 'widgets_init' action hook.
- */
-function shapla_event_widget() {
-	register_widget( 'Shapla_Event' );
-}
