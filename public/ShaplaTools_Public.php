@@ -56,5 +56,19 @@ class ShaplaTools_Public {
 		wp_enqueue_script( 'nivo-slider' );
 
 	}
+	public function google_analytics_script(){
+		$options = get_option('shaplatools_options');
+		$gl_analytics = (!empty($options['google_analytics'])) ? $options['google_analytics'] : 'UA-XXXXX-X';
+		?>
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','<?php echo esc_attr($gl_analytics); ?>','auto');ga('send','pageview');
+        </script>
+		<?php
+	}
 
 }

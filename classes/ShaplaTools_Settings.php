@@ -76,6 +76,15 @@ class ShaplaTools_Settings
             array( $this, 'custom_post_type_callback' ), // Callback
             'shaplatools', // Page
             'setting_section_id' // Section           
+        ); 
+
+        add_settings_field(
+            'google_analytics', // ID
+            'Google Analytics ID', // Title 
+            array( $this, 'google_analytics_callback' ), // Callback
+            'shaplatools', // Page
+            'setting_section_id', // Section
+            array( 'label_for' => 'google_analytics' )       
         );    
     }
 
@@ -102,6 +111,9 @@ class ShaplaTools_Settings
 
         if( isset( $input['show_team'] ) )
             $new_input['show_team'] = sanitize_text_field( $input['show_team'] );
+
+        if( isset( $input['google_analytics'] ) )
+            $new_input['google_analytics'] = sanitize_text_field( $input['google_analytics'] );
 
         return $new_input;
     }
@@ -145,6 +157,13 @@ class ShaplaTools_Settings
                 <input type="checkbox" name="shaplatools_options[show_team]" id="show_team" value="1" <?php if ( isset($this->options['show_team']) && '1' == $this->options['show_team'] ) echo 'checked'; ?>>Show Team
             </label>
         </p>
+        <?php
+    }
+    public function google_analytics_callback(){
+
+        $gl_analytics = (isset($this->options['google_analytics']))? $this->options['google_analytics']: '';
+        ?>
+            <input type="text" name="shaplatools_options[google_analytics]" id="google_analytics" value="<?php echo esc_attr($gl_analytics); ?>" placeholder="UA-XXXXX-X">
         <?php
     }
 }
