@@ -21,12 +21,9 @@ class ShaplaTools_Deactivator {
 	 */
 	public static function deactivate() {
 
-		ShaplaTools_Portfolio::portfolio_post_type();
-		ShaplaTools_Event::event_post_type();
-		ShaplaTools_Testimonial::testimonial_post_type();
-		ShaplaTools_Slider::slider_post_type();
-
-		flush_rewrite_rules();
+		// add to your plugin deactivation function
+		global $wp_rewrite;
+		$wp_rewrite->flush_rules();
 
 	}
 
