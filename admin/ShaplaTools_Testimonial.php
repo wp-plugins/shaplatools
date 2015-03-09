@@ -34,9 +34,7 @@ class ShaplaTools_Testimonial {
 		);
 		$rewrite = array(
 			'slug'                => 'testimonial',
-			'with_front'          => true,
-			'pages'               => true,
-			'feeds'               => true,
+			'with_front'          => false,
 		);
 		$args = array(
 			'label'               => __( 'testimonial', 'shaplatools' ),

@@ -35,9 +35,7 @@ class ShaplaTools_Team {
 		);
 		$rewrite = array(
 			'slug'                => 'team',
-			'with_front'          => true,
-			'pages'               => true,
-			'feeds'               => true,
+			'with_front'          => false,
 		);
 		$args = array(
 			'labels'              => $labels,

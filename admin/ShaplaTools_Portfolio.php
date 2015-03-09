@@ -35,9 +35,7 @@ class ShaplaTools_Portfolio {
 		);
 		$rewrite = array(
 			'slug'                => 'portfolio',
-			'with_front'          => true,
-			'pages'               => true,
-			'feeds'               => true,
+			'with_front'          => false,
 		);
 		$args = array(
 			'label'               => __( 'portfolio', 'shaplatools' ),

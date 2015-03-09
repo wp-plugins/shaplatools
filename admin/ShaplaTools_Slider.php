@@ -33,6 +33,10 @@ class ShaplaTools_Slider {
 			'not_found'           => __( 'Not found', 'shaplatools' ),
 			'not_found_in_trash'  => __( 'Not found in Trash', 'shaplatools' ),
 		);
+		$rewrite = array(
+			'slug'                => 'slide',
+			'with_front'          => false,
+		);
 		$args = array(
 			'label'               => __( 'slider', 'shaplatools' ),
 			'description'         => __( 'Custom post for Nivo Image Slider', 'shaplatools' ),
@@ -50,7 +54,7 @@ class ShaplaTools_Slider {
 			'has_archive'         => true,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
-			'rewrite'             => false,
+			'rewrite'             => $rewrite,
 			'capability_type'     => 'page',
 		);
 		register_post_type( 'slider', $args );
