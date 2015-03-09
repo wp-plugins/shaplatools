@@ -7,7 +7,7 @@ class Shapla_Dribbble_Widget extends WP_Widget{
 	function shapla_dribbble_widget() {
 		$widget_ops = array( 'classname' => 'shapla-dribbble', 'description' => __( 'Display your latest Dribbble shots', 'shapla' ) );
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'shapla-dribbble' );
-		$this->WP_Widget( 'shapla-dribbble', __( 'shapla Dribbble Shots', 'shapla' ), $widget_ops, $control_ops );
+		$this->WP_Widget( 'shapla-dribbble', __( 'Shapla Dribbble Shots', 'shapla' ), $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {

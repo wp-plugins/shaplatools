@@ -7,7 +7,7 @@ class Shapla_Flickr_Widget extends WP_Widget{
 	function shapla_flickr_widget() {
 		$widget_ops = array( 'classname' => 'shapla-flickr', 'description' => __( 'Display your latest Flickr photos', 'shapla' ) );
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'shapla-flickr' );
-		$this->WP_Widget( 'shapla-flickr', __( 'shapla Flickr Photos', 'shapla' ), $widget_ops, $control_ops );
+		$this->WP_Widget( 'shapla-flickr', __( 'Shapla Flickr Photos', 'shapla' ), $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {

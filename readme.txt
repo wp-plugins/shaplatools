@@ -30,6 +30,9 @@ This plugin is actually for theme developer to include some features in WordPres
 <ul>
 	<li>Facebook Like Box</li>
 	<li>Latest Tweets</li>
+	<li>Dribbble Shots</li>
+	<li>Flickr Photos</li>
+	<li>Instagram Photos</li>
 	<li>Testimonial (For Testimonial Custom Post Type)</li>
 	<li>Event (For Event Custom Post Type)</li>
 </ul>
