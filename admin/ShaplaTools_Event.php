@@ -34,9 +34,7 @@ class ShaplaTools_Event {
 		);
 		$rewrite = array(
 			'slug'                => 'event',
-			'with_front'          => true,
-			'pages'               => true,
-			'feeds'               => true,
+			'with_front'          => false,
 		);
 		$args = array(
 			'label'               => __( 'event', 'shaplatools' ),
