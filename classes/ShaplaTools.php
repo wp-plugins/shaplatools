@@ -144,6 +144,9 @@ class ShaplaTools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-fb_like_box.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-twitter.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-event.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-flickr.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-dribbble.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/widget-instagram.php';
 	}
 
 	/**
