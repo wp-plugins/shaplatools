@@ -100,50 +100,23 @@ function shaplatools_image_gallery() {
     <?php }
 }
 
-function shaplatools_post_thumbnail_gallery() {
-	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
-		return;
-	}
-
-	global $post;
-
-	if ( is_singular() ) :
+function shapla_thumbnail_gallery() {
 		
-    	$image_gallery = get_post_meta( $post->ID, '_shaplatools_image_gallery', true );
+    $image_gallery = get_post_meta( get_the_ID(), '_shaplatools_image_gallery', true );
 
-		if( ! empty( $image_gallery ) ) :
+	if( ! empty( $image_gallery ) ){
 
-			?>
-				<div class="post-thumbnail">
-					<?php
-						if( function_exists( 'shaplatools_image_gallery' ) ) {
-					    	echo shaplatools_image_gallery();
-						}
-					?>
-				</div>
-			<?php
+		if( function_exists( 'shaplatools_image_gallery' ) ) {
 
-		else : 
-			?>
-				<div class="post-thumbnail">
-					<?php 
-						if ( has_post_thumbnail() ) {
-							the_post_thumbnail();
-						} 
-					?>
-				</div><!-- .post-thumbnail -->
-			<?php
-		endif;
-	?>
+			echo shaplatools_image_gallery();
 
+		}
 
-	<?php else : ?>
+	} else {
+		
+		if ( has_post_thumbnail() ) {
+			the_post_thumbnail();
+		} 
 
-	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
-		<?php
-			the_post_thumbnail( 'post-thumbnail', array( 'alt' => get_the_title() ) );
-		?>
-	</a>
-
-	<?php endif; // End is_singular()
+	}
 }
