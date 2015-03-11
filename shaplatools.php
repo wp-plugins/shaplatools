@@ -62,6 +62,7 @@ class ShaplaTools {
 		add_action( 'init', array( &$this, 'init' ) );
 		add_action( 'admin_menu', array( &$this, 'shapla_add_options_page' ) );
 		add_action( 'admin_head', array( &$this, 'widget_styles' ) );
+		add_action( 'wp_footer', array( &$this, 'inline_scripts' ) );
 
 		// Include required files
 		$this->includes();
@@ -380,6 +381,23 @@ class ShaplaTools {
 		) );
 
 		return $contextual_help;
+	}
+
+	public function inline_scripts(){
+		$this->options = get_option('shapla_options');
+		
+		if( !empty($this->options['google_analytics']) ):
+		?>
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','<?php echo esc_attr($this->options['google_analytics']); ?>','auto');ga('send','pageview');
+        </script>
+		<?php
+		endif;
 	}
 
 }
