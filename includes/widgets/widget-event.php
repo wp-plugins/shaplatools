@@ -33,9 +33,12 @@ class Shapla_Event extends WP_Widget {
 			while ( $query->have_posts() ) : $query->the_post();
 
 				$event_image= wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
-				$start_date = get_post_meta( get_the_ID(), '_shaplatools_event_start_date', true );
-				$end_date = get_post_meta( get_the_ID(), '_shaplatools_event_end_date', true );
-				$venue = get_post_meta( get_the_ID(), '_shaplatools_event_venue', true );
+		
+				$event = get_post_meta( get_the_ID(), '_shaplatools_event', true );
+
+				$start_date = ( empty( $event['start_date'] ) ) ? '' : $event['start_date'];
+				$end_date = ( empty( $event['end_date'] ) ) ? '' : $event['end_date'];
+				$venue = ( empty( $event['venue'] ) ) ? '' : $event['venue'];
 
 				$events .= '<div class="event">';
 

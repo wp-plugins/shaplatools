@@ -123,7 +123,7 @@ class ShaplaTools {
 	/**
 	 * Add ShaplaTools admin options.
 	 *
-	 * @global string $shapla_options One true options page
+	 * @global string $shaplatools_options One true options page
 	 * @return void
 	 */
 	function shapla_add_options_page() {
@@ -168,10 +168,10 @@ class ShaplaTools {
 	 * @return void
 	 */
 	public function includes() {
-		global $shapla_options;
+		global $shaplatools_options;
 
 		require_once('includes/settings/settings.php');
-		$shapla_options = shaplatools_get_settings();
+		$shaplatools_options = shaplatools_get_settings();
 
 		if ( is_admin() ){
 			$this->admin_includes();
@@ -384,7 +384,7 @@ class ShaplaTools {
 	}
 
 	public function inline_scripts(){
-		$this->options = get_option('shapla_options');
+		$this->options = get_option('shaplatools_options');
 		
 		if( !empty($this->options['google_analytics']) ):
 		?>

@@ -18,9 +18,9 @@ $portfolio_labels = apply_filters( 'shapla_portfolio_labels', array(
 	'parent_item_colon'  => ''
 ) );
 
-$shapla_options    = get_option('shapla_options');
-@$portfolio_slug = $shapla_options['portfolio_slug'];
-@$skills_slug    = $shapla_options['skills_slug'];
+$shaplatools_options    = get_option('shaplatools_options');
+@$portfolio_slug = $shaplatools_options['portfolio_slug'];
+@$skills_slug    = $shaplatools_options['skills_slug'];
 
 $portfolio_slug = ($portfolio_slug != '') ? $portfolio_slug : 'portfolio';
 $skills_slug = ($skills_slug != '') ? $skills_slug : 'skill';

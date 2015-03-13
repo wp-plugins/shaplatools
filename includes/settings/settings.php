@@ -14,7 +14,7 @@
  * @return arran An array containing settings.
  */
 function shaplatools_get_settings() {
-	$settings = get_option( 'shapla_options' );
+	$settings = get_option( 'shaplatools_options' );
 
 	if( empty( $settings ) ) {
 		$general_settings = is_array( get_option( 'shaplatools_settings_general' ) ) ? get_option( 'shaplatools_settings_general' ) : array();
@@ -22,7 +22,7 @@ function shaplatools_get_settings() {
 
 		$settings = array_merge( $general_settings, $social_settings );
 
-		update_option( 'shapla_options', $settings );
+		update_option( 'shaplatools_options', $settings );
 	}
 
 	return apply_filters( 'shaplatools_get_settings', $settings );
@@ -74,7 +74,7 @@ function shaplatools_options_page() {
 					flush_rewrite_rules();
 				}
 
-				settings_fields( 'shapla_options' );
+				settings_fields( 'shaplatools_options' );
 				do_settings_fields( 'shaplatools_settings_' . $active_tab, 'shaplatools_settings_' . $active_tab );
 				?>
 				</table>
@@ -108,7 +108,7 @@ function shaplatools_get_settings_tabs() {
  * @return array         Filtered values array
  */
 function shaplatools_settings_sanitize( $input = array() ) {
-	global $shapla_options;
+	global $shaplatools_options;
 
 	parse_str( $_POST['_wp_http_referer'], $referrer );
 
@@ -143,14 +143,14 @@ function shaplatools_settings_sanitize( $input = array() ) {
 			}
 
 			if( empty( $_POST[ 'shaplatools_settings_' . $tab ][ $key ] ) ) {
-				unset( $shapla_options[ $key ] );
+				unset( $shaplatools_options[ $key ] );
 			}
 
 		}
 	}
 
 	// Merge our new settings with the existing
-	$output = array_merge( $shapla_options, $output );
+	$output = array_merge( $shaplatools_options, $output );
 
 	add_settings_error( 'shaplatools-notices', '', __( 'Settings Updated', 'shapla' ), 'updated' );
 
@@ -165,8 +165,8 @@ function shaplatools_settings_sanitize( $input = array() ) {
  * @return void
  */
 function shaplatools_register_settings() {
-	if ( false == get_option( 'shapla_options' ) ) {
-		add_option( 'shapla_options' );
+	if ( false == get_option( 'shaplatools_options' ) ) {
+		add_option( 'shaplatools_options' );
 	}
 
 	foreach ( shaplatools_get_registered_settings() as $tab => $settings ) {
@@ -198,7 +198,7 @@ function shaplatools_register_settings() {
 		}
 	}
 
-	register_setting( 'shapla_options', 'shapla_options', 'shaplatools_settings_sanitize' );
+	register_setting( 'shaplatools_options', 'shaplatools_options', 'shaplatools_settings_sanitize' );
 }
 add_action( 'admin_init', 'shaplatools_register_settings' );
 
@@ -444,14 +444,14 @@ function shaplatools_missing_callback( $args ) {
  * Renders text fields.
  *
  * @param  array $args Arguments passed by the setting
- * @global $shapla_options Array of all ShaplaTools options
+ * @global $shaplatools_options Array of all ShaplaTools options
  * @return void
  */
 function shaplatools_text_callback( $args ) {
-	global $shapla_options;
+	global $shaplatools_options;
 
-	if ( isset( $shapla_options[ $args['id'] ] ) )
-		$value = $shapla_options[ $args['id'] ];
+	if ( isset( $shaplatools_options[ $args['id'] ] ) )
+		$value = $shaplatools_options[ $args['id'] ];
 	else
 		$value = isset( $args['std'] ) ? $args['std'] : '';
 
@@ -469,14 +469,14 @@ function shaplatools_text_callback( $args ) {
  * Renders URL fields.
  *
  * @param  array $args Arguments passed by the setting
- * @global $shapla_options Array of all ShaplaTools options
+ * @global $shaplatools_options Array of all ShaplaTools options
  * @return void
  */
 function shaplatools_url_callback( $args ) {
-	global $shapla_options;
+	global $shaplatools_options;
 
-	if ( isset( $shapla_options[ $args['id'] ] ) )
-		$value = $shapla_options[ $args['id'] ];
+	if ( isset( $shaplatools_options[ $args['id'] ] ) )
+		$value = $shaplatools_options[ $args['id'] ];
 	else
 		$value = isset( $args['std'] ) ? $args['std'] : '';
 
@@ -494,14 +494,14 @@ function shaplatools_url_callback( $args ) {
  * Renders select fields.
  *
  * @param  array $args Arguments passed by the setting
- * @global $shapla_options Array of all ShaplaTools options
+ * @global $shaplatools_options Array of all ShaplaTools options
  * @return void
  */
 function shaplatools_select_callback( $args ) {
-	global $shapla_options;
+	global $shaplatools_options;
 
-	if ( isset( $shapla_options[ $args['id'] ] ) )
-		$value = $shapla_options[ $args['id'] ];
+	if ( isset( $shaplatools_options[ $args['id'] ] ) )
+		$value = $shaplatools_options[ $args['id'] ];
 	else
 		$value = isset( $args['std'] ) ? $args['std'] : '';
 

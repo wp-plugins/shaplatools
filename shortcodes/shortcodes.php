@@ -464,7 +464,7 @@ function shapla_social( $atts ) {
 
 	$registered_settings = shaplatools_get_registered_settings();
 	$social_urls         = array_keys($registered_settings['social']);
-	$settings            = get_option('shapla_options');
+	$settings            = get_option('shaplatools_options');
 
 	$output              = '<div class="shapla-social-icons '. $style .'">';
 

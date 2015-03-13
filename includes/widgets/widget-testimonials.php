@@ -22,7 +22,7 @@ class Shapla_Testimonial extends WP_Widget {
 
 		$args = array(
 			'posts_per_page' => (int) $posts_per_page,
-			'post_type' => 'testimonial',
+			'post_type' => 'testimonials',
 			'orderby' => $orderby,
 			'no_found_rows' => true,
 		);
@@ -34,18 +34,20 @@ class Shapla_Testimonial extends WP_Widget {
 		$testimonials = '';
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) : $query->the_post();
-				$post_id = get_the_ID();
-				$testimonial_data = get_post_meta( $post_id, '_shaplatools_testimonial', true );
+			
+				$testimonial_data = get_post_meta( get_the_ID(), '_testimonial', true );
 				$client_name = ( empty( $testimonial_data['client_name'] ) ) ? '' : $testimonial_data['client_name'];
-				$client_source = ( empty( $testimonial_data['client_source'] ) ) ? '' : ' - ' . $testimonial_data['client_source'];
-				$client_link = ( empty( $testimonial_data['client_link'] ) ) ? '' : $testimonial_data['client_link'];
+				$client_source = ( empty( $testimonial_data['source'] ) ) ? '' : ' - ' . $testimonial_data['source'];
+				$client_link = ( empty( $testimonial_data['link'] ) ) ? '' : $testimonial_data['link'];
 				$cite = ( $client_link ) ? '<a href="' . esc_url( $client_link ) . '" target="_blank">' . $client_name . $client_source . '</a>' : $client_name . $client_source;
+				$testimonial_image= wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), array(64,64) );
 
 				$testimonials .= '<aside class="testimonial">';
 				$testimonials .= '<span class="quote">&ldquo;</span>';
 				$testimonials .= '<div class="entry-content">';
 				$testimonials .= '<p class="testimonial-text">' . get_the_content() . '<span></span></p>';
-				$testimonials .= '<p class="testimonial-client-name"><cite>' . $cite . '</cite>';
+				$testimonials .= '<span class="client-image"><img src="' . $testimonial_image[0] . '" width="' . $testimonial_image[1] . '" height="' . $testimonial_image[2] . '"></span>';
+				$testimonials .= '<span class="testimonial-client-name"><cite>' . $cite . '</cite></span>';
 				$testimonials .= '</div>';
 				$testimonials .= '</aside>';
 
