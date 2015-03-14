@@ -81,10 +81,6 @@ Installing the plugins is just like installing other WordPress plugins. If you d
 == Frequently Asked Questions ==
 Do you have questions or issues with ShaplaTools? [Ask for support here](http://wordpress.org/support/plugin/shaplatools)
 
-== Screenshots ==
-
-1. Screenshot of ShaplaTools Settings page
-
 == Changelog ==
 
 = version 1.0.0 =
