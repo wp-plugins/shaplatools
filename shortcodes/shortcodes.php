@@ -642,3 +642,77 @@ function shapla_thumbnail_gallery() {
 	}
 }
 endif;
+
+
+if ( ! function_exists( 'shapla_filterable_portfolio' ) ) :
+
+function shapla_filterable_portfolio(){
+	?>
+	<!--#container -->
+	<div id="container">
+
+		<ul id="filter">
+			<?php
+	            $terms = get_terms("skill");    //To get custom taxonomy catagory name
+	            $count = count($terms);
+	            echo '<ul>';
+	                if ( $count > 0 ){
+	                    echo '<li><a class="active" href="#" data-group="all">'.__('All','shapla').'</a></li>';
+	                    foreach ( $terms as $term ) {
+	                        $termname = strtolower($term->name);
+	                        $termname = str_replace(' ', '-', $termname);
+	                        echo '<li><a href="#" data-group="'.$termname.'">'.$term->name.'</a></li>';
+	                    }
+	                }
+	            echo "</ul>";
+	        ?>
+		</ul>
+
+		<div id="grid">
+		    <?php
+		    	global $post;
+                $loop = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => -1));
+                $count =0;
+            ?>
+            <?php 
+            	if ( $loop ) :
+                while ( $loop->have_posts() ) : $loop->the_post();
+            ?>
+                     
+            <?php
+                $terms = get_the_terms( $post->ID, 'skill' );   //To get custom taxonomy catagory name
+                                     
+                if ( $terms && ! is_wp_error( $terms ) ) :
+                    $links = array();
+ 
+                    foreach ( $terms as $term ) {
+                        $links[] = $term->name;
+                    }
+                    
+                    $links = str_replace(' ', '-', $links);
+                    $tax = join( " ", $links );
+
+                    $tax = strtolower($tax);
+                    $tax = json_encode(explode(' ', $tax));
+                else :
+                    $tax = '';
+                endif;
+            ?>
+			<div class="item" data-groups='<?php echo $tax; ?>'>
+                <?php the_post_thumbnail(); ?>
+			</div>
+
+                         
+            <?php endwhile; else: ?>
+                     
+                <?php _e( 'It looks like nothing was found at this location.', 'shapla' ); ?>
+                         
+            <?php endif; ?>
+		</div>
+
+	</div>
+	<!-- /#container -->
+	<?php
+}
+endif;
+add_shortcode( 'shapla_portfolio', 'shapla_filterable_portfolio' );
