@@ -234,7 +234,7 @@ class ShaplaTools {
 		wp_register_style( 'nivo-slider', $this->plugin_url(). '/assets/library/nivo-slider/nivo-slider.css' , array(), '3.2', 'all' );
 		wp_register_style( 'nivo-slider-theme', $this->plugin_url(). '/assets/library/nivo-slider/themes/theme.css' , array('nivo-slider'), '3.2', 'all' );
 
-		wp_enqueue_style( 'animate-css', $this->plugin_url(). '/assets/library/animate/animate.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'animate-css', $this->plugin_url(). '/assets/library/animate-css/animate.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'owl-carousel-theme', $this->plugin_url(). '/assets/library/owl-carousel/owl.theme.green.css', array(), $this->version, 'all' );
 
