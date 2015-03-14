@@ -47,3 +47,47 @@
 	max-height:120px;
 	float:left
 }
+
+/*Portfolio*/
+/* filters */
+#filter {
+list-style-type:none;
+margin:0;
+padding:0;
+}
+
+#filter a,#filter li {
+display:block;
+float:left;
+margin:0;
+}
+
+#filter a {
+background:#ddd;
+border:1px solid #666;
+text-decoration:none;
+padding:5px 10px;
+}
+
+#filter a.active {
+background:#ff0;
+}
+
+/* grid */
+#grid {
+clear:both;
+position:relative;
+}
+
+.item {
+width:25%;
+height:auto;
+background:grey;
+float:left;
+margin-right:10px;
+margin-bottom:10px;
+color:#fff;
+font-size:60px;
+text-align:center;
+cursor:default;
+}
