@@ -449,3 +449,17 @@ $shapla_shortcodes['map'] = array(
 	'shortcode'   => '[shapla_map lat="{{lat}}" long="{{long}}" width="{{width}}" height="{{height}}" style="{{style}}" zoom="{{zoom}}"]',
 	'popup_title' => __( 'Insert Google Map Shortcode', 'shapla' )
 );
+
+$shapla_shortcodes['portfolio'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'thumbnail' => array(
+			'std'   => '2',
+			'type'  => 'text',
+			'label' => __( 'Portfolio Thumbnail', 'shapla' ),
+			'desc'  => __( 'How many thumbnail do you want', 'shapla' )
+		),
+	),
+	'shortcode'   => '[shapla_portfolio thumbnail="{{thumbnail}}"]',
+	'popup_title' => __( 'Insert Portfolio Shortcode', 'shapla' )
+);

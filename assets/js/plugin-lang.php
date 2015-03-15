@@ -18,5 +18,6 @@ $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ':{
         image: "' . esc_js( __( 'Image', 'shapla' ) ) . '",
         video: "' . esc_js( __( 'Video', 'shapla' ) ) . '",
         map: "' . esc_js( __( 'Google Map', 'shapla' ) ) . '",
+        portfolio: "' . esc_js( __( 'Filterable Portfolio', 'shapla' ) ) . '",
     }
 }})';

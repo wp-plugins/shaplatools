@@ -22,7 +22,8 @@ tinymce.PluginManager.add('shaplaShortcodes', function(editor, url) {
         { onclick: function(e){ addPopup('tabs') }, text: editor.getLang('shapla.tabs') },
         { onclick: function(e){ addPopup('toggle') }, text: editor.getLang('shapla.toggle') },
         { onclick: function(e){ addPopup('icon') }, text: editor.getLang('shapla.icon') },
-        { onclick: function(e){ addPopup('map') }, text: editor.getLang('shapla.map') }
+        { onclick: function(e){ addPopup('map') }, text: editor.getLang('shapla.map') },
+        { onclick: function(e){ addPopup('portfolio') }, text: editor.getLang('shapla.portfolio') }
     ];
 
     /**
