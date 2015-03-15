@@ -3,6 +3,8 @@ jQuery(function ($) {
 		scrollImg: true
 	});
 });
+
+
 jQuery(document).ready(function($) {
 
 	/* initialize shuffle plugin */

@@ -646,10 +646,15 @@ endif;
 
 if ( ! function_exists( 'shapla_filterable_portfolio' ) ) :
 
-function shapla_filterable_portfolio(){
+function shapla_filterable_portfolio( $atts, $content = null ){
+
+	extract(shortcode_atts(array(
+        'thumbnail' =>'2'
+    ), $atts));
+
 	?>
 	<!--#container -->
-	<div id="container">
+	<div id="portfolio-container">
 
 		<ul id="filter">
 			<?php
@@ -698,7 +703,7 @@ function shapla_filterable_portfolio(){
                     $tax = '';
                 endif;
             ?>
-			<div class="item" data-groups='<?php echo $tax; ?>'>
+			<div class="item col-<?php echo $thumbnail; ?>" data-groups='<?php echo $tax; ?>'>
                 <?php the_post_thumbnail(); ?>
 			</div>
 
