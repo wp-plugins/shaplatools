@@ -463,3 +463,47 @@ $shapla_shortcodes['portfolio'] = array(
 	'shortcode'   => '[shapla_portfolio thumbnail="{{thumbnail}}"]',
 	'popup_title' => __( 'Insert Portfolio Shortcode', 'shapla' )
 );
+
+$shapla_shortcodes['slide'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'id' => array(
+			'std'   => '',
+			'type'  => 'text',
+			'label' => __( 'Slide unique ID', 'shapla' ),
+			'desc'  => __( 'Give a unique ID, if you want multiple slider at same page or post.', 'shapla' )
+		),
+		'theme' => array(
+			'std'     => 'default',
+			'type'    => 'select',
+			'label'   => __( 'Slide theme', 'shapla' ),
+			'desc'    => __( 'Select from a list of predefined slide styles.', 'shapla' ),
+			'options' => array(
+				'default' 		=> __( 'Default', 'shapla' ),
+				'dark'        	=> __( 'Dark', 'shapla' ),
+				'light' 		=> __( 'Light', 'shapla' ),
+				'bar'			=> __( 'Bar', 'shapla' )
+			)
+		),
+		'category_slug' => array(
+			'std'   => '',
+			'type'  => 'text',
+			'label' => __( 'Category slug name', 'shapla' ),
+			'desc'  => __( 'Set category to a comma separated list of Slide Categories Slug to only show those. Example: one,two,three,four <br> If you want to show all slide just leave it blank <br>You can get slide category slug name from <a target="_blank" href="'.admin_url().'edit-tags.php?taxonomy=slide-category&post_type=slides'.'">here</a>', 'shapla' )
+		),
+		'animation_speed' => array(
+			'std'   => '500',
+			'type'  => 'text',
+			'label' => __( 'Slide transition speed', 'shapla' ),
+			'desc'  => __( 'Write slide transition speed in millisecond', 'shapla' )
+		),
+		'pause_time' => array(
+			'std'   => '3000',
+			'type'  => 'text',
+			'label' => __( 'Duration of slide showing', 'shapla' ),
+			'desc'  => __( 'Write the duration of slide showing in millisecond', 'shapla' )
+		),
+	),
+	'shortcode'   => '[shapla_slide id="{{id}}" theme="{{theme}}" category_slug="{{category_slug}}" animation_speed="{{animation_speed}}" pause_time="{{pause_time}}"]',
+	'popup_title' => __( 'Insert Slide Shortcode', 'shapla' )
+);
