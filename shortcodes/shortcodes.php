@@ -721,3 +721,71 @@ function shapla_filterable_portfolio( $atts, $content = null ){
 }
 endif;
 add_shortcode( 'shapla_portfolio', 'shapla_filterable_portfolio' );
+
+/**add the shortcode for the slider- for use in editor**/
+if( ! function_exists('shapla_image_slider' ) ) :
+
+function shapla_image_slider($atts, $content=null){
+    global $post;
+
+    extract(shortcode_atts(array(
+        'id'            =>'',
+        'theme'         =>'default',
+        'category_slug' =>'',
+        'animation_speed' =>'500',
+        'pause_time' =>'3000',
+    ), $atts));
+
+
+    if (trim($category_slug) !='') {
+
+        $termname = $category_slug;
+
+    } else {
+    	function all_terms(){
+    		// It is blank
+    	}
+        $termname = all_terms();
+    }
+
+	$slider= '<div class="slider-wrapper theme-'.$theme.'"><div id="shapla-slide-'.$id.'" class="nivoSlider">';
+	$efs_query= "post_type=slider&posts_per_page=-1&slide_category=$termname";
+	query_posts($efs_query);
+	if (have_posts()) : while (have_posts()) : the_post();
+
+
+		$slide = get_post_meta( get_the_ID(), '_shaplatools_slide', true );
+
+		$caption = ( empty( $slide['caption'] ) ) ? '' : $slide['caption'];
+		$transition = ( empty( $slide['transition'] ) ) ? '' : $slide['transition'];
+		$slide_link = ( empty( $slide['slide_link'] ) ) ? '' : $slide['slide_link'];
+		$link_target = ( empty( $slide['link_target'] ) ) ? '' : $slide['link_target'];
+		$slider_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+
+
+        if (trim($slide_link) != '') {
+
+			$slide_link = $slide_link;
+
+        } else {
+        	
+			$slide_link = '#';
+        }
+        
+		$slider.='<a target="'.$link_target.'" href="'.$slide_link.'"><img src="'.$slider_image[0].'" data-thumb="'.$slider_image[0].'" alt="" title="'.esc_textarea( $caption ).'" data-transition="'.$transition.'"></a>';
+
+	endwhile; endif; wp_reset_query();
+	$slider.= '</div></div>';
+	$slider.= '	<script>
+					jQuery(window).load(function($){
+						jQuery("#shapla-slide-'.$id.'").nivoSlider({
+							animSpeed: '.$animation_speed.',
+							pauseTime: '.$pause_time.'
+						});
+					});
+				</script>';
+	return $slider;
+}
+endif;
+
+add_shortcode('shapla_slide', 'shapla_image_slider');
