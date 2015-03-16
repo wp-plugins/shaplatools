@@ -52,6 +52,7 @@ This plugin is actually for theme developer to include some features in WordPres
 	<li>Google Maps with 5 predefined styles</li>
 	<li>Image with CSS3 filters</li>
 	<li>Videos ( supports Embeds )</li>
+	<li>Filterable Portfolio</li>
 </ul>
 
 == Installation ==
