@@ -656,7 +656,7 @@ function shapla_filterable_portfolio( $atts, $content = null ){
 	<!--#container -->
 	<div id="portfolio-container">
 
-		<ul id="filter">
+		<div id="filter">
 			<?php
 	            $terms = get_terms("skill");    //To get custom taxonomy catagory name
 	            $count = count($terms);
@@ -671,9 +671,9 @@ function shapla_filterable_portfolio( $atts, $content = null ){
 	                }
 	            echo "</ul>";
 	        ?>
-		</ul>
+		</div>
 
-		<div id="grid">
+		<div id="grid" class="row">
 		    <?php
 		    	global $post;
                 $loop = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => -1));
@@ -703,10 +703,17 @@ function shapla_filterable_portfolio( $atts, $content = null ){
                     $tax = '';
                 endif;
             ?>
-			<div class="item col-<?php echo $thumbnail; ?>" data-groups='<?php echo $tax; ?>'>
-                <?php the_post_thumbnail(); ?>
+			<div class="item portfolio_col_<?php echo $thumbnail; ?>" data-groups='<?php echo $tax; ?>'>
+				<div class="single-portfolio">
+					<div class="portfolio-f-image">
+						<?php the_post_thumbnail(); ?>
+						<div class="portfolio-hover">
+				        	<a href="#" class="portfolio-title-link"><?php the_title(); ?></a>
+				            <a href="<?php the_permalink(); ?>" class="view-details-link">See details</a>
+						</div>
+					</div>
+				</div>
 			</div>
-
                          
             <?php endwhile; else: ?>
                      
