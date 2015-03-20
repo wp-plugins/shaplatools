@@ -80,7 +80,7 @@
     border-color: #666;
 }
 #filter a.active {
-    background: #1ABC9C;
+    background: #6DA67A;
     color: #fff;
 }
 #grid {
@@ -149,7 +149,7 @@
     padding: 10px 0;
     position: absolute;
     text-align: center;
-    border: 1px solid #1abc9c;
+    border: 1px solid #6DA67A;
     width: 80%;
     z-index: 99;
     transition: .4s;
@@ -157,7 +157,7 @@
 .portfolio-hover a:hover {
     text-decoration: none;
     border-color: #444;
-    color: #aaa;
+    color: #fff;
 }
 .portfolio-hover a.portfolio-title-link {
     top: -25%;
@@ -165,9 +165,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     border: none;
+    font-size: 25px;
+    line-height: 30px;
 }
 .portfolio-hover a.view-details-link {
-    background: none repeat scroll 0 0 #1abc9c;
+    background: none repeat scroll 0 0 #6DA67A;
     bottom: -25%;
 }
 .single-portfolio {
