@@ -81,7 +81,17 @@ Installing the plugins is just like installing other WordPress plugins. If you d
 
 
 == Frequently Asked Questions ==
-Do you have questions or issues with ShaplaTools? [Ask for support here](http://wordpress.org/support/plugin/shaplatools)
+
+= How can I add Custom Post Types in my theme =
+
+To add Custom Post Types in your theme go to your theme functions.php file and add the following code:
+<pre><code>
+add_theme_support( 'shapla-portfolio' );
+add_theme_support( 'shapla-testimonials' );
+add_theme_support( 'shapla-event' );
+add_theme_support( 'shapla-slides' );
+add_theme_support( 'shapla-team' );
+</code></pre>
 
 == Changelog ==
 
