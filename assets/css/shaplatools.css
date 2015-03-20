@@ -167,6 +167,8 @@
     border: none;
     font-size: 25px;
     line-height: 30px;
+    cursor: default;
+    pointer-events: none;
 }
 .portfolio-hover a.view-details-link {
     background: none repeat scroll 0 0 #6DA67A;
