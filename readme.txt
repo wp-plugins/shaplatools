@@ -82,7 +82,7 @@ Installing the plugins is just like installing other WordPress plugins. If you d
 
 == Frequently Asked Questions ==
 
-= How can I add Custom Post Types in my theme =
+= How can I add Custom Post Types in my theme? =
 
 To add Custom Post Types in your theme go to your theme functions.php file and add the following code:
 <pre><code>
