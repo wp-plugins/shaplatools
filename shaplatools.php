@@ -170,6 +170,7 @@ class ShaplaTools {
 	public function includes() {
 		global $shaplatools_options;
 
+		require_once('includes/classes/ShaplaTools_Typeahead.php');
 		require_once('includes/settings/settings.php');
 		$shaplatools_options = shaplatools_get_settings();
 
