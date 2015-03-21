@@ -174,10 +174,10 @@
     background: none repeat scroll 0 0 #6DA67A;
     bottom: -25%;
 }
-.single-portfolio {
+.single-portfolio-item {
     padding: 10px;
     overflow: hidden;
 }
-.single-portfolio:hover .portfolio-hover a.portfolio-title-link { top: 32% }
-.single-portfolio:hover .portfolio-hover a.view-details-link { bottom: 32% }
-.single-portfolio:hover .portfolio-hover:after { left: 0 }
+.single-portfolio-item:hover .portfolio-hover a.portfolio-title-link { top: 32% }
+.single-portfolio-item:hover .portfolio-hover a.view-details-link { bottom: 32% }
+.single-portfolio-item:hover .portfolio-hover:after { left: 0 }

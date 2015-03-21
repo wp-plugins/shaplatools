@@ -704,7 +704,7 @@ function shapla_filterable_portfolio( $atts, $content = null ){
                 endif;
             ?>
 			<div id="portfolio-<?php the_ID(); ?>" class="item portfolio_col_<?php echo $thumbnail; ?>" data-groups='<?php echo $tax; ?>'>
-				<div class="single-portfolio">
+				<div class="single-portfolio-item">
 					<div class="portfolio-f-image">
 						<?php the_post_thumbnail(); ?>
 						<div class="portfolio-hover">
