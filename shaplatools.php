@@ -62,6 +62,7 @@ class ShaplaTools {
 		add_action( 'init', array( &$this, 'init' ) );
 		add_action( 'admin_menu', array( &$this, 'shapla_add_options_page' ) );
 		add_action( 'admin_head', array( &$this, 'widget_styles' ) );
+		add_action( 'customize_controls_print_scripts', array( &$this, 'customize_styles' ) );
 		add_action( 'wp_footer', array( &$this, 'inline_scripts' ) );
 
 		// Include required files
@@ -325,6 +326,53 @@ class ShaplaTools {
 		  border-bottom: 1px solid #98B3C0 !important;
 		  margin-top: 0px;
 		}
+		</style>
+		<?php
+	}
+
+	/**
+	 * customize styles.
+	 *
+	 * @return void
+	 */
+	public function customize_styles() {
+		global $pagenow;
+		if( $pagenow != 'customize.php' ) return;
+		?>
+		<style type="text/css">
+
+		/* OVERRIDE WP CUSTOMIZER */
+		#customize-controls,
+		.wp-full-overlay-sidebar-content,
+		#customize-info .accordion-section-title {
+			background: #363B3F;
+			color: #eee;
+		}
+		#customize-controls .customize-controls-close {
+			background: #F32A40;
+			color: #eee;
+		}
+		#customize-controls .control-panel-back {
+			color: #000;
+		}
+		#customize-theme-controls .accordion-section-title {
+		  background-color: #00694D;
+		  border-bottom: 1px solid #eee;
+		  color: #eee;
+		}
+		.control-section.control-panel > .accordion-section-title::after {
+		  background: none repeat scroll 0 0 #F32A40;
+		  border-left: 1px solid #eee;
+		  color: #eee;
+		}
+		#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover, #customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover > .accordion-section-title {
+		  background: none repeat scroll 0 0 #F32A40;
+		  color: #fff;
+		}
+		#customize-theme-controls .control-section .accordion-section-title:focus::after, #customize-theme-controls .control-section .accordion-section-title:hover::after, #customize-theme-controls .control-section.open .accordion-section-title::after, #customize-theme-controls > .control-section:hover .accordion-section-title::after {
+		  color: #fff;
+		}
+
 		</style>
 		<?php
 	}
