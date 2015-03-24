@@ -729,20 +729,12 @@ function shapla_filterable_portfolio( $atts, $content = null ){
 endif;
 add_shortcode( 'shapla_portfolio', 'shapla_filterable_portfolio' );
 
+
+
 /**add the shortcode for the slider- for use in editor**/
 if( ! function_exists('shapla_image_slider' ) ) :
 
-function shapla_image_slider($atts, $content=null){
-    global $post;
-
-    extract(shortcode_atts(array(
-        'id'            =>'',
-        'theme'         =>'default',
-        'category_slug' =>'',
-        'animation_speed' =>'500',
-        'pause_time' =>'3000',
-    ), $atts));
-
+function shapla_image_slider( $id, $theme, $category_slug, $animation_speed, $pause_time ){
 
     if (trim($category_slug) !='') {
 
@@ -756,9 +748,18 @@ function shapla_image_slider($atts, $content=null){
     }
 
 	$slider= '<div class="slider-wrapper theme-'.$theme.'"><div id="shapla-slide-'.$id.'" class="nivoSlider">';
-	$efs_query= "post_type=slider&posts_per_page=-1&slide_category=$termname";
-	query_posts($efs_query);
-	if (have_posts()) : while (have_posts()) : the_post();
+
+	$args = array(
+		'post_type' => 'slides',
+		'posts_per_page' => -1,
+		'slide_category' => $termname,
+		'order' => 'ASC',
+		'orderby' => 'menu_order'
+	);
+
+	$query = new WP_Query( $args  );
+
+	if ( $query->have_posts()) : while ( $query->have_posts()) : $query->the_post();
 
 
 		$slide = get_post_meta( get_the_ID(), '_shaplatools_slide', true );
@@ -767,7 +768,7 @@ function shapla_image_slider($atts, $content=null){
 		$transition = ( empty( $slide['transition'] ) ) ? '' : $slide['transition'];
 		$slide_link = ( empty( $slide['slide_link'] ) ) ? '' : $slide['slide_link'];
 		$link_target = ( empty( $slide['link_target'] ) ) ? '' : $slide['link_target'];
-		$slider_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$slider_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
 
 
         if (trim($slide_link) != '') {
@@ -795,4 +796,22 @@ function shapla_image_slider($atts, $content=null){
 }
 endif;
 
-add_shortcode('shapla_slide', 'shapla_image_slider');
+
+if( ! function_exists('shapla_slide' ) ) :
+
+function shapla_slide($atts, $content=null){
+
+    extract(shortcode_atts(array(
+        'id'            =>'',
+        'theme'         =>'default',
+        'category_slug' =>'',
+        'animation_speed' =>'500',
+        'pause_time' =>'3000',
+    ), $atts));
+
+    return shapla_image_slider( $id, $theme, $category_slug, $animation_speed, $pause_time );
+}
+
+endif;
+
+add_shortcode('shapla_slide', 'shapla_slide');
