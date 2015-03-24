@@ -675,17 +675,21 @@ function shapla_filterable_portfolio( $atts, $content = null ){
 
 		<div id="grid" class="row">
 		    <?php
-		    	global $post;
-                $loop = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => -1));
-                $count =0;
+
+		    	$args = array(
+		    		'post_type' => 'portfolio',
+		    		'posts_per_page' => -1
+		    	);
+
+		    	$loop = new WP_Query( $args );
             ?>
             <?php 
-            	if ( $loop ) :
+            	if ( $loop->have_posts() ) :
                 while ( $loop->have_posts() ) : $loop->the_post();
             ?>
                      
             <?php
-                $terms = get_the_terms( $post->ID, 'skill' );   //To get custom taxonomy catagory name
+                $terms = get_the_terms( get_the_ID(), 'skill' );   //To get custom taxonomy catagory name
                                      
                 if ( $terms && ! is_wp_error( $terms ) ) :
                     $links = array();
