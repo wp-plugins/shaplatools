@@ -887,3 +887,32 @@ function shapla_testimonials($posts_per_page = -1, $orderby = 'none'){
 }
 
 endif;
+
+if( ! function_exists('shapla_testimonials_slide' ) ) :
+
+function shapla_testimonials_slide(){
+	ob_start();
+	?>
+	<div class="row">
+	    <div id="testimonials" class="owl-carousel">
+	    	<?php echo shapla_testimonials(); ?>
+	    </div>
+	</div>
+    <script type="text/javascript">
+		jQuery(document).ready(function($) {
+  			$('#testimonials').owlCarousel({
+				items : 1,
+				nav : true,
+				dots: false,
+				loop : true,
+				autoplay: true,
+				autoplayHoverPause: true,
+			});
+		});
+    </script>
+	<?php
+	$feedback = ob_get_clean();
+	echo $feedback;
+}
+
+endif;
