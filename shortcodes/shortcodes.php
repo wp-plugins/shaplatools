@@ -831,10 +831,12 @@ endif;
 if( ! function_exists('shapla_testimonials' ) ) :
 
 function shapla_testimonials(){
+	
+	ob_start();
 
 	$args = array(
 		'posts_per_page' => -1,
-		'post_type' => 'testimonials',
+		'post_type' => 'testimonial',
 		'no_found_rows' => true,
 	);
 
@@ -848,20 +850,19 @@ function shapla_testimonials(){
 		$client_source = ( empty( $testimonial['source'] ) ) ? '' : $testimonial['source'];
 		$client_link = ( empty( $testimonial['link'] ) ) ? '' : $testimonial['link'];
 
-		ob_start();
 		?>
 			<!-- SINGLE FEEDBACK -->
 			<div class="single-feedback">
 				<div class="client-pic">
                     <?php
                         if ( has_post_thumbnail() ) {
-                            the_post_thumbnail( array(48,48));
+                            the_post_thumbnail( array(64,64));
                         }
                     ?>
 				</div>
 				<div class="box">
 					<p class="message">
-						<?php the_content(); ?>
+						<?php echo get_the_content(); ?>
 					</p>
 				</div>
 				<div class="client-info">
@@ -877,10 +878,11 @@ function shapla_testimonials(){
 			</div>
 			<!-- SINGLE FEEDBACK -->
 		<?php
-		$feedback = ob_get_clean();
-		echo $feedback;
 		endwhile;
 	endif;
+
+	$feedback = ob_get_clean();
+	return $feedback;
 }
 
 endif;
