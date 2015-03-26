@@ -890,7 +890,7 @@ endif;
 
 if( ! function_exists('shapla_testimonials_slide' ) ) :
 
-function shapla_testimonials_slide(){
+function shapla_testimonials_slide($items = 1){
 	ob_start();
 	?>
 	<div class="row">
@@ -901,7 +901,7 @@ function shapla_testimonials_slide(){
     <script type="text/javascript">
 		jQuery(document).ready(function($) {
   			$('#testimonials').owlCarousel({
-				items : 1,
+				items : <?php echo $items; ?>,
 				nav : true,
 				dots: false,
 				loop : true,
