@@ -916,3 +916,92 @@ function shapla_testimonials_slide($items = 1){
 }
 
 endif;
+
+if( ! function_exists('shapla_teams' ) ) :
+
+function shapla_teams(){
+	
+	ob_start();
+
+	$args = array(
+		'posts_per_page' => -1,
+		'post_type' => 'team',
+		'orderby' => 'none',
+		'no_found_rows' => true
+	);
+
+	$query = new WP_Query( $args  );
+
+	if ( $query->have_posts() ):
+		while ( $query->have_posts() ) : $query->the_post();
+
+
+		$team = get_post_meta( get_the_ID(), '_shaplatools_team', true );
+
+		$member_name = ( empty( $team['member_name'] ) ) ? '' : $team['member_name'];
+		$member_designation = ( empty( $team['member_designation'] ) ) ? '' : $team['member_designation'];
+		$member_description = ( empty( $team['member_description'] ) ) ? '' : $team['member_description'];
+
+		?>
+			<!-- SINGLE TEAM -->
+			<div class="single-team">
+				<div class="team-pic">
+                    <?php
+                        if ( has_post_thumbnail() ) {
+                            the_post_thumbnail( 'medium' );
+                        }
+                    ?>
+				</div>
+				<div class="box">
+					<div class="team-info">
+						<div class="team-name">
+							<?php echo $member_name; ?>
+						</div>
+						<div class="company">
+							<?php echo $member_designation; ?>
+						</div>
+					</div>
+					<p class="message">
+						<?php echo $member_description; ?>
+					</p>
+				</div>
+			</div>
+			<!-- SINGLE TEAM -->
+		<?php
+		endwhile;
+	endif;
+
+	$team = ob_get_clean();
+	return $team;
+}
+
+endif;
+
+if( ! function_exists('shapla_teams_slide' ) ) :
+
+function shapla_teams_slide($items = 1){
+	ob_start();
+	?>
+	<div class="row">
+	    <div id="teams" class="owl-carousel">
+	    	<?php echo shapla_teams(); ?>
+	    </div>
+	</div>
+    <script type="text/javascript">
+		jQuery(document).ready(function($) {
+  			$('#teams').owlCarousel({
+				items : <?php echo $items; ?>,
+				nav : true,
+				dots: false,
+				loop : true,
+				autoplay: true,
+				autoplayHoverPause: true,
+			});
+		});
+    </script>
+	<?php
+	$feedback = ob_get_clean();
+	echo $feedback;
+}
+
+endif;
