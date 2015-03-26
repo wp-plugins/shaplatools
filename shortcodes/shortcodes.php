@@ -827,3 +827,60 @@ function shapla_homepage_slide(){
 }
 
 endif;
+
+if( ! function_exists('shapla_testimonials' ) ) :
+
+function shapla_testimonials(){
+
+	$args = array(
+		'posts_per_page' => -1,
+		'post_type' => 'testimonials',
+		'no_found_rows' => true,
+	);
+
+	$query = new WP_Query( $args  );
+
+	if ( $query->have_posts() ):
+		while ( $query->have_posts() ) : $query->the_post();
+
+		$testimonial = get_post_meta( get_the_ID(), '_testimonial', true );
+		$client_name = ( empty( $testimonial['client_name'] ) ) ? '' : $testimonial['client_name'];
+		$client_source = ( empty( $testimonial['source'] ) ) ? '' : $testimonial['source'];
+		$client_link = ( empty( $testimonial['link'] ) ) ? '' : $testimonial['link'];
+
+		ob_start();
+		?>
+			<!-- SINGLE FEEDBACK -->
+			<div class="single-feedback">
+				<div class="client-pic">
+                    <?php
+                        if ( has_post_thumbnail() ) {
+                            the_post_thumbnail( array(48,48));
+                        }
+                    ?>
+				</div>
+				<div class="box">
+					<p class="message">
+						<?php the_content(); ?>
+					</p>
+				</div>
+				<div class="client-info">
+					<div class="client-name colored-text strong">
+						<?php echo $client_name; ?>
+					</div>
+					<div class="company">
+						<a href="<?php echo $client_link; ?>" target="_blank">
+							<?php echo $client_source; ?>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- SINGLE FEEDBACK -->
+		<?php
+		$feedback = ob_get_clean();
+		echo $feedback;
+		endwhile;
+	endif;
+}
+
+endif;
