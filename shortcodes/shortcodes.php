@@ -830,14 +830,15 @@ endif;
 
 if( ! function_exists('shapla_testimonials' ) ) :
 
-function shapla_testimonials(){
+function shapla_testimonials($posts_per_page = -1, $orderby = 'none'){
 	
 	ob_start();
 
 	$args = array(
-		'posts_per_page' => -1,
+		'posts_per_page' => (int) $posts_per_page,
 		'post_type' => 'testimonial',
-		'no_found_rows' => true,
+		'orderby' => $orderby,
+		'no_found_rows' => true
 	);
 
 	$query = new WP_Query( $args  );
