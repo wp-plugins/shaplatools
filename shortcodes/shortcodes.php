@@ -912,7 +912,7 @@ function shapla_testimonials_slide($items = 1){
 			        320:{ items:1 }, // Mobile portrait
 			        600:{ items:2 }, // Small tablet portrait
 			        768:{ items:3 }, // Tablet portrait
-			        979:{ items:4 }  // Desktop
+			        979:{ items:<?php echo $items; ?> }  // Desktop
 			    }
 			});
 		});
