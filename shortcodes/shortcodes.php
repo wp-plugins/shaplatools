@@ -723,7 +723,7 @@ function shapla_filterable_portfolio( $atts, $content = null ){
                      
                 <?php _e( 'It looks like nothing was found at this location.', 'shapla' ); ?>
                          
-            <?php endif; ?>
+            <?php endif;wp_reset_query(); ?>
 		</div>
 
 	</div>
@@ -880,7 +880,7 @@ function shapla_testimonials($posts_per_page = -1, $orderby = 'none'){
 			<!-- SINGLE FEEDBACK -->
 		<?php
 		endwhile;
-	endif;
+	endif;wp_reset_query();
 
 	$feedback = ob_get_clean();
 	return $feedback;
@@ -907,6 +907,13 @@ function shapla_testimonials_slide($items = 1){
 				loop : true,
 				autoplay: true,
 				autoplayHoverPause: true,
+				responsiveClass:true,
+			    responsive:{
+			        320:{ items:1 }, // Mobile portrait
+			        600:{ items:2 }, // Small tablet portrait
+			        768:{ items:3 }, // Tablet portrait
+			        979:{ items:4 }  // Desktop
+			    }
 			});
 		});
     </script>
@@ -945,14 +952,14 @@ function shapla_teams(){
 		?>
 			<!-- SINGLE TEAM -->
 			<div class="single-team">
-				<div class="team-pic">
-                    <?php
-                        if ( has_post_thumbnail() ) {
-                            the_post_thumbnail( 'medium' );
-                        }
-                    ?>
-				</div>
 				<div class="box">
+					<div class="team-pic">
+	                    <?php
+	                        if ( has_post_thumbnail() ) {
+	                            the_post_thumbnail( 'thumbnail' );
+	                        }
+	                    ?>
+					</div>
 					<div class="team-info">
 						<div class="team-name">
 							<?php echo $member_name; ?>
@@ -969,7 +976,7 @@ function shapla_teams(){
 			<!-- SINGLE TEAM -->
 		<?php
 		endwhile;
-	endif;
+	endif;wp_reset_query();
 
 	$team = ob_get_clean();
 	return $team;
@@ -996,6 +1003,13 @@ function shapla_teams_slide($items = 1){
 				loop : true,
 				autoplay: true,
 				autoplayHoverPause: true,
+				responsiveClass:true,
+			    responsive:{
+			        320:{ items:1 }, // Mobile portrait
+			        600:{ items:2 }, // Small tablet portrait
+			        768:{ items:3 }, // Tablet portrait
+			        979:{ items:4 }  // Desktop
+			    }
 			});
 		});
     </script>
