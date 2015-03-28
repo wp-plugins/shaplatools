@@ -43,11 +43,17 @@ class ShaplaTools_Typeahead {
 			) );
 
 			$results = array( );
+
+			//global $product;
+ 			//$attachment_ids = $product->get_gallery_attachment_ids();
+
 			if ( $search_query->get_posts() ) {
 				foreach ( $search_query->get_posts() as $the_post ) {
 					$title = get_the_title( $the_post->ID );
+					$img_url = wp_get_attachment_thumb_url( get_post_thumbnail_id($the_post->ID), 'thumbnail' );
 					$results[] = array(
 						'value' => $title,
+						'img_url' => $img_url,
 						'url' => get_permalink( $the_post->ID ),
 						'tokens' => explode( ' ', $title ),
 					);

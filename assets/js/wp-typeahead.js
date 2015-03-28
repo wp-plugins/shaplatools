@@ -4,7 +4,7 @@
 			name: 'search',
 			remote: wp_typeahead.ajaxurl + '?action=ajax_search&fn=get_ajax_search&terms=%QUERY',
 			template: [
-				'<p><a href="{{url}}">{{value}}</a></p>',
+				'<p><a href="{{url}}"><span class="s-img"><img src="{{img_url}}"></span><span class="s-title">{{value}}</span></a></p>',
 			].join(''),
 			engine: Hogan
 		} )
