@@ -59,7 +59,7 @@ class ShaplaTools_Typeahead {
 					);
 				}
 			} else {
-				$results[] = __( 'Sorry. No results match your search.', 'wp-typeahead' );
+				$results[] = __( 'Sorry. No results match your search.', 'shapla' );
 			}
 
 			wp_reset_postdata();
