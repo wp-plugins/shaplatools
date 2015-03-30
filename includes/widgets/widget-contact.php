@@ -44,6 +44,9 @@ class ShaplaContactFormAJAX extends WP_Widget {
 		</form>
 		<script type="text/javascript">
 			function submit_me(){
+				
+				var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+				
 				jQuery.post(
 					ajaxurl,
 					jQuery("#theForm").serialize(),
