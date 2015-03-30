@@ -59,7 +59,7 @@ class ShaplaContactFormAJAX extends WP_Widget {
 	}
 
 	// THE FUNCTION
-	function shapla_contact_form_widget_function(){
+	function shapla_contact_form_widget_function( $instance ){
 	/* this area is very simple but being serverside it affords the possibility of retreiving data from the server and passing it back to the javascript function */
 		if ( isset( $_POST['shapla_contact_widget_nonce'] ) || wp_verify_nonce( $_POST['shapla_contact_widget_nonce'], 'shapla_contact_widget_action' )) {
 
@@ -89,7 +89,7 @@ class ShaplaContactFormAJAX extends WP_Widget {
 			// If all validation are true than send mail
 			if ( !isset($hasError) ) {
 
-				$to = get_option( 'admin_email' );
+				$to = ! empty( $instance['email'] ) ? $instance['email'] : get_option('admin_email');
 
 		        $subject = 'Someone sent you a message from '.get_bloginfo('name');
 
@@ -126,6 +126,7 @@ class ShaplaContactFormAJAX extends WP_Widget {
 	    $instance = $old_instance;
 
 	    $instance['title'] 		= strip_tags( $new_instance['title'] );
+	    $instance['email'] 		= strip_tags( $new_instance['email'] );
 	 
 	    return $instance;
 	}
@@ -133,10 +134,16 @@ class ShaplaContactFormAJAX extends WP_Widget {
 	function form( $instance ) {
 		// Output admin widget options form
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Send a Direct Message', 'shaplatools' );
+		$email = ! empty( $instance['email'] ) ? $instance['email'] : get_option('admin_email');
 		?>
 	    <p>
 	    	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'shaplatools') ?></label>
 	    	<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if(isset($title)){echo esc_attr( $title );} ?>" />
+	    </p>
+	    <p>
+	    	<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Contact Form Email Address:', 'shaplatools') ?></label>
+	    	<input type="email" class="widefat" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php if(isset($email)){echo esc_attr( $email );} ?>" />
+	    	<small><?php _e('Enter the email address where you would like to receive emails from the contact form.', 'shaplatools'); ?></small>
 	    </p>
 		<?php
 	}

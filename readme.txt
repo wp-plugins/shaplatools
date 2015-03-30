@@ -33,6 +33,7 @@ This plugin is actually for theme developer to include some features in WordPres
 	<li>Dribbble Shots</li>
 	<li>Flickr Photos</li>
 	<li>Instagram Photos</li>
+	<li>Ajax Contact Form</li>
 	<li>Testimonial (For Testimonial Custom Post Type)</li>
 	<li>Event (For Event Custom Post Type)</li>
 </ul>
