@@ -190,6 +190,7 @@ class ShaplaTools {
 		include_once( 'includes/widgets/widget-testimonials.php' );
 		include_once( 'includes/widgets/widget-fb_like_box.php' );
 		include_once( 'includes/widgets/widget-event.php' );
+		include_once( 'includes/widgets/widget-contact.php' );
 	}
 
 	/**
