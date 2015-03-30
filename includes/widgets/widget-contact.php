@@ -126,7 +126,7 @@ class ShaplaContactFormAJAX extends WP_Widget {
 	    $instance = $old_instance;
 
 	    $instance['title'] 		= strip_tags( $new_instance['title'] );
-	    $instance['email'] 		= strip_tags( $new_instance['email'] );
+	    $instance['email'] 		= sanitize_email( $new_instance['email'] );
 	 
 	    return $instance;
 	}
