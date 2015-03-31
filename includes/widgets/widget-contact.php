@@ -46,14 +46,11 @@ class ShaplaContactFormAJAX extends WP_Widget {
 			function submit_me(){
 				
 				var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+				var data = jQuery("#theForm").serialize();
 				
-				jQuery.post(
-					ajaxurl,
-					jQuery("#theForm").serialize(),
-					function(response_from_the_action_function){
-						jQuery("#response_area").html(response_from_the_action_function);
-					}
-				);
+				jQuery.post( ajaxurl, data, function(response){
+					jQuery("#response_area").html(response);
+				});
 			}
 		</script>
 		<?php
@@ -63,7 +60,11 @@ class ShaplaContactFormAJAX extends WP_Widget {
 
 	// THE FUNCTION
 	function shapla_contact_form_widget_function( $instance ){
-	/* this area is very simple but being serverside it affords the possibility of retreiving data from the server and passing it back to the javascript function */
+
+		if (session_status() !== PHP_SESSION_ACTIVE){
+			session_start();
+		}
+		/* this area is very simple but being serverside it affords the possibility of retreiving data from the server and passing it back to the javascript function */
 		if ( isset( $_POST['shapla_contact_widget_nonce'] ) || wp_verify_nonce( $_POST['shapla_contact_widget_nonce'], 'shapla_contact_widget_action' )) {
 
 			$fullname		= sanitize_text_field($_POST['fullname']);
@@ -71,45 +72,62 @@ class ShaplaContactFormAJAX extends WP_Widget {
 			$message 		= esc_textarea($_POST['message']);
 
 			$error = '';
-			// Validate fullname with PHP
-			if ( strlen($fullname) < 3 ) {
-				$error .= '<span class="error">'.__( 'Your name should be at least 3 characters.', 'shapla' ).'</span>';
-		        $hasError = true;
-			}
 
-			// Validate email address with PHP
-			if(!is_email($email)){
-				$error .= '<span class="error">'.__( 'You entered an invalid email address.', 'shapla' ).'</span>';
-		        $hasError = true;
-			}
+			// Prevent visitor to send message withing 10 minutes
+			if (isset($_SESSION['timeout']) && ($_SESSION['timeout'] + 10 * 60) > time()) {
 
-			// Validate message with PHP
-			if ( strlen($message) < 15 ) {
-				$error .= '<span class="error">'.__( 'Your message should be at least 15 characters.', 'shapla' ).'</span>';
-		        $hasError = true;
-			}
+				$accept_time = $_SESSION['timeout'] + 10 * 60;
+				$diff_time = round((($accept_time - time()) / 60), 0);
+				$diff_time = ($diff_time < 1) ? 1 : $diff_time;
+				
+				if ( $accept_time > time()) {
+				    // session timed out
+				    $error .= '<span class="error">'.__( 'Your cannot resend message within ', 'shapla').$diff_time.__(' minute(s).', 'shapla' ).'</span>';
+				    $hasError = true;
+				}
+			} else {
 
-			// If all validation are true than send mail
-			if ( !isset($hasError) ) {
+				// Validate fullname with PHP
+				if ( strlen($fullname) < 3 ) {
+					$error .= '<span class="error">'.__( 'Your name should be at least 3 characters.', 'shapla' ).'</span>';
+			        $hasError = true;
+				}
 
-				$to = ! empty( $instance['email'] ) ? $instance['email'] : get_option('admin_email');
+				// Validate email address with PHP
+				if(!is_email($email)){
+					$error .= '<span class="error">'.__( 'You entered an invalid email address.', 'shapla' ).'</span>';
+			        $hasError = true;
+				}
 
-		        $subject = 'Someone sent you a message from '.get_bloginfo('name');
+				// Validate message with PHP
+				if ( strlen($message) < 15 ) {
+					$error .= '<span class="error">'.__( 'Your message should be at least 15 characters.', 'shapla' ).'</span>';
+			        $hasError = true;
+				}
 
-		        $body = "Name: $fullname \n\nEmail: $email \n\nMessage: $message \n\n";
-		        $body .= "--\n";
-		        $body .= "This mail is sent via contact form ".get_bloginfo('name')."\n";
-		        $body .= home_url();
+				// If all validation are true than send mail
+				if ( !isset($hasError) ) {
 
-				$headers = 'From: '.$fullname.' <'.$email.'>' . "\r\n" . 'Reply-To: ' . $email;
+					$to = ! empty( $instance['email'] ) ? $instance['email'] : get_option('admin_email');
 
-				wp_mail($to, $subject, $body, $headers);
-		        $emailSent = true;
+			        $subject = 'Someone sent you a message from '.get_bloginfo('name');
+
+			        $body = "Name: $fullname \n\nEmail: $email \n\nMessage: $message \n\n";
+			        $body .= "--\n";
+			        $body .= "This mail is sent via contact form ".get_bloginfo('name')."\n";
+			        $body .= home_url();
+
+					$headers = 'From: '.$fullname.' <'.$email.'>' . "\r\n" . 'Reply-To: ' . $email;
+
+					wp_mail($to, $subject, $body, $headers);
+			        $emailSent = true;
+				}
 			}
 
 			// Show message to user
 			if ( isset($emailSent) && $emailSent == true ) {
 				echo '<div class="shapla-alert shapla-alert--green">'.__( 'Thanks, your email was sent successfully.', 'shapla' ).'</div>';
+		        $_SESSION['timeout'] = time();
 			} else {
 				$result = '<div class="shapla-alert shapla-alert--red">';
 				$result .= '<span class="error">'.__('Please check the error bellow.', 'shapla' ).'</span>';
