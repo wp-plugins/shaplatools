@@ -83,7 +83,6 @@ class ShaplaContactFormAJAX extends WP_Widget {
 				if ( $accept_time > time()) {
 				    // session timed out
 				    $error .= '<span class="error">'.__( 'Your cannot resend message within ', 'shapla').$diff_time.__(' minute(s).', 'shapla' ).'</span>';
-				    $hasError = true;
 				}
 			} else {
 
