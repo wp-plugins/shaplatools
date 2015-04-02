@@ -55,6 +55,7 @@ This plugin is actually for theme developer to include some features in WordPres
 	<li>Videos ( supports Embeds )</li>
 	<li>Filterable Portfolio (for Portfolio post type)</li>
 	<li>Slide (jQury NIVO Slider for Slider post type)</li>
+	<li>Testimonial (For Testimonial Custom Post Type)</li>
 </ul>
 
 == Installation ==
