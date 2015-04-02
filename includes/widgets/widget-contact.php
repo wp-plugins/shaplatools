@@ -65,7 +65,7 @@ class ShaplaContactFormAJAX extends WP_Widget {
 			session_start();
 		}
 		/* this area is very simple but being serverside it affords the possibility of retreiving data from the server and passing it back to the javascript function */
-		if ( isset( $_POST['shapla_contact_widget_nonce'] ) || wp_verify_nonce( $_POST['shapla_contact_widget_nonce'], 'shapla_contact_widget_action' )) {
+		if ( isset( $_POST['shapla_contact_widget_nonce'] ) && wp_verify_nonce( $_POST['shapla_contact_widget_nonce'], 'shapla_contact_widget_action' )) {
 
 			$fullname		= sanitize_text_field($_POST['fullname']);
 			$email			= sanitize_email($_POST['email']);
