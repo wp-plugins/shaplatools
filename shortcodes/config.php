@@ -507,3 +507,41 @@ $shapla_shortcodes['slide'] = array(
 	'shortcode'   => '[shapla_slide id="{{id}}" theme="{{theme}}" category_slug="{{category_slug}}" animation_speed="{{animation_speed}}" pause_time="{{pause_time}}"]',
 	'popup_title' => __( 'Insert Slide Shortcode', 'shapla' )
 );
+
+$shapla_shortcodes['testimonials'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'id' => array(
+			'std'   => rand(1, 99),
+			'type'  => 'text',
+			'label' => __( 'Testimonial unique ID', 'shapla' ),
+			'desc'  => __( 'Give a unique ID, if you want multiple testimonials at same page or post. The default ID may not be unique. It is just a random number.', 'shapla' )
+		),
+		'items_desktop' => array(
+			'std'     => 4,
+			'type'    => 'text',
+			'label'   => __( 'Desktop', 'shapla' ),
+			'desc'    => __( 'Number of testimonials to show in desktop (979px or bigger)', 'shapla' )
+		),
+		'items_tablet' => array(
+			'std'     => 3,
+			'type'    => 'text',
+			'label'   => __( 'Tablet portrait', 'shapla' ),
+			'desc'    => __( 'Number of testimonials to show in Tablet portrait (768px or bigger)', 'shapla' )
+		),
+		'items_tablet_small' => array(
+			'std'     => 2,
+			'type'    => 'text',
+			'label'   => __( 'Small tablet portrait', 'shapla' ),
+			'desc'    => __( 'Number of testimonials to show in Small tablet portrait (600px or bigger)', 'shapla' )
+		),
+		'items_mobile' => array(
+			'std'     => 1,
+			'type'    => 'text',
+			'label'   => __( 'Mobile portrait', 'shapla' ),
+			'desc'    => __( 'Number of testimonials to show in Mobile portrait (320px or bigger)', 'shapla' )
+		),
+	),
+	'shortcode'   => '[shapla_testimonials_shortcode id="{{id}}" items_desktop="{{items_desktop}}" items_tablet="{{items_tablet}}" items_tablet_small="{{items_tablet_small}}" items_mobile="{{items_mobile}}"]',
+	'popup_title' => __( 'Insert Slide Shortcode', 'shapla' )
+);

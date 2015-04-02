@@ -20,5 +20,6 @@ $strings = 'tinyMCE.addI18n({' . _WP_Editors::$mce_locale . ':{
         map: "' . esc_js( __( 'Google Map', 'shapla' ) ) . '",
         portfolio: "' . esc_js( __( 'Filterable Portfolio', 'shapla' ) ) . '",
         slide: "' . esc_js( __( 'Slide', 'shapla' ) ) . '",
+        testimonials: "' . esc_js( __( 'Testimonials', 'shapla' ) ) . '",
     }
 }})';

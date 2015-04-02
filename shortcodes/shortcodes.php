@@ -890,18 +890,18 @@ endif;
 
 if( ! function_exists('shapla_testimonials_slide' ) ) :
 
-function shapla_testimonials_slide($items = 1){
+function shapla_testimonials_slide($id = null, $items_desktop = 4, $items_tablet = 3, $items_tablet_small = 2, $items_mobile = 1 ){
 	ob_start();
 	?>
 	<div class="row">
-	    <div id="testimonials" class="owl-carousel">
+	    <div id="testimonials-<?php echo $id; ?>" class="owl-carousel">
 	    	<?php echo shapla_testimonials(); ?>
 	    </div>
 	</div>
     <script type="text/javascript">
 		jQuery(document).ready(function($) {
-  			$('#testimonials').owlCarousel({
-				items : <?php echo $items; ?>,
+  			$('#testimonials-<?php echo $id; ?>').owlCarousel({
+				items : <?php echo $items_desktop; ?>,
 				nav : true,
 				dots: false,
 				loop : true,
@@ -909,10 +909,10 @@ function shapla_testimonials_slide($items = 1){
 				autoplayHoverPause: true,
 				responsiveClass:true,
 			    responsive:{
-			        320:{ items:1 }, // Mobile portrait
-			        600:{ items:2 }, // Small tablet portrait
-			        768:{ items:3 }, // Tablet portrait
-			        979:{ items:<?php echo $items; ?> }  // Desktop
+			        320:{ items:<?php echo $items_mobile; ?> }, // Mobile portrait
+			        600:{ items:<?php echo $items_tablet_small; ?> }, // Small tablet portrait
+			        768:{ items:<?php echo $items_tablet; ?> }, // Tablet portrait
+			        979:{ items:<?php echo $items_desktop; ?> }  // Desktop
 			    }
 			});
 		});
@@ -923,6 +923,21 @@ function shapla_testimonials_slide($items = 1){
 }
 
 endif;
+
+if( ! function_exists('shapla_teams' ) ) :
+function shapla_testimonials_slide_shortcode( $atts, $content = null ){
+	extract(shortcode_atts(array(
+                        'id' => null,
+                        'items_desktop' => 4,
+                        'items_tablet' => 3,
+                        'items_tablet_small' => 2,
+                        'items_mobile' => 1
+                ), $atts));
+
+	return shapla_testimonials_slide($id, $items_desktop, $items_tablet, $items_tablet_small, $items_mobile );
+}
+endif;
+add_shortcode( 'shapla_testimonials_shortcode', 'shapla_testimonials_slide_shortcode' );
 
 if( ! function_exists('shapla_teams' ) ) :
 
