@@ -16,16 +16,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 .owl-theme .owl-nav [class*='owl-'] {
-  color: white;
-  font-size: 14px;
-  margin: 5px;
-  padding: 4px 7px;
-  background: #d6d6d6;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+
 }
 .owl-theme .owl-nav [class*='owl-']:hover {
   background: #4dc7a0;
@@ -66,4 +57,35 @@
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
   background: #4dc7a0;
+}
+
+
+.owl-theme .owl-nav [class*="owl-"] {
+  display: inline-block;
+  padding: 4px 7px;
+  text-indent: -1e+7px;
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
+  trannsition: all .5s;
+}
+.owl-theme .owl-nav [class*="owl-"]:first-child {
+  background-position: 0 45px;
+  background-image: url("arrows.png");
+  background-color: rgba(0,0,0,.2);
+  margin-right: 3px;
+}
+.owl-theme .owl-nav [class*="owl-"]:last-child {
+  background-position: 2px 2px;
+  background-image: url("arrows.png");
+  background-color: rgba(0,0,0,.2);
+  margin-left: 3px;
+}
+.owl-theme .owl-nav [class*="owl-"]:first-child:hover {
+  background-position: 0 110px;
+  background-color: #4DC7A0;
+}
+.owl-theme .owl-nav [class*="owl-"]:last-child:hover {
+  background-position: 2px -20px;
+  background-color: #4DC7A0;
 }
