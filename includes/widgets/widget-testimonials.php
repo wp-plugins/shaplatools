@@ -20,7 +20,7 @@ class Shapla_Testimonial extends WP_Widget {
 			echo $before_title . $title . $after_title;
 
 		if (function_exists('shapla_testimonials_slide'))
-			shapla_testimonials_slide( rand(1,99), 1, 1, 1, 1 );
+			shapla_testimonials_slide( rand(1,99), $posts_per_page, $posts_per_page, 2, 1 );
 
 		echo $after_widget;
 	}
@@ -44,7 +44,7 @@ class Shapla_Testimonial extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
 		<p><label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>">Number of Testimonials: </label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $posts_per_page ); ?>" />
+		<input type="number" min="1" max="6" class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" value="<?php echo esc_attr( $posts_per_page ); ?>" />
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id( 'orderby' ); ?>">Order By</label>
