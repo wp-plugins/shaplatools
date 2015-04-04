@@ -67,19 +67,20 @@
   height: 25px;
   width: 25px;
   border-radius: 25px;
-  trannsition: all .5s;
 }
 .owl-theme .owl-nav [class*="owl-"]:first-child {
   background-position: 0 45px;
   background-image: url("arrows.png");
   background-color: rgba(0,0,0,.2);
   margin-right: 3px;
+  transition:all .3s ease-in-out;
 }
 .owl-theme .owl-nav [class*="owl-"]:last-child {
   background-position: 2px 2px;
   background-image: url("arrows.png");
   background-color: rgba(0,0,0,.2);
   margin-left: 3px;
+  transition:all .3s ease-in-out;
 }
 .owl-theme .owl-nav [class*="owl-"]:first-child:hover {
   background-position: 0 110px;
