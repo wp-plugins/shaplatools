@@ -890,12 +890,12 @@ endif;
 
 if( ! function_exists('shapla_testimonials_slide' ) ) :
 
-function shapla_testimonials_slide($id = null, $items_desktop = 4, $items_tablet = 3, $items_tablet_small = 2, $items_mobile = 1 ){
+function shapla_testimonials_slide($id = null, $items_desktop = 4, $items_tablet = 3, $items_tablet_small = 2, $items_mobile = 1, $orderby = 'none'){
 	ob_start();
 	?>
 	<div class="row">
 	    <div id="testimonials-<?php echo $id; ?>" class="owl-carousel">
-	    	<?php echo shapla_testimonials(); ?>
+	    	<?php echo shapla_testimonials('', $orderby); ?>
 	    </div>
 	</div>
     <script type="text/javascript">

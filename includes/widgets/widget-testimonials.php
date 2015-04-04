@@ -20,7 +20,7 @@ class Shapla_Testimonial extends WP_Widget {
 			echo $before_title . $title . $after_title;
 
 		if (function_exists('shapla_testimonials_slide'))
-			shapla_testimonials_slide( rand(1,99), $posts_per_page, $posts_per_page, 2, 1 );
+			shapla_testimonials_slide( rand(1,99), $posts_per_page, $posts_per_page, 2, 1, $orderby);
 
 		echo $after_widget;
 	}
