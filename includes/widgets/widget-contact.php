@@ -17,7 +17,7 @@ class ShaplaContactFormAJAX extends WP_Widget {
 
 	function widget( $args, $instance ) {
 	    /* Our variables from the widget settings. */
-	    $title = apply_filters('widget_title', $instance['title'] );
+	    $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 	 
 	    /* Display the widget title if one was input (before and after defined by themes). */
 	    echo $args['before_widget'];
