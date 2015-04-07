@@ -235,7 +235,6 @@ class ShaplaTools {
 		wp_register_script( 'shapla-shortcode-scripts', $this->plugin_url(). '/assets/js/shapla-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
 
 		wp_register_style( 'nivo-slider', $this->plugin_url(). '/assets/library/nivo-slider/nivo-slider.css' , array(), '3.2', 'all' );
-		wp_register_style( 'nivo-slider-theme', $this->plugin_url(). '/assets/library/nivo-slider/themes/theme.css' , array('nivo-slider'), '3.2', 'all' );
 
 		wp_enqueue_style( 'animate-css', $this->plugin_url(). '/assets/library/animate-css/animate.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
@@ -243,7 +242,6 @@ class ShaplaTools {
 
 		wp_enqueue_script( 'nivo-slider' );
 		wp_enqueue_style( 'nivo-slider' );
-		wp_enqueue_style( 'nivo-slider-theme' );
 
 		wp_enqueue_style( 'font-awesome' );
 		wp_enqueue_style( 'shapla-shortcode-styles' );
