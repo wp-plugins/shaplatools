@@ -474,7 +474,7 @@ $shapla_shortcodes['slide'] = array(
 			'desc'  => __( 'Give a unique ID, if you want multiple slider at same page or post.', 'shapla' )
 		),
 		'theme' => array(
-			'std'     => 'default',
+			'std'     => 'smoothness',
 			'type'    => 'select',
 			'label'   => __( 'Slide theme', 'shapla' ),
 			'desc'    => __( 'Select from a list of predefined slide styles.', 'shapla' ),
@@ -482,7 +482,8 @@ $shapla_shortcodes['slide'] = array(
 				'default' 		=> __( 'Default', 'shapla' ),
 				'dark'        	=> __( 'Dark', 'shapla' ),
 				'light' 		=> __( 'Light', 'shapla' ),
-				'bar'			=> __( 'Bar', 'shapla' )
+				'bar'			=> __( 'Bar', 'shapla' ),
+				'smoothness'	=> __( 'Smoothness', 'shapla' )
 			)
 		),
 		'category_slug' => array(

@@ -403,3 +403,109 @@ Nivo Slider Dark Theme
 	width: 120px;
 	height: auto;
 }
+
+/*
+Nivo Slider smoothness Theme
+*/
+.theme-smoothness {
+	position: relative;
+}
+.theme-smoothness .nivoSlider {
+	background:#fff url(loading.gif) no-repeat 50% 50%;
+}
+.theme-smoothness .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.theme-smoothness .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-smoothness .nivo-controlNav {
+  bottom: 10px;
+  left: 0;
+  padding: 20px 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+}
+.theme-smoothness .nivo-controlNav a {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background:url(bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin: 0 2px;
+}
+.theme-smoothness .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.theme-smoothness .nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	border-radius: 30px;
+	background:url(arrows-m.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	opacity: 0;
+	-webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+.theme-smoothness:hover .nivo-directionNav a { opacity: 1; }
+
+.theme-smoothness a.nivo-prevNav {
+	left:15px;
+	background-color: #eeeeee;
+	background-position: 4px -40px;
+}
+.theme-smoothness a.nivo-nextNav {
+	right:15px;
+	background-color: #eeeeee;
+	background-position:4px 4px;
+}
+
+.theme-smoothness a.nivo-prevNav:hover {
+	left:15px;
+	background-color: #6DA67A;
+	background-position: 4px -62px;
+}
+.theme-smoothness a.nivo-nextNav:hover {
+	right:15px;
+	background-color: #6DA67A;
+	background-position:4px -18px;
+}
+
+.theme-smoothness .nivo-caption {
+    font-family: inherit;
+}
+.theme-smoothness .nivo-caption a {
+    color:#fff;
+    border-bottom:1px dotted #fff;
+}
+.theme-smoothness .nivo-caption a:hover {
+    color:#fff;
+}
+
+.theme-smoothness .nivo-controlNav.nivo-thumbs-enabled {
+	width: 100%;
+}
+.theme-smoothness .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.theme-smoothness .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	width: 120px;
+	height: auto;
+}
