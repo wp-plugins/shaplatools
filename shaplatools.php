@@ -202,6 +202,7 @@ class ShaplaTools {
 		include_once( 'shortcodes/shapla-shortcodes.php' );
 		include_once( 'includes/settings/settings.php' );
 		include_once( 'includes/classes/ShaplaTools_Gallery.php' );
+		include_once( 'includes/classes/Shapla_Retina_2x.php' );
 	}
 
 	/**
