@@ -820,14 +820,6 @@ endif;
 
 add_shortcode('shapla_slide', 'shapla_slide');
 
-if( ! function_exists('shapla_homepage_slide' ) ) :
-
-function shapla_homepage_slide(){
-	echo shapla_image_slider( 'homepage', 'shapla', '', '500', '2000' );
-}
-
-endif;
-
 if( ! function_exists('shapla_testimonials' ) ) :
 
 function shapla_testimonials($posts_per_page = -1, $orderby = 'none'){
