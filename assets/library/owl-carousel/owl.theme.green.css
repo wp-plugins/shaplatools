@@ -83,7 +83,7 @@
   transition:all .3s ease-in-out;
 }
 .owl-theme .owl-nav [class*="owl-"]:first-child:hover {
-  background-position: 0 110px;
+  background-position: 0 24px;
   background-color: #4DC7A0;
 }
 .owl-theme .owl-nav [class*="owl-"]:last-child:hover {
