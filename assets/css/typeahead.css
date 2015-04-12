@@ -12,7 +12,7 @@
 	outline: none;
 	width: 100% !important;
 	vertical-align: inherit !important;
-	background-color: #fff;
+	background-color: #fff !important;
 }
 
 .tt-hint {
