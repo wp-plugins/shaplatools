@@ -242,8 +242,12 @@ class ShaplaTools {
 		wp_enqueue_style( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'owl-carousel-theme', $this->plugin_url(). '/assets/library/owl-carousel/owl.theme.green.css', array(), $this->version, 'all' );
 
-		wp_enqueue_script( 'nivo-slider' );
-		wp_enqueue_style( 'nivo-slider' );
+		global $post;
+     
+	    if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'shapla_slide') ) {
+			wp_enqueue_script( 'nivo-slider' );
+			wp_enqueue_style( 'nivo-slider' );
+	    }
 
 		//wp_enqueue_style( 'animate-css' );
 		wp_enqueue_style( 'font-awesome' );
