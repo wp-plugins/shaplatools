@@ -543,9 +543,9 @@ Nivo Slider smoothness Theme
 
 .theme-smoothness .nivo-directionNav a {
 	display:block;
-	width:30px;
-	height:30px;
-	border-radius: 30px;
+	width:25px;
+	height:25px;
+	border-radius: 25px;
 	background:url(arrows-m.png) no-repeat;
 	text-indent:-9999px;
 	border:0;
@@ -560,23 +560,23 @@ Nivo Slider smoothness Theme
 .theme-smoothness a.nivo-prevNav {
 	left:15px;
 	background-color: #eeeeee;
-	background-position: 4px -40px;
+	background-position: 2px -42px;
 }
 .theme-smoothness a.nivo-nextNav {
 	right:15px;
 	background-color: #eeeeee;
-	background-position:4px 4px;
+	background-position:2px 2px;
 }
 
 .theme-smoothness a.nivo-prevNav:hover {
 	left:15px;
 	background-color: #6DA67A;
-	background-position: 4px -62px;
+	background-position: 2px -64px;
 }
 .theme-smoothness a.nivo-nextNav:hover {
 	right:15px;
 	background-color: #6DA67A;
-	background-position:4px -18px;
+	background-position:2px -20px;
 }
 
 .theme-smoothness .nivo-caption {
