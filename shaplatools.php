@@ -106,6 +106,7 @@ class ShaplaTools {
 		if( current_theme_supports( 'shapla-team' ) ) include_once( 'includes/post-type/team.php' );
 		if( current_theme_supports( 'shapla-testimonials' ) ) include_once( 'includes/post-type/testimonials.php' );
 		if( current_theme_supports( 'shapla-event' ) ) include_once( 'includes/post-type/event.php' );
+		if( current_theme_supports( 'shapla-features' ) ) include_once( 'includes/post-type/features.php' );
 
 		/**
 		 * Include custom post type files, depending on which are supported.
