@@ -258,4 +258,5 @@ class ShaplaTools_Gallery {
 
 } // end class ShaplaTools_Gallery()
 
-new ShaplaTools_Gallery();
+if( is_admin() )
+    $shaplatools_gallery = new ShaplaTools_Gallery();
