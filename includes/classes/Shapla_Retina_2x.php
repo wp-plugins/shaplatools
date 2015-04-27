@@ -72,4 +72,6 @@ class Shapla_Retina_2x
 
 endif;
 
-$shapla_retina_2x = new Shapla_Retina_2x;
+
+if( is_admin() )
+    $shapla_retina_2x = new Shapla_Retina_2x();
