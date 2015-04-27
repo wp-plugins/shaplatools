@@ -1,5 +1,5 @@
 ( function($) {
-	$( '.woocommerce-product-search input[name="s"]' )
+	$( '#search-container input[name="s"]' )
 		.typeahead( {
 			name: 'search',
 			remote: wp_typeahead.ajaxurl + '?action=ajax_search&fn=get_ajax_search&terms=%QUERY',
