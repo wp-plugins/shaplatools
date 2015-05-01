@@ -221,33 +221,55 @@ class ShaplaTools {
 	 * @return void
 	 */
 	public function frontend_style() {
-		wp_enqueue_style( 'shaplatools', $this->plugin_url() . '/assets/css/shaplatools.css', array(), $this->version, 'all' );
 		wp_register_style( 'font-awesome', $this->plugin_url() . '/assets/css/font-awesome.css' , '', '4.1.0', 'all' );
 		wp_register_style( 'shapla-shortcode-styles', $this->plugin_url() . '/assets/css/shapla-shortcodes.css' , array( 'font-awesome' ), $this->version, 'all' );
-
-
-
-
-		wp_enqueue_script( 'shaplatools', $this->plugin_url(). '/assets/js/shaplatools.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
-
-		wp_register_script( 'nivo-slider', $this->plugin_url(). '/assets/library/nivo-slider/jquery.nivo.slider.js', array( 'jquery' ), '3.2', true );
-
-
 		wp_register_script( 'shapla-shortcode-scripts', $this->plugin_url(). '/assets/js/shapla-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
 
+		/**!
+		 * Enqueue ShaplaTools custom style
+		 * Enqueue ShaplaTools custom script
+		 */
+		wp_enqueue_style( 'shaplatools', $this->plugin_url() . '/assets/css/shaplatools.css', array(), $this->version, 'all' );
+		wp_enqueue_script( 'shaplatools', $this->plugin_url(). '/assets/js/shaplatools.js', array( 'jquery' ), $this->version, true );
+
+		/**!
+		 * Register Modernizr
+		 * Register Shuffle.js
+		 */
+		wp_register_script( 'modernizr', $this->plugin_url(). '/assets/library/shuffle/jquery.shuffle.modernizr.min.js', array(), '3.2', true );
+		wp_register_script( 'shuffle', $this->plugin_url(). '/assets/library/shuffle/jquery.shuffle.min.js', array( 'jquery', 'modernizr' ), '3.2', true );
+		wp_register_script( 'shuffle-custom', $this->plugin_url(). '/assets/library/shuffle/shuffle-custom.js', array( 'jquery', 'shuffle' ), '3.2', true );
+
+		/**!
+		 * Register Nivo Slider jQuery plugin
+		 * Register Nivo Slider Style
+		 */
 		wp_register_style( 'nivo-slider', $this->plugin_url(). '/assets/library/nivo-slider/nivo-slider.min.css' , array(), '3.2', 'all' );
+		wp_register_script( 'nivo-slider', $this->plugin_url(). '/assets/library/nivo-slider/jquery.nivo.slider.js', array( 'jquery' ), '3.2', true );
 
 		wp_register_style( 'animate-css', $this->plugin_url(). '/assets/library/animate-css/animate.min.css', array(), $this->version, 'all' );
 
+		/**!
+		 * Enqueue Owl Carousel plugin
+		 * Enqueue Owl Carousel Style
+		 */
 		wp_enqueue_style( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'owl-carousel-theme', $this->plugin_url(). '/assets/library/owl-carousel/owl.theme.green.css', array(), $this->version, 'all' );
+		wp_enqueue_script( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
+
+
 
 		global $post;
      
 	    if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'shapla_slide') ) {
 			wp_enqueue_script( 'nivo-slider' );
 			wp_enqueue_style( 'nivo-slider' );
+	    }
+     
+	    if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'shapla_portfolio') ) {
+			wp_enqueue_script( 'shuffle' );
+			wp_enqueue_script( 'modernizr' );
+			wp_enqueue_script( 'shuffle-custom' );
 	    }
 
 		//wp_enqueue_style( 'animate-css' );
