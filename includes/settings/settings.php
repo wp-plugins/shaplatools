@@ -223,6 +223,18 @@ function shaplatools_get_registered_settings() {
 					'desc' => __( 'Enter Google Analytics ID like (UA-XXXXX-X)', 'shapla' ),
 					'type' => 'text'
 				),
+				'typeahead_search' => array(
+					'id'   => 'typeahead_search',
+					'name' => __( 'Autocomplete search form', 'shapla' ),
+					'desc' => __( 'Enable autocomplete search with twitter typeahead', 'shapla' ),
+					'type' => 'select',
+					'std'  => 'no_search',
+					'options' => array(
+						'no_search' => "Do not enable autocomplete search",
+						'default_search' => "Enable for WordPress Default Search",
+						'product_search' => "Enable for WooCommerce Product Search"
+					)
+				),
 			)
 		),
 		'social' => apply_filters( 'shaplatools_social_settings',
