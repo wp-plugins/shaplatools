@@ -226,6 +226,18 @@ class ShaplaTools {
 		wp_register_script( 'shapla-shortcode-scripts', $this->plugin_url(). '/assets/js/shapla-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
 
 		/**!
+		 * Register typeahead.js
+		 * Register hogan.js
+		 */
+		wp_register_style( 'shapla-typeahead-search', $this->plugin_url(). '/assets/library/typeahead/typeahead.css' , array(), $this->version, 'all' );
+
+		wp_register_script( 'typeahead_js', $this->plugin_url(). '/assets/library/typeahead/typeahead.min.js', array('jquery'), '0.9.0', true );
+		wp_register_script( 'hogan_js', $this->plugin_url(). '/assets/library/typeahead/hogan.min.js', array('typeahead_js'), '', true );
+
+		wp_register_script( 'typeahead_general_search', $this->plugin_url(). '/assets/library/typeahead/wp-typeahead.js', array('typeahead_js', 'hogan_js'), '', true );
+		wp_localize_script( 'typeahead_general_search', 'wp_typeahead', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+		/**!
 		 * Enqueue ShaplaTools custom style
 		 * Enqueue ShaplaTools custom script
 		 */
@@ -260,6 +272,7 @@ class ShaplaTools {
 
 
 		global $post;
+		$this->options = get_option('shaplatools_options');
      
 	    if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'shapla_slide') ) {
 			wp_enqueue_script( 'nivo-slider' );
@@ -270,6 +283,14 @@ class ShaplaTools {
 			wp_enqueue_script( 'shuffle' );
 			wp_enqueue_script( 'modernizr' );
 			wp_enqueue_script( 'shuffle-custom' );
+	    }
+
+
+	    if ( $this->options['typeahead_search'] != 'no_search' ) {
+			wp_enqueue_style( 'shapla-typeahead-search' );
+			wp_enqueue_script( 'typeahead_js' );
+			wp_enqueue_script( 'hogan_js' );
+			wp_enqueue_script( 'typeahead_general_search' );
 	    }
 
 		//wp_enqueue_style( 'animate-css' );
