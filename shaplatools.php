@@ -296,6 +296,10 @@ class ShaplaTools {
 			}
 	    }
 
+	    if ( isset($this->options['retina_graphics']) && $this->options['retina_graphics'] == 'retina_yes' ) {
+	    	wp_enqueue_script( 'retina-js', $this->plugin_url(). '/assets/js/retina.min.js', array( 'jquery' ), '1.3.0', true );
+	    }
+
 		//wp_enqueue_style( 'animate-css' );
 		wp_enqueue_style( 'font-awesome' );
 		wp_enqueue_style( 'shapla-shortcode-styles' );
