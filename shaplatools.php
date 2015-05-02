@@ -171,9 +171,6 @@ class ShaplaTools {
 	 */
 	public function includes() {
 		global $shaplatools_options;
-
-		require_once('includes/classes/ShaplaTools_Typeahead.php');
-		include_once( 'includes/classes/Shapla_Retina_2x.php' );
 		require_once('includes/settings/settings.php');
 		$shaplatools_options = shaplatools_get_settings();
 
@@ -204,6 +201,7 @@ class ShaplaTools {
 		include_once( 'shortcodes/shapla-shortcodes.php' );
 		include_once( 'includes/settings/settings.php' );
 		include_once( 'includes/classes/ShaplaTools_Gallery.php' );
+		include_once( 'includes/classes/Shapla_Retina_2x.php' );
 	}
 
 	/**
@@ -213,6 +211,7 @@ class ShaplaTools {
 	 */
 	public function frontend_includes(){
 		include_once( plugin_dir_path( __FILE__ ) .'shortcodes/shortcodes.php' );
+		require_once('includes/classes/ShaplaTools_Typeahead.php');
 	}
 
 	/**
