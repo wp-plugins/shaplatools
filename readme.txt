@@ -23,7 +23,7 @@ ShaplaTools is a powerful plugin to extend functionality to your WordPress theme
 	<li>Team</li>
 	<li>Features</li>
 </ul>
-To include at your theme read the <a href="https://wordpress.org/plugins/shaplatools/faq/">FAQ</a>
+To include custom post types at your theme read the <a href="https://wordpress.org/plugins/shaplatools/faq/">FAQ</a>
 
 = Widgets =
 
