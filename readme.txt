@@ -94,6 +94,7 @@ add_theme_support( 'shapla-slides' );
 add_theme_support( 'shapla-team' );
 add_theme_support( 'shapla-features' );
 </code></pre>
+To include at your theme read the <a href="https://wordpress.org/plugins/shaplatools/faq/">FAQ</a>
 
 == Changelog ==
 
