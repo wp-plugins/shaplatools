@@ -233,9 +233,6 @@ class ShaplaTools {
 		wp_register_script( 'typeahead_js', $this->plugin_url(). '/assets/library/typeahead/typeahead.min.js', array('jquery'), '0.9.0', true );
 		wp_register_script( 'hogan_js', $this->plugin_url(). '/assets/library/typeahead/hogan.min.js', array('typeahead_js'), '', true );
 
-		wp_register_script( 'typeahead_general_search', $this->plugin_url(). '/assets/library/typeahead/wp-typeahead.js', array('typeahead_js', 'hogan_js'), '', true );
-		wp_localize_script( 'typeahead_general_search', 'wp_typeahead', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-
 		/**!
 		 * Enqueue ShaplaTools custom style
 		 * Enqueue ShaplaTools custom script
@@ -285,11 +282,18 @@ class ShaplaTools {
 	    }
 
 
-	    if ( $this->options['typeahead_search'] != 'no_search' ) {
+	    if ( isset($this->options['typeahead_search']) && $this->options['typeahead_search'] != 'no_search' ) {
 			wp_enqueue_style( 'shapla-typeahead-search' );
 			wp_enqueue_script( 'typeahead_js' );
 			wp_enqueue_script( 'hogan_js' );
-			wp_enqueue_script( 'typeahead_general_search' );
+
+			if (isset($this->options['typeahead_search']) && $this->options['typeahead_search'] == 'product_search') {
+				wp_enqueue_script( 'typeahead_woo_search', $this->plugin_url(). '/assets/library/typeahead/woo-typeahead.js', array('typeahead_js', 'hogan_js'), '', true );
+				wp_localize_script( 'typeahead_woo_search', 'wp_typeahead', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+			} else {
+				wp_enqueue_script( 'typeahead_general_search', $this->plugin_url(). '/assets/library/typeahead/wp-typeahead.js', array('typeahead_js', 'hogan_js'), '', true );
+				wp_localize_script( 'typeahead_general_search', 'wp_typeahead', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+			}
 	    }
 
 		//wp_enqueue_style( 'animate-css' );
