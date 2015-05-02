@@ -92,6 +92,7 @@ add_theme_support( 'shapla-testimonials' );
 add_theme_support( 'shapla-event' );
 add_theme_support( 'shapla-slides' );
 add_theme_support( 'shapla-team' );
+add_theme_support( 'shapla-features' );
 </code></pre>
 
 == Changelog ==
