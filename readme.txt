@@ -11,7 +11,7 @@ ShaplaTools is a powerful plugin to extend functionality to your WordPress theme
 
 == Description ==
 
-ShaplaTools is a powerful plugin to extend functionality to your WordPress themes offering shortcodes, FontAwesome icons, Autocomplete search suggestion, Retina graphics for your website and useful widgets.
+= ShaplaTools is a powerful plugin to extend functionality to your WordPress themes offering shortcodes, FontAwesome icons, Autocomplete search suggestion, Retina graphics for your website and useful widgets. =
 
 = Custom Post Types =
 
@@ -23,7 +23,6 @@ ShaplaTools is a powerful plugin to extend functionality to your WordPress theme
 	<li>Team</li>
 	<li>Features</li>
 </ul>
-
 To include at your theme read the <a href="https://wordpress.org/plugins/shaplatools/faq/">FAQ</a>
 
 = Widgets =
