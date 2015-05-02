@@ -14,14 +14,20 @@ class ShaplaTools_Typeahead {
 	 * @since 1.0.0
 	 */
 	public function shapla_woo_ajax_search() {
+
+		$this->options = get_option('shaplatools_options');
+
 		if ( isset( $_REQUEST['fn'] ) && 'get_ajax_search' == $_REQUEST['fn'] ) {
 
 			$args = array(
 				's' => $_REQUEST['terms'],
-				//'post_type' => 'product',
 				'posts_per_page' => 10,
 				'no_found_rows' => true,
 			);
+			if (isset($this->options['typeahead_search']) && $this->options['typeahead_search'] == 'product_search' ) {
+				$args['post_type'] = 'product';
+			}
+
 			$search_query = new WP_Query( $args );
 
 			$results = array( );
