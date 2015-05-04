@@ -527,4 +527,4 @@ register_activation_hook( __FILE__, 'shaplatools_activation' );
 function shaplatools_deactivation() {
 	flush_rewrite_rules();
 }
-register_deactivation_hook( __FILE__, 'shaplatools_activation' );
+register_deactivation_hook( __FILE__, 'shaplatools_deactivation' );
