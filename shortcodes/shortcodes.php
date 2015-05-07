@@ -649,7 +649,8 @@ if ( ! function_exists( 'shapla_filterable_portfolio' ) ) :
 function shapla_filterable_portfolio( $atts, $content = null ){
 
 	extract(shortcode_atts(array(
-        'thumbnail' =>'2'
+        'thumbnail' =>'2',
+        'thumbnail_size' =>'large'
     ), $atts));
 
 	?>
@@ -710,7 +711,7 @@ function shapla_filterable_portfolio( $atts, $content = null ){
 			<div id="portfolio-<?php the_ID(); ?>" class="item portfolio_col_<?php echo $thumbnail; ?>" data-groups='<?php echo $tax; ?>'>
 				<div class="single-portfolio-item">
 					<div class="portfolio-f-image">
-						<?php the_post_thumbnail('large'); ?>
+						<?php the_post_thumbnail( $thumbnail_size ); ?>
 						<div class="portfolio-hover">
 				        	<a href="#" class="portfolio-title-link"><?php the_title(); ?></a>
 				            <a href="<?php the_permalink(); ?>" class="view-details-link">See details</a>

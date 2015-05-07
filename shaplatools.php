@@ -528,3 +528,26 @@ function shaplatools_deactivation() {
 	flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'shaplatools_deactivation' );
+
+/**
+ * Get all available image size
+ */
+
+if ( !function_exists('shaplatools_available_img_size') ):
+
+function shaplatools_available_img_size(){
+
+	$shaplatools_img_size = get_intermediate_image_sizes();
+	array_push($shaplatools_img_size, 'full');
+
+	$singleArray = array();
+
+	foreach ($shaplatools_img_size as $key => $value){
+
+	    $singleArray[$value] = $value;
+	}
+
+	return $singleArray;
+}
+
+endif;

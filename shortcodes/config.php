@@ -457,10 +457,17 @@ $shapla_shortcodes['portfolio'] = array(
 			'std'   => '2',
 			'type'  => 'text',
 			'label' => __( 'Portfolio Thumbnail', 'shapla' ),
-			'desc'  => __( 'How many thumbnail do you want', 'shapla' )
+			'desc'  => __( 'How many thumbnail do you want per row', 'shapla' )
+		),
+		'thumbnail_size' => array(
+			'std'   	=> 'large',
+			'type'  	=> 'select',
+			'label' 	=> __( 'Portfolio Image Size', 'shapla' ),
+			'desc'  	=> __( 'Choose which image size you want to show for portfolio thumbnail.', 'shapla' ),
+			'options' 	=> shaplatools_available_img_size()
 		),
 	),
-	'shortcode'   => '[shapla_portfolio thumbnail="{{thumbnail}}"]',
+	'shortcode'   => '[shapla_portfolio thumbnail="{{thumbnail}}" thumbnail_size="{{thumbnail_size}}"]',
 	'popup_title' => __( 'Insert Portfolio Shortcode', 'shapla' )
 );
 
