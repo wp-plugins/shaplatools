@@ -551,5 +551,5 @@ $shapla_shortcodes['testimonials'] = array(
 		),
 	),
 	'shortcode'   => '[shapla_testimonials_shortcode id="{{id}}" items_desktop="{{items_desktop}}" items_tablet="{{items_tablet}}" items_tablet_small="{{items_tablet_small}}" items_mobile="{{items_mobile}}"]',
-	'popup_title' => __( 'Insert Slide Shortcode', 'shapla' )
+	'popup_title' => __( 'Insert Testimonial Shortcode', 'shapla' )
 );
