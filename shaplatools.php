@@ -203,6 +203,14 @@ class ShaplaTools {
 		include_once( 'includes/settings/settings.php' );
 		include_once( 'includes/classes/ShaplaTools_Gallery.php' );
 		include_once( 'includes/classes/Shapla_Retina_2x.php' );
+
+		// Post Types
+		include_once( 'includes/post-type/ShaplaTools_Team.php' );
+		include_once( 'includes/post-type/ShaplaTools_Event.php' );
+		include_once( 'includes/post-type/ShaplaTools_Slide.php' );
+		include_once( 'includes/post-type/ShaplaTools_Feature.php' );
+		include_once( 'includes/post-type/ShaplaTools_Portfolio.php' );
+		include_once( 'includes/post-type/ShaplaTools_Testimonial.php' );
 	}
 
 	/**
@@ -515,19 +523,24 @@ $GLOBALS['shaplatools'] = new ShaplaTools();
 
 /**
  * Flush the rewrite rules on activation
+ * Flush the rewrite rules on deactivation
  */
-function shaplatools_activation() {
-	flush_rewrite_rules();
-}
-register_activation_hook( __FILE__, 'shaplatools_activation' );
+function shaplatools_activation_deactivation() {
 
-/**
- * Also flush the rewrite rules on deactivation
- */
-function shaplatools_deactivation() {
+	ShaplaTools_Slide::post_type();
+	ShaplaTools_Slide::taxonomy();
+	ShaplaTools_Portfolio::post_type();
+	ShaplaTools_Portfolio::taxonomy();
+	ShaplaTools_Team::post_type();
+	ShaplaTools_Event::post_type();
+	ShaplaTools_Feature::post_type();
+	ShaplaTools_Testimonial::post_type();
+
 	flush_rewrite_rules();
 }
-register_deactivation_hook( __FILE__, 'shaplatools_deactivation' );
+register_activation_hook( __FILE__, 'shaplatools_activation_deactivation' );
+register_deactivation_hook( __FILE__, 'shaplatools_activation_deactivation' );
+
 
 /**
  * Get all available image size
