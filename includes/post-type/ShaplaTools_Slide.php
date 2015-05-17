@@ -70,10 +70,8 @@ class ShaplaTools_Slide {
 }
 
 function run_shaplatools_slide(){
-	if (is_admin()) {
-		$shaplatools_slide = new ShaplaTools_Slide();
-		return $shaplatools_slide;
-	}
+	$shaplatools_slide = new ShaplaTools_Slide();
+	return $shaplatools_slide;
 }
 //run_shaplatools_slide();
 endif;

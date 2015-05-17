@@ -54,10 +54,8 @@ class ShaplaTools_Event {
 }
 
 function run_shaplatools_event(){
-	if (is_admin()) {
-		$shaplatools_event = new ShaplaTools_Event();
-		return $shaplatools_event;
-	}
+	$shaplatools_event = new ShaplaTools_Event();
+	return $shaplatools_event;
 }
 //run_shaplatools_event();
 endif;

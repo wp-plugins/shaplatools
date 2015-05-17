@@ -55,10 +55,8 @@ class ShaplaTools_Testimonial {
 }
 
 function run_shaplatools_testimonial(){
-	if (is_admin()) {
-		$shaplatools_testimonial = new ShaplaTools_Testimonial();
-		return $shaplatools_testimonial;
-	}
+	$shaplatools_testimonial = new ShaplaTools_Testimonial();
+	return $shaplatools_testimonial;
 }
 //run_shaplatools_testimonial();
 endif;

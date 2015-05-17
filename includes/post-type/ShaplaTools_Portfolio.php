@@ -99,10 +99,8 @@ class ShaplaTools_Portfolio {
 }
 
 function run_shaplatools_portfolio(){
-	if (is_admin()) {
-		$shaplatools_portfolio = new ShaplaTools_Portfolio();
-		return $shaplatools_portfolio;
-	}
+	$shaplatools_portfolio = new ShaplaTools_Portfolio();
+	return $shaplatools_portfolio;
 }
 //run_shaplatools_portfolio();
 endif;

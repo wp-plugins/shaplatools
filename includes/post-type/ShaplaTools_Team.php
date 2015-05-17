@@ -50,10 +50,8 @@ class ShaplaTools_Team {
 }
 
 function run_shaplatools_team(){
-	if (is_admin()) {
-		$shaplatools_slide = new ShaplaTools_Team();
-		return $shaplatools_slide;
-	}
+	$shaplatools_slide = new ShaplaTools_Team();
+	return $shaplatools_slide;
 }
 //run_shaplatools_team();
 endif;

@@ -54,10 +54,8 @@ class ShaplaTools_Feature {
 }
 
 function run_shaplatools_feature(){
-	if (is_admin()) {
-		$shaplatools_feature = new ShaplaTools_Feature();
-		return $shaplatools_feature;
-	}
+	$shaplatools_feature = new ShaplaTools_Feature();
+	return $shaplatools_feature;
 }
 //run_shaplatools_feature();
 endif;
