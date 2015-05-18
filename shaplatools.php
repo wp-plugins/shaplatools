@@ -336,8 +336,9 @@ class ShaplaTools {
 			wp_enqueue_style( 'shapla-admin-jquery-ui-structure', $this->plugin_url().'/assets/admin/css/jquery-ui.structure.min.css', array(), '1.11.3', 'all' );
 			wp_enqueue_style( 'shapla-admin-jquery-ui-theme', $this->plugin_url(). '/assets/admin/css/jquery-ui.theme.css', array(), '1.11.3', 'all' );
 		}
-
-		wp_enqueue_style( 'shapla-admin', $this->plugin_url().'/assets/admin/css/shaplatools-admin.css', array(), $this->version, 'all' );
+		if( $hook == 'post.php' || $hook == 'post-new.php' ){
+			wp_enqueue_style( 'shapla-admin', $this->plugin_url().'/assets/admin/css/shaplatools-admin.css', array(), $this->version, 'all' );
+		}
 	}
 
 	/**
