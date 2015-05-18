@@ -187,10 +187,15 @@ class ShaplaTools {
 		include_once( 'includes/widgets/widget-flickr.php' );
 		include_once( 'includes/widgets/widget-instagram.php' );
 		include_once( 'includes/widgets/widget-twitter.php' );
-		include_once( 'includes/widgets/widget-testimonials.php' );
 		include_once( 'includes/widgets/widget-fb_like_box.php' );
-		include_once( 'includes/widgets/widget-event.php' );
 		include_once( 'includes/widgets/widget-contact.php' );
+
+		if (isset($shaplatools_event_activated) && $shaplatools_event_activated == true) {
+			include_once( 'includes/widgets/widget-event.php' );
+		}
+		if (isset($shaplatools_testimonial_activated) && $shaplatools_testimonial_activated == true) {
+			include_once( 'includes/widgets/widget-testimonials.php' );
+		}
 
 		// Post Types
 		include_once( 'includes/post-type/ShaplaTools_Team.php' );

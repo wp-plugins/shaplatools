@@ -9,7 +9,7 @@ class ShaplaTools_Feature {
 	}
 
 	/**
-	 * Register a portfolio post type.
+	 * Register a feature post type.
 	 * @package ShaplaTools
 	 * @link http://codex.wordpress.org/Function_Reference/register_post_type
 	 */

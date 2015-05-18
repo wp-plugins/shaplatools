@@ -5,12 +5,8 @@ if( !class_exists('ShaplaTools_Portfolio') ):
 class ShaplaTools_Portfolio {
 
 	public function __construct(){
-		//$this->options = get_option('shaplatools_options');
 		add_action( 'init', array ($this, 'post_type') );
 		add_action( 'init', array ($this, 'taxonomy') );
-
-		add_filter( 'manage_edit-portfolio_columns', array ($this, 'columns_head') );
-		add_action( 'manage_portfolio_posts_custom_column', array ($this, 'columns_content') );
 	}
 
 	/**
@@ -70,31 +66,6 @@ class ShaplaTools_Portfolio {
 			'query_var'         => true,
 			'rewrite'           => array( 'slug' => 'skill', 'hierarchical' => true)
 		) );
-	}
-
-	public function columns_head( $defaults ) {
-		unset( $defaults['date'] );
-
-		$defaults['skill'] = __( 'Skills', 'shaplatools' );
-		$defaults['date'] = __( 'Date', 'shaplatools' );
-
-		return $defaults;
-	}
-
-	public function columns_content( $column_name ) {
-
-		if ( 'skill' == $column_name ) {
-
-			if ( ! $terms = get_the_terms( get_the_ID(), $column_name ) ) {
-				echo '<span class="na">&mdash;</span>';
-			} else {
-				foreach ( $terms as $term ) {
-					$termlist[] = '<a href="' . esc_url( add_query_arg( $column_name, $term->slug, admin_url( 'edit.php?post_type=portfolio' ) ) ) . ' ">' . ucfirst( $term->name ) . '</a>';
-				}
-
-				echo implode( ', ', $termlist );
-			}
-		}
 	}
 }
 

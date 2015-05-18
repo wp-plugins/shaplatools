@@ -9,7 +9,7 @@ class ShaplaTools_Event {
 	}
 
 	/**
-	 * Register a portfolio post type.
+	 * Register a event post type.
 	 * @package ShaplaTools
 	 * @link http://codex.wordpress.org/Function_Reference/register_post_type
 	 */
@@ -54,6 +54,7 @@ class ShaplaTools_Event {
 }
 
 function run_shaplatools_event(){
+	$shaplatools_event_activated = true;
 	$shaplatools_event = new ShaplaTools_Event();
 	return $shaplatools_event;
 }

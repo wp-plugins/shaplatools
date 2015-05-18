@@ -10,7 +10,7 @@ class ShaplaTools_Slide {
 	}
 
 	/**
-	 * Register a portfolio post type.
+	 * Register a slide post type.
 	 * @package ShaplaTools
 	 * @link http://codex.wordpress.org/Function_Reference/register_post_type
 	 */
@@ -50,7 +50,7 @@ class ShaplaTools_Slide {
 	}
 
 	/**
-	 * Register a skill taxonomy for portfolio post type.
+	 * Register a skill taxonomy for slide post type.
 	 * @package ShaplaTools
 	 * @link https://codex.wordpress.org/Function_Reference/register_taxonomy
 	 */

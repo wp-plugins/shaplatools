@@ -9,7 +9,7 @@ class ShaplaTools_Testimonial {
 	}
 
 	/**
-	 * Register a portfolio post type.
+	 * Register a testimonial post type.
 	 * @package ShaplaTools
 	 * @link http://codex.wordpress.org/Function_Reference/register_post_type
 	 */
@@ -55,6 +55,7 @@ class ShaplaTools_Testimonial {
 }
 
 function run_shaplatools_testimonial(){
+	$shaplatools_testimonial_activated = true;
 	$shaplatools_testimonial = new ShaplaTools_Testimonial();
 	return $shaplatools_testimonial;
 }
