@@ -217,6 +217,12 @@ class ShaplaTools {
 		include_once( 'includes/classes/ShaplaTools_Gallery.php' );
 		include_once( 'includes/classes/Shapla_Retina_2x.php' );
 		include_once( 'includes/classes/ShaplaTools_Metaboxs.php' );
+
+		// Meta Box
+		include_once( 'includes/meta-box/ShaplaTools_Portfolio_Metabox.php' );
+		include_once( 'includes/meta-box/ShaplaTools_Feature_Metabox.php' );
+		include_once( 'includes/meta-box/ShaplaTools_Event_Metabox.php' );
+		include_once( 'includes/meta-box/ShaplaTools_Slide_Metabox.php' );
 	}
 
 	/**
