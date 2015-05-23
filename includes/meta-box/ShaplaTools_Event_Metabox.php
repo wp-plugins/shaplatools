@@ -121,5 +121,5 @@ function run_shaplatools_event_default_meta(){
 	if (is_admin())
 		ShaplaTools_Event_Metabox::get_instance();
 }
-run_shaplatools_event_default_meta();
+//run_shaplatools_event_default_meta();
 endif;
