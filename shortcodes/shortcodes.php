@@ -739,87 +739,76 @@ add_shortcode( 'shapla_portfolio', 'shapla_filterable_portfolio' );
 /**add the shortcode for the slider- for use in editor**/
 if( ! function_exists('shapla_image_slider' ) ) :
 
-function shapla_image_slider( $id, $theme, $category_slug, $animation_speed, $pause_time ){
-
-    if (trim($category_slug) !='') {
-
-        $termname = $category_slug;
-
-    } else {
-    	function all_terms(){
-    		// It is blank
-    	}
-        $termname = all_terms();
-    }
-
-	$slider= '<div class="slider-wrapper theme-'.$theme.'"><div id="shapla-slide-'.$id.'" class="nivoSlider">';
-
-	$args = array(
-		'post_type' => 'slides',
-		'posts_per_page' => -1,
-		'slide_category' => $termname,
-		'order' => 'ASC',
-		'orderby' => 'menu_order'
-	);
-
-	$query = new WP_Query( $args  );
-
-	if ( $query->have_posts()) : while ( $query->have_posts()) : $query->the_post();
-
-
-		$slide = get_post_meta( get_the_ID(), '_shaplatools_slide', true );
-
-		$caption = ( empty( $slide['caption'] ) ) ? '' : $slide['caption'];
-		$transition = ( empty( $slide['transition'] ) ) ? '' : $slide['transition'];
-		$slide_link = ( empty( $slide['slide_link'] ) ) ? '' : $slide['slide_link'];
-		$link_target = ( empty( $slide['link_target'] ) ) ? '' : $slide['link_target'];
-		$slider_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
-
-
-        if (trim($slide_link) != '') {
-
-			$slide_link = $slide_link;
-
-        } else {
-        	
-			$slide_link = '#';
-        }
-        
-		$slider.='<a target="'.$link_target.'" href="'.$slide_link.'"><img src="'.$slider_image[0].'" data-thumb="'.$slider_image[0].'" alt="" title="'.esc_textarea( $caption ).'" data-transition="'.$transition.'"></a>';
-
-	endwhile; endif; wp_reset_query();
-	$slider.= '</div></div>';
-	$slider.= '	<script>
-					jQuery(window).load(function($){
-						jQuery("#shapla-slide-'.$id.'").nivoSlider({
-							animSpeed: '.$animation_speed.',
-							pauseTime: '.$pause_time.'
-						});
-					});
-				</script>';
-	return $slider;
-}
-endif;
-
-
-if( ! function_exists('shapla_slide' ) ) :
-
-function shapla_slide($atts, $content=null){
+function shapla_image_slider( $atts, $content=null ){
 
     extract(shortcode_atts(array(
-        'id'            =>'',
-        'theme'         =>'default',
-        'category_slug' =>'',
-        'animation_speed' =>'500',
-        'pause_time' =>'3000',
+        'id' => ''
     ), $atts));
 
-    return shapla_image_slider( $id, $theme, $category_slug, $animation_speed, $pause_time );
+
+	$img_size    	= esc_attr( get_post_meta( $id, '_shapla_slide_img_size', true ) );
+	$theme    		= esc_attr( get_post_meta( $id, '_shapla_slide_theme', true ) );
+	$transition    	= esc_attr( get_post_meta( $id, '_shapla_slide_transition', true ) );
+	$slices    		= esc_attr( get_post_meta( $id, '_shapla_slide_slices', true ) );
+
+	$boxcols    	= esc_attr( get_post_meta( $id, '_shapla_slide_boxcols', true ) );
+	$boxrows    	= esc_attr( get_post_meta( $id, '_shapla_slide_boxrows', true ) );
+	$anim_speed    	= esc_attr( get_post_meta( $id, '_shapla_slide_animation_speed', true ) );
+	$pause_time    	= esc_attr( get_post_meta( $id, '_shapla_slide_pause_time', true ) );
+	$start    		= esc_attr( get_post_meta( $id, '_shapla_slide_start', true ) );
+
+	$thumb_nav    	= ( get_post_meta( $id, '_shapla_slide_thumb_nav', true ) != false ) ? 'true' : 'false';
+	$dir_nav    	= ( get_post_meta( $id, '_shapla_slide_dir_nav', true ) != false) ? 'true' : 'false';
+	$ctrl_nav    	= ( get_post_meta( $id, '_shapla_slide_ctrl_nav', true ) != false) ? 'true' : 'false';
+	$hover_pause    = ( get_post_meta( $id, '_shapla_slide_hover_pause', true ) != false) ? 'true' : 'false';
+	$transition_man = ( get_post_meta( $id, '_shapla_slide_transition_man', true ) != false) ? 'true' : 'false';
+	$start_rand    	= ( get_post_meta( $id, '_shapla_slide_start_rand', true ) != false) ? 'true' : 'false';
+
+	$image_ids   	= explode(',', get_post_meta( $id, '_shapla_image_ids', true) );
+
+	if( $image_ids[0] !== "" ) :
+	
+		$slider  = '<section id="slide">';
+		$slider .= '<div class="slider-wrapper theme-'.$theme.'">';
+		$slider .= '<div id="shapla-slide-'.$id.'" class="nivoSlider">';
+
+			foreach ( $image_ids as $image ) {
+				
+				if(!$image) continue;
+				$src = wp_get_attachment_image_src( $image, $img_size );
+				$thumb = wp_get_attachment_image_src( $image, 'thumbnail' );
+				
+				$slider .= '<img src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" data-thumb="'.$thumb[0].'" alt="" title="">';
+			}
+
+		$slider .= '</div></div>';	
+		$slider .= '<script>
+						jQuery(window).load(function($){
+							jQuery("#shapla-slide-'.$id.'").nivoSlider({
+								effect: "'.$transition.'",
+								slices: "'.$slices.'",
+								boxCols: "'.$boxcols.'",
+								boxRows: "'.$boxrows.'",
+								animSpeed: "'.$anim_speed.'",
+								pauseTime: "'.$pause_time.'",
+								startSlide: "'.$start.'",
+								directionNav: '.$dir_nav.',
+								controlNav: '.$ctrl_nav.',
+								controlNavThumbs: '.$thumb_nav.',
+								pauseOnHover: '.$hover_pause.',
+								manualAdvance: '.$transition_man.',
+								randomStart: '.$start_rand.',
+							});
+						});
+					</script>';
+		$slider .= '</section>';
+		return $slider;
+
+	endif;
+
 }
-
 endif;
-
-add_shortcode('shapla_slide', 'shapla_slide');
+add_shortcode('shapla_slide', 'shapla_image_slider');
 
 if( ! function_exists('shapla_testimonials' ) ) :
 
