@@ -541,7 +541,6 @@ $GLOBALS['shaplatools'] = new ShaplaTools();
 function shaplatools_activation_deactivation() {
 
 	ShaplaTools_Slide::post_type();
-	ShaplaTools_Slide::taxonomy();
 	ShaplaTools_Portfolio::post_type();
 	ShaplaTools_Portfolio::taxonomy();
 	ShaplaTools_Team::post_type();
