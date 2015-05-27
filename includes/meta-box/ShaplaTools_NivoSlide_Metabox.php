@@ -259,5 +259,5 @@ function run_shaplatools_nivoslide_meta(){
 	if (is_admin())
 		ShaplaTools_NivoSlide_Metabox::get_instance();
 }
-run_shaplatools_nivoslide_meta();
+//run_shaplatools_nivoslide_meta();
 endif;
