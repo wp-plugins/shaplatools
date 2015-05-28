@@ -776,7 +776,7 @@ function shapla_image_slider( $atts, $content=null ){
 				
 				if(!$image) continue;
 				$src = wp_get_attachment_image_src( $image, $img_size );
-				$thumb = wp_get_attachment_image_src( $image, 'thumbnail' );
+				$thumb = wp_get_attachment_image_src( $image, array(50, 50) );
 				
 				$slider .= '<img src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" data-thumb="'.$thumb[0].'" alt="" title="">';
 			}
@@ -786,12 +786,12 @@ function shapla_image_slider( $atts, $content=null ){
 						jQuery(window).load(function($){
 							jQuery("#shapla-slide-'.$id.'").nivoSlider({
 								effect: "'.$transition.'",
-								slices: "'.$slices.'",
-								boxCols: "'.$boxcols.'",
-								boxRows: "'.$boxrows.'",
-								animSpeed: "'.$anim_speed.'",
-								pauseTime: "'.$pause_time.'",
-								startSlide: "'.$start.'",
+								slices: '.$slices.',
+								boxCols: '.$boxcols.',
+								boxRows: '.$boxrows.',
+								animSpeed: '.$anim_speed.',
+								pauseTime: '.$pause_time.',
+								startSlide: '.$start.',
 								directionNav: '.$dir_nav.',
 								controlNav: '.$ctrl_nav.',
 								controlNavThumbs: '.$thumb_nav.',
