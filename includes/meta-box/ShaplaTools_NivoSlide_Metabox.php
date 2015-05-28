@@ -102,7 +102,7 @@ class ShaplaTools_NivoSlide_Metabox {
 		            	'light' 	=> __('Light', 'shapla'),
 		            	'dark' 		=> __('Dark', 'shapla'),
 		            	'bar' 		=> __('Bar', 'shapla'),
-		            	'sunny'		=> __('Sunny', 'shapla'),
+		            	'smoothness'=> __('Smoothness', 'shapla'),
 		            )
 		        ),
 		        array(
