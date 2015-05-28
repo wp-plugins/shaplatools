@@ -757,12 +757,12 @@ function shapla_image_slider( $atts, $content=null ){
 	$pause_time    	= esc_attr( get_post_meta( $id, '_shapla_slide_pause_time', true ) );
 	$start    		= esc_attr( get_post_meta( $id, '_shapla_slide_start', true ) );
 
-	$thumb_nav    	= ( get_post_meta( $id, '_shapla_slide_thumb_nav', true ) != false ) ? 'true' : 'false';
-	$dir_nav    	= ( get_post_meta( $id, '_shapla_slide_dir_nav', true ) != false) ? 'true' : 'false';
-	$ctrl_nav    	= ( get_post_meta( $id, '_shapla_slide_ctrl_nav', true ) != false) ? 'true' : 'false';
-	$hover_pause    = ( get_post_meta( $id, '_shapla_slide_hover_pause', true ) != false) ? 'true' : 'false';
-	$transition_man = ( get_post_meta( $id, '_shapla_slide_transition_man', true ) != false) ? 'true' : 'false';
-	$start_rand    	= ( get_post_meta( $id, '_shapla_slide_start_rand', true ) != false) ? 'true' : 'false';
+	$thumb_nav    	= ( get_post_meta( $id, '_shapla_slide_thumb_nav', true ) == 'on' ) ? 'true' : 'false';
+	$dir_nav    	= ( get_post_meta( $id, '_shapla_slide_dir_nav', true ) == 'on') ? 'true' : 'false';
+	$ctrl_nav    	= ( get_post_meta( $id, '_shapla_slide_ctrl_nav', true ) == 'on') ? 'true' : 'false';
+	$hover_pause    = ( get_post_meta( $id, '_shapla_slide_hover_pause', true ) == 'on') ? 'true' : 'false';
+	$transition_man = ( get_post_meta( $id, '_shapla_slide_transition_man', true ) == 'on') ? 'true' : 'false';
+	$start_rand    	= ( get_post_meta( $id, '_shapla_slide_start_rand', true ) == 'on') ? 'true' : 'false';
 
 	$image_ids   	= explode(',', get_post_meta( $id, '_shapla_image_ids', true) );
 
