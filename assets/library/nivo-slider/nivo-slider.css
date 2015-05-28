@@ -538,7 +538,20 @@ Nivo Slider smoothness Theme
 }
 
 .theme-smoothness .nivo-controlNav {
-  display: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.theme-smoothness .nivo-controlNav .nivo-control {
+	display: inline;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.theme-smoothness .nivo-control > img {
+  width: 75px;
+  height: auto;
 }
 
 .theme-smoothness .nivo-directionNav a {
