@@ -538,19 +538,33 @@ Nivo Slider smoothness Theme
 }
 
 .theme-smoothness .nivo-controlNav {
-  display: block;
+  display: table;
   padding: 5px 0;
+  margin: 0 auto;
 }
-
-.theme-smoothness .nivo-controlNav .nivo-control {
+.theme-smoothness .nivo-controlNav a {
+	background: rgba(0, 0, 0, 0) url("l-bullets.png") no-repeat scroll 0 0;
+	border: 0 none;
+	display: inline-block;
+	height: 10px;
+	margin: 0 2px;
+	text-indent: -9999px;
+	width: 10px;
+}
+.theme-smoothness .nivo-controlNav a.active {
+	background-position:0 100%;
+}
+.theme-smoothness .nivo-controlNav.nivo-thumbs-enabled a {
 	display: inline;
 	float: left;
 	margin-right: 5px;
 	margin-bottom: 5px;
+	height: 50px;
+	width: auto;
 }
 
-.theme-smoothness .nivo-control > img {
-  width: 75px;
+.theme-smoothness .nivo-controlNav.nivo-thumbs-enabled a > img {
+  width: 50px;
   height: auto;
 }
 
@@ -572,23 +586,23 @@ Nivo Slider smoothness Theme
 
 .theme-smoothness a.nivo-prevNav {
 	left:15px;
-	background-color: #eeeeee;
+	background-color: #DDDDDD;
 	background-position: 2px -42px;
 }
 .theme-smoothness a.nivo-nextNav {
 	right:15px;
-	background-color: #eeeeee;
+	background-color: #DDDDDD;
 	background-position:2px 2px;
 }
 
 .theme-smoothness a.nivo-prevNav:hover {
 	left:15px;
-	background-color: #6DA67A;
+	background-color: #0681D3;
 	background-position: 2px -64px;
 }
 .theme-smoothness a.nivo-nextNav:hover {
 	right:15px;
-	background-color: #6DA67A;
+	background-color: #0681D3;
 	background-position:2px -20px;
 }
 
