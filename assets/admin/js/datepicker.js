@@ -17,12 +17,12 @@
 			$( '#end_date' ).datepicker( 'option', 'maxDate', selectedDate );
 		}
 	});
-	$( '#portfolio_date' ).datepicker({
+	$( '#_shapla_portfolio_date' ).datepicker({
 		dateFormat: 'MM dd, yy',
 		changeMonth: true,
 		changeYear: true,
 		onClose: function( selectedDate ){
-			$( '#portfolio_date' ).datepicker( 'option', 'maxDate', selectedDate );
+			$( '#_shapla_portfolio_date' ).datepicker( 'option', 'maxDate', selectedDate );
 		}
 	});
 
