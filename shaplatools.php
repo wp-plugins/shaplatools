@@ -97,29 +97,6 @@ class ShaplaTools {
 		add_filter( 'body_class', array( &$this, 'body_class' ) );
 
 		add_filter( 'contextual_help', array( &$this, 'contextual_help' ), 10, 3 );
-
-		/**
-		 * @deprecated 1.2
-		 */
-		if( current_theme_supports( 'shapla-portfolio' ) ) include_once( 'includes/post-type/portfolio.php' );
-		if( current_theme_supports( 'shapla-slides' ) ) include_once( 'includes/post-type/slides.php' );
-		if( current_theme_supports( 'shapla-team' ) ) include_once( 'includes/post-type/team.php' );
-		if( current_theme_supports( 'shapla-testimonials' ) ) include_once( 'includes/post-type/testimonials.php' );
-		if( current_theme_supports( 'shapla-event' ) ) include_once( 'includes/post-type/event.php' );
-		if( current_theme_supports( 'shapla-features' ) ) include_once( 'includes/post-type/features.php' );
-
-		/**
-		 * Include custom post type files, depending on which are supported.
-		 *
-		 * @since 1.2
-		 */
-		if ( current_theme_supports( 'post-type' ) ) {
-			$theme_supports = get_theme_support( 'post-type' );
-
-			foreach ( $theme_supports[0] as $support ) {
-				include_once( "includes/post-type/{$support}.php" );
-			}
-		}
 	}
 
 	/**
