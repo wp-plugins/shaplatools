@@ -49,7 +49,7 @@ class ShaplaTools_Portfolio_Metabox {
 		    'fields' => array(
 		        array(
 		            'name' => __('Project Images', 'shapla'),
-		            'desc' => __('Choose project images, ideal size 1170px x unlimited.', 'shapla'),
+		            'desc' => __('Choose project images.', 'shapla'),
 		            'id' => '_shapla_portfolio_images',
 		            'type' => 'images',
 		            'std' => __('Upload Images', 'shapla')
@@ -70,7 +70,7 @@ class ShaplaTools_Portfolio_Metabox {
 		        ),
 		        array(
 		            'name' => __('Project Date', 'shapla'),
-		            'desc' => __('Choose the project date in MM/DD/YYYY format. E.g. 12/23/2012', 'shapla'),
+		            'desc' => __('Choose the project date.', 'shapla'),
 		            'id' => '_shapla_portfolio_date',
 		            'type' => 'text',
 		            'std' => '',
@@ -101,15 +101,14 @@ class ShaplaTools_Portfolio_Metabox {
 
 	public function columns_content( $column_name ) {
 
-		$date = get_post_meta( get_the_ID(), '_shapla_portfolio_date', true );
+		$date = strtotime(get_post_meta( get_the_ID(), '_shapla_portfolio_date', true ));
 		$client = get_post_meta( get_the_ID(), '_shapla_portfolio_client', true );
 		$url = get_post_meta( get_the_ID(), '_shapla_portfolio_url', true );
 
 		if ( 'project_date' == $column_name ) {
 
 			if (! empty( $date )) {
-				//$portfolio_date = date_i18n( get_option( 'date_format' ), $date );
-				$portfolio_date = $date;
+				$portfolio_date = date_i18n( get_option( 'date_format' ), $date );
 			} else {
 				$portfolio_date = '';
 			}
@@ -141,9 +140,9 @@ class ShaplaTools_Portfolio_Metabox {
 	}
 }
 
-function run_shaplatools_portfolio_default_meta(){
+function run_shaplatools_portfolio_meta(){
 	if (is_admin())
 		ShaplaTools_Portfolio_Metabox::get_instance();
 }
-//run_shaplatools_portfolio_default_meta();
+//run_shaplatools_portfolio_meta();
 endif;
