@@ -17,7 +17,7 @@ class ShaplaTools_Gallery {
 
 	public function gallery_meta_box() {
 
-	    $screens = array('post', 'page', 'portfolio');
+	    $screens = array('post', 'page');
 
 	    foreach ( $screens as $screen) {
 
