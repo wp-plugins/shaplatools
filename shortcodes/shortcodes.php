@@ -828,10 +828,9 @@ function shapla_testimonials($posts_per_page = -1, $orderby = 'none'){
 	if ( $query->have_posts() ):
 		while ( $query->have_posts() ) : $query->the_post();
 
-		$testimonial = get_post_meta( get_the_ID(), '_testimonial', true );
-		$client_name = ( empty( $testimonial['client_name'] ) ) ? '' : $testimonial['client_name'];
-		$client_source = ( empty( $testimonial['source'] ) ) ? '' : $testimonial['source'];
-		$client_link = ( empty( $testimonial['link'] ) ) ? '' : $testimonial['link'];
+		$client_name 	= get_post_meta( get_the_ID(), '_shapla_testimonial_client', true );
+		$client_source 	= get_post_meta( get_the_ID(), '_shapla_testimonial_source', true );
+		$client_link 	= get_post_meta( get_the_ID(), '_shapla_testimonial_url', true );
 
 		?>
 			<!-- SINGLE FEEDBACK -->
@@ -850,11 +849,11 @@ function shapla_testimonials($posts_per_page = -1, $orderby = 'none'){
 				</div>
 				<div class="client-info">
 					<div class="client-name colored-text strong">
-						<?php echo $client_name; ?>
+						<?php echo (!empty($client_name)) ? $client_name : ''; ?>
 					</div>
 					<div class="company">
-						<a href="<?php echo $client_link; ?>" target="_blank">
-							<?php echo $client_source; ?>
+						<a href="<?php echo (!empty($client_link)) ? $client_link : '#'; ?>" target="_blank">
+							<?php echo (!empty($client_source)) ? $client_source : ''; ?>
 						</a>
 					</div>
 				</div>
@@ -874,6 +873,7 @@ if( ! function_exists('shapla_testimonials_slide' ) ) :
 
 function shapla_testimonials_slide($id = null, $items_desktop = 4, $items_tablet = 3, $items_tablet_small = 2, $items_mobile = 1, $orderby = 'none'){
 	ob_start();
+	$id = rand(0, 99);
 	?>
 	<div class="row">
 	    <div id="testimonials-<?php echo $id; ?>" class="owl-carousel">
@@ -901,7 +901,7 @@ function shapla_testimonials_slide($id = null, $items_desktop = 4, $items_tablet
     </script>
 	<?php
 	$feedback = ob_get_clean();
-	echo $feedback;
+	return $feedback;
 }
 
 endif;
