@@ -871,13 +871,13 @@ endif;
 
 if( ! function_exists('shapla_testimonials_slide' ) ) :
 
-function shapla_testimonials_slide($id = null, $items_desktop = 4, $items_tablet = 3, $items_tablet_small = 2, $items_mobile = 1, $orderby = 'none'){
+function shapla_testimonials_slide($id = null, $posts_per_page = -1, $items_desktop = 4, $items_tablet = 3, $items_tablet_small = 2, $items_mobile = 1, $orderby = 'none'){
 	ob_start();
 	$id = rand(0, 99);
 	?>
 	<div class="row">
 	    <div id="testimonials-<?php echo $id; ?>" class="owl-carousel">
-	    	<?php echo shapla_testimonials('', $orderby); ?>
+	    	<?php echo shapla_testimonials($posts_per_page, $orderby); ?>
 	    </div>
 	</div>
     <script type="text/javascript">
@@ -910,13 +910,14 @@ if( ! function_exists('shapla_teams' ) ) :
 function shapla_testimonials_slide_shortcode( $atts, $content = null ){
 	extract(shortcode_atts(array(
                         'id' => null,
+                        'posts_per_page' => -1,
                         'items_desktop' => 4,
                         'items_tablet' => 3,
                         'items_tablet_small' => 2,
                         'items_mobile' => 1
                 ), $atts));
 
-	return shapla_testimonials_slide($id, $items_desktop, $items_tablet, $items_tablet_small, $items_mobile );
+	return shapla_testimonials_slide($id, $posts_per_page, $items_desktop, $items_tablet, $items_tablet_small, $items_mobile );
 }
 endif;
 add_shortcode( 'shapla_testimonials_shortcode', 'shapla_testimonials_slide_shortcode' );

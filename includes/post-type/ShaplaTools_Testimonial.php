@@ -6,6 +6,7 @@ class ShaplaTools_Testimonial {
 
 	public function __construct(){
 		add_action( 'init', array ($this, 'post_type') );
+
 		add_action( 'widgets_init', 'register_shapla_testimonial_widgets' );
 	}
 
