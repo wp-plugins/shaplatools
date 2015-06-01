@@ -67,7 +67,7 @@ function run_shapla_retina_2x() {
 
     $options = get_option('shaplatools_options');
 
-    if( is_admin() && isset($options['retina_graphics']) && $options['retina_graphics'] == 'retina_yes' ){
+    if( is_admin() && isset($options['retina_graphics']) && $options['retina_graphics'] == 'on' ){
         
         $shapla_retina_2x = new Shapla_Retina_2x();
 
