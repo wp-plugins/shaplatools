@@ -223,6 +223,7 @@ class ShaplaTools {
 		include_once( 'includes/meta-box/ShaplaTools_Feature_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_Event_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_NivoSlide_Metabox.php' );
+		include_once( 'includes/meta-box/ShaplaTools_Testimonial_Metabox.php' );
 	}
 
 	/**
