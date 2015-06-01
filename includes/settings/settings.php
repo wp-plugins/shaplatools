@@ -239,12 +239,8 @@ function shaplatools_get_registered_settings() {
 					'id'   => 'retina_graphics',
 					'name' => __( 'Retina graphics for your website', 'shapla' ),
 					'desc' => __( 'To serve high-resolution images to devices with retina displays. This plugin will use open source script retina.js and for using retina.js script, a higher quality version of image will be created and stored with @2x added to the filename when an image is uploaded.', 'shapla' ),
-					'type' => 'select',
-					'std'  => 'retina_no',
-					'options' => array(
-						'retina_no' => "Do not enable retina graphics",
-						'retina_yes' => "Enable retina graphics",
-					)
+					'type' => 'checkbox',
+					'std'  => ''
 				),
 			)
 		),
@@ -481,7 +477,7 @@ function shaplatools_text_callback( $args ) {
 	$size = isset( $args['size'] ) && !is_null($args['size']) ? $args['size'] : 'regular';
 
 	$html = '<input type="text" class="' . $size . '-text" id="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']" name="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']" value="' . esc_attr( $value ) . '"/>';
-	$html .= '<label for="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+	$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 	echo $html;
 }
@@ -506,7 +502,7 @@ function shaplatools_url_callback( $args ) {
 	$size = isset( $args['size'] ) && !is_null($args['size']) ? $args['size'] : 'regular';
 
 	$html = '<input type="text" class="' . $size . '-text" id="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']" name="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']" value="' . esc_url( $value ) . '"/>';
-	$html .= '<label for="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+	$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 	echo $html;
 }
@@ -536,6 +532,24 @@ function shaplatools_select_callback( $args ) {
 	endforeach;
 
 	$html .= '</select>';
+	$html .= '<p class="description"> '  . $args['desc'] . '</p>';
+
+	echo $html;
+}
+function shaplatools_checkbox_callback( $args ) {
+	global $shaplatools_options;
+
+	if ( isset( $shaplatools_options[ $args['id'] ] ) ){
+		$value = $shaplatools_options[ $args['id'] ];
+	}
+	else{
+		$value = isset( $args['std'] ) ? $args['std'] : '';
+	}
+
+	$checked = checked( $value, 'on', false );
+
+	$html  = '<input type="checkbox" id="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']" name="shaplatools_settings_' . $args['section'] . '[' . $args['id'] . ']" value="on"'.$checked.'>';
+
 	$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 	echo $html;
