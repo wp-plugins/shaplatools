@@ -62,7 +62,7 @@ class ShaplaTools_Slide {
 			'public'              => false,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
-			'menu_position'       => 25,
+			'menu_position'       => 35,
 			'menu_icon'           => 'dashicons-images-alt2',
 			'show_in_admin_bar'   => false,
 			'show_in_nav_menus'   => false,

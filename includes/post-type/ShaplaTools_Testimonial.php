@@ -4,10 +4,31 @@ if( !class_exists('ShaplaTools_Testimonial') ):
 
 class ShaplaTools_Testimonial {
 
+	/**
+	 * Instance of this class.
+	 *
+	 * @var object
+	 */
+	protected static $instance = null;
+
 	public function __construct(){
 		add_action( 'init', array ($this, 'post_type') );
 
 		add_action( 'widgets_init', 'register_shapla_testimonial_widgets' );
+	}
+
+	/**
+	 * Return an instance of this class.
+	 *
+	 * @return object A single instance of this class.
+	 */
+	public static function get_instance() {
+		// If the single instance hasn't been set, set it now.
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -57,9 +78,7 @@ class ShaplaTools_Testimonial {
 }
 
 function run_shaplatools_testimonial(){
-	$shaplatools_testimonial_activated = true;
-	$shaplatools_testimonial = new ShaplaTools_Testimonial();
-	return $shaplatools_testimonial;
+	ShaplaTools_Testimonial::get_instance();
 }
 //run_shaplatools_testimonial();
 endif;

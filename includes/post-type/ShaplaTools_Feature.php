@@ -4,8 +4,29 @@ if( !class_exists('ShaplaTools_Feature') ):
 
 class ShaplaTools_Feature {
 
+	/**
+	 * Instance of this class.
+	 *
+	 * @var object
+	 */
+	protected static $instance = null;
+
 	public function __construct(){
 		add_action( 'init', array ($this, 'post_type') );
+	}
+
+	/**
+	 * Return an instance of this class.
+	 *
+	 * @return object A single instance of this class.
+	 */
+	public static function get_instance() {
+		// If the single instance hasn't been set, set it now.
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -54,8 +75,7 @@ class ShaplaTools_Feature {
 }
 
 function run_shaplatools_feature(){
-	$shaplatools_feature = new ShaplaTools_Feature();
-	return $shaplatools_feature;
+	ShaplaTools_Feature::get_instance();
 }
 //run_shaplatools_feature();
 endif;
