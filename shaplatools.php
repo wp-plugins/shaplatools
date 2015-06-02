@@ -167,13 +167,8 @@ class ShaplaTools {
 		include_once( 'includes/widgets/widget-fb_like_box.php' );
 		include_once( 'includes/widgets/widget-contact.php' );
 		include_once( 'includes/widgets/widget-testimonials.php' );
-
-		if (isset($shaplatools_event_activated) && $shaplatools_event_activated == true) {
-			include_once( 'includes/widgets/widget-event.php' );
-		}
-		if (isset($shaplatools_testimonial_activated) && $shaplatools_testimonial_activated == true) {
-			include_once( 'includes/widgets/widget-testimonials.php' );
-		}
+		include_once( 'includes/widgets/widget-event.php' );
+		include_once( 'includes/widgets/widget-testimonials.php' );
 
 		// Post Types
 		include_once( 'includes/post-type/ShaplaTools_Team.php' );
@@ -202,6 +197,7 @@ class ShaplaTools {
 		include_once( 'includes/meta-box/ShaplaTools_Event_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_NivoSlide_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_Testimonial_Metabox.php' );
+		include_once( 'includes/meta-box/ShaplaTools_Team_Metabox.php' );
 	}
 
 	/**
