@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ShaplaTools 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/shaplatools\n"
-"POT-Creation-Date: 2015-03-11 16:35:21+00:00\n"
+"POT-Creation-Date: 2015-06-03 14:54:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -99,370 +99,744 @@ msgstr ""
 msgid "Add to gallery"
 msgstr ""
 
-#: includes/post-type/event.php:4
-msgctxt "Post Type General Name"
-msgid "Events"
+#: includes/classes/ShaplaTools_Metaboxs.php:90
+msgid "Insert"
 msgstr ""
 
-#: includes/post-type/event.php:5
-msgctxt "Post Type Singular Name"
-msgid "Event"
+#: includes/classes/ShaplaTools_Metaboxs.php:130
+msgid "Create Featured Gallery"
 msgstr ""
 
-#: includes/post-type/event.php:6
-msgid "Event"
+#: includes/classes/ShaplaTools_Metaboxs.php:137
+#: includes/classes/ShaplaTools_Metaboxs.php:145
+msgid "Edit Featured Gallery"
 msgstr ""
 
-#: includes/post-type/event.php:7
-msgid "Parent Event:"
+#: includes/classes/ShaplaTools_Metaboxs.php:181
+msgid "Save Featured Gallery"
 msgstr ""
 
-#: includes/post-type/event.php:8
-msgid "All Events"
+#: includes/classes/ShaplaTools_Metaboxs.php:190
+msgid "Saving..."
 msgstr ""
 
-#: includes/post-type/event.php:9
-msgid "View Event"
+#: includes/classes/ShaplaTools_Metaboxs.php:253
+#: includes/classes/ShaplaTools_Metaboxs.php:255
+msgid "Edit Gallery"
 msgstr ""
 
-#: includes/post-type/event.php:10
-msgid "Add New Event"
+#: includes/classes/ShaplaTools_Typeahead.php:47
+msgid "Sorry. No results match your search."
 msgstr ""
 
-#: includes/post-type/event.php:11 includes/post-type/portfolio.php:10
-#: includes/post-type/slides.php:6 includes/post-type/team.php:6
-#: includes/post-type/testimonials.php:6
-msgid "Add New"
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:41
+msgid "Event Featured Image"
 msgstr ""
 
-#: includes/post-type/event.php:12
-msgid "Edit Event"
-msgstr ""
-
-#: includes/post-type/event.php:13
-msgid "Update Event"
-msgstr ""
-
-#: includes/post-type/event.php:14
-msgid "Search Event"
-msgstr ""
-
-#: includes/post-type/event.php:15
-msgid "Not found"
-msgstr ""
-
-#: includes/post-type/event.php:16
-msgid "Not found in Trash"
-msgstr ""
-
-#: includes/post-type/event.php:19
-msgid "event"
-msgstr ""
-
-#: includes/post-type/event.php:20
-msgid "A list of upcoming events"
-msgstr ""
-
-#: includes/post-type/event.php:43
-msgid "Upload Event Image"
-msgstr ""
-
-#: includes/post-type/event.php:50
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:50
 msgid "Event Info"
 msgstr ""
 
-#: includes/post-type/event.php:80
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:51
+msgid "Here you can customize your event details."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:57
+msgid "Event Images"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:58
+msgid "Choose event images."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:61
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:83
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:61
+msgid "Upload Images"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:64
 msgid "Event Start Date:"
 msgstr ""
 
-#: includes/post-type/event.php:84
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:65
+msgid "Choose the event start date"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:71
 msgid "Event End Date:"
 msgstr ""
 
-#: includes/post-type/event.php:88
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:72
+msgid "Choose the event end date"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:78
 msgid "Event Venue:"
 msgstr ""
 
-#: includes/post-type/event.php:144
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:79
+msgid "Enter event address"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:93
 msgid "Start Date"
 msgstr ""
 
-#: includes/post-type/event.php:145
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:94
 msgid "End Date"
 msgstr ""
 
-#: includes/post-type/event.php:146
+#: includes/meta-box/ShaplaTools_Event_Metabox.php:95
 msgid "Venue"
 msgstr ""
 
-#: includes/post-type/portfolio.php:8 includes/post-type/portfolio.php:9
-#: includes/settings/settings.php:99
-msgid "Portfolio"
+#: includes/meta-box/ShaplaTools_Feature_Metabox.php:41
+msgid "Extra Settings"
 msgstr ""
 
-#: includes/post-type/portfolio.php:11
-msgid "Add New Portfolio"
+#: includes/meta-box/ShaplaTools_Feature_Metabox.php:47
+msgid "Font Awesome Icon Class:"
 msgstr ""
 
-#: includes/post-type/portfolio.php:12
-msgid "Edit Portfolio"
+#: includes/meta-box/ShaplaTools_Feature_Metabox.php:48
+msgid ""
+"Add <a target=\"_blank\" href=\"http://fortawesome.github.io/Font-Awesome/"
+"icons/\">Font Awesome</a> Icon Class. Example: fa fa-wordpress"
 msgstr ""
 
-#: includes/post-type/portfolio.php:13
-msgid "New Portfolio"
-msgstr ""
-
-#: includes/post-type/portfolio.php:14
-msgid "View Portfolio"
-msgstr ""
-
-#: includes/post-type/portfolio.php:15
-msgid "Search Portfolio"
-msgstr ""
-
-#: includes/post-type/portfolio.php:16
-msgid "No Portfolios found"
-msgstr ""
-
-#: includes/post-type/portfolio.php:17
-msgid "No Portfolios found in trash"
-msgstr ""
-
-#: includes/post-type/portfolio.php:49 includes/post-type/portfolio.php:194
-msgid "Skills"
-msgstr ""
-
-#: includes/post-type/portfolio.php:50
-msgid "Skill"
-msgstr ""
-
-#: includes/post-type/portfolio.php:67 shaplatools.php:365
-msgid "Portfolio Settings"
-msgstr ""
-
-#: includes/post-type/portfolio.php:146
-msgid "Subtitle"
-msgstr ""
-
-#: includes/post-type/portfolio.php:151
-msgid "Enter the subtitle for this portfolio item."
-msgstr ""
-
-#: includes/post-type/portfolio.php:157
-msgid "Client Name"
-msgstr ""
-
-#: includes/post-type/portfolio.php:162
-msgid "Enter the client name of the project."
-msgstr ""
-
-#: includes/post-type/portfolio.php:168 includes/post-type/portfolio.php:197
-msgid "Project URL"
-msgstr ""
-
-#: includes/post-type/portfolio.php:173
-msgid "Enter the project URL"
-msgstr ""
-
-#: includes/post-type/portfolio.php:179 includes/post-type/portfolio.php:195
-msgid "Project Date"
-msgstr ""
-
-#: includes/post-type/portfolio.php:184
-msgid "Choose the project date."
-msgstr ""
-
-#: includes/post-type/portfolio.php:196
-msgid "Client"
-msgstr ""
-
-#: includes/post-type/slides.php:4
-msgid "Slides"
-msgstr ""
-
-#: includes/post-type/slides.php:5
-msgid "Slide"
-msgstr ""
-
-#: includes/post-type/slides.php:7
-msgid "Add New Slide"
-msgstr ""
-
-#: includes/post-type/slides.php:8
-msgid "Edit Slide"
-msgstr ""
-
-#: includes/post-type/slides.php:9
-msgid "New Slide"
-msgstr ""
-
-#: includes/post-type/slides.php:10
-msgid "View Slide"
-msgstr ""
-
-#: includes/post-type/slides.php:11
-msgid "Search Slide"
-msgstr ""
-
-#: includes/post-type/slides.php:12
-msgid "No Slides found"
-msgstr ""
-
-#: includes/post-type/slides.php:13
-msgid "No Slides found in trash"
-msgstr ""
-
-#: includes/post-type/slides.php:36
-msgid "Slide Categories"
-msgstr ""
-
-#: includes/post-type/slides.php:37
-msgid "Slide Category"
-msgstr ""
-
-#: includes/post-type/slides.php:50
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:72
 msgid "Slide Settings"
 msgstr ""
 
-#: includes/post-type/slides.php:127 includes/post-type/slides.php:196
-msgid "Slide Caption"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:79
+msgid "Slider Images"
 msgstr ""
 
-#: includes/post-type/slides.php:132
-msgid "Write slide caption."
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:80
+msgid "Choose slider images."
 msgstr ""
 
-#: includes/post-type/slides.php:138 includes/post-type/slides.php:197
-msgid "Slide Link"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:86
+msgid "Slider Image Size"
 msgstr ""
 
-#: includes/post-type/slides.php:143
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:87
 msgid ""
-"Write slide link URL. If you want to use current slide link, just leave it "
-"blank. If you do not want any link write (#) without bracket or write "
-"desired link.."
+"Select image size from available image size. Use full for original image "
+"size."
 msgstr ""
 
-#: includes/post-type/slides.php:149
-msgid "Slide Link Target"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:94
+msgid "Slider Theme"
 msgstr ""
 
-#: includes/post-type/slides.php:157
-msgid ""
-"Select Self to open the slide in the same frame as it was clicked (this is "
-"default) or select Blank open the slide in a new window or tab."
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:95
+msgid "Use a pre-built theme. To use your own theme select \"None\"."
 msgstr ""
 
-#: includes/post-type/slides.php:163 includes/post-type/slides.php:199
-msgid "Slide Transition"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:100
+#: includes/widgets/widget-testimonials.php:55 shortcodes/config.php:334
+#: shortcodes/config.php:440
+msgid "None"
 msgstr ""
 
-#: includes/post-type/slides.php:186
-msgid "Select transition for this slide."
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:101
+msgid "Default"
 msgstr ""
 
-#: includes/post-type/slides.php:198
-msgid "Link Target"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:102
+msgid "Light"
 msgstr ""
 
-#: includes/post-type/team.php:4 includes/post-type/team.php:5
-msgid "Team"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:103
+msgid "Dark"
 msgstr ""
 
-#: includes/post-type/team.php:7
-msgid "Add New Team Member"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:104
+msgid "Bar"
 msgstr ""
 
-#: includes/post-type/team.php:8
-msgid "Edit Team Member"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:105
+msgid "Smoothness"
 msgstr ""
 
-#: includes/post-type/team.php:9
-msgid "New Team Member"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:109
+msgid "Transition Effect"
 msgstr ""
 
-#: includes/post-type/team.php:10
-msgid "View Team Member"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:110
+msgid "Select transition for for this slide."
 msgstr ""
 
-#: includes/post-type/team.php:11
-msgid "Search Team Member"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:115
+msgid "random"
 msgstr ""
 
-#: includes/post-type/team.php:12
-msgid "No Team Member found"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:116
+msgid "sliceDown"
 msgstr ""
 
-#: includes/post-type/team.php:13
-msgid "No Team Member in trash"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:117
+msgid "sliceDownLeft"
 msgstr ""
 
-#: includes/post-type/team.php:38
-msgid "Team Member Details"
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:118
+msgid "sliceUp"
 msgstr ""
 
-#: includes/post-type/team.php:52
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:119
+msgid "sliceUpLeft"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:120
+msgid "sliceUpDown"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:121
+msgid "sliceUpDownLeft"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:122
+msgid "fold"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:123
+msgid "fade"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:124
+msgid "slideInRight"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:125
+msgid "slideInLeft"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:126
+msgid "boxRandom"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:127
+msgid "boxRain"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:128
+msgid "boxRainReverse"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:129
+msgid "boxRainGrow"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:130
+msgid "boxRainGrowReverse"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:134
+msgid "Slices"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:135
+msgid "The number of slices to use in the \"Slice\" transitions (eg 15)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:141
+msgid "boxCols"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:142
+msgid "The number of columns to use in the \"Box\" transitions (eg 8)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:148
+msgid "boxRows"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:149
+msgid "The number of rows to use in the \"Box\" transitions (eg 4)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:155
+msgid "Animation Speed"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:156
+msgid "The speed of the transition animation in milliseconds (eg 500)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:162
+msgid "Pause Time"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:163
+msgid "The amount of time to show each slide in milliseconds (eg 3000)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:169
+msgid "Start Slide"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:170
+msgid "Set which slide the slider starts from (zero based index: usually 0)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:176
+msgid "Enable Thumbnail Navigation"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:183
+msgid "Enable Direction Navigation"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:184
+msgid "Prev & Next arrows"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:190
+msgid "Enable Control Navigation"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:191
+msgid "eg 1,2,3..."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:197
+msgid "Pause the Slider on Hover"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:204
+msgid "Manual Transitions"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:205
+msgid "Slider is always paused"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:211
+msgid "Random Start Slide"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:212
+msgid "Overrides Start Slide value"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:226
+msgid "Slide ID"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:227
+msgid "Shortcode"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_NivoSlide_Metabox.php:228
+msgid "Images"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:41
+msgid "Portfolio Featured Image"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:50 shaplatools.php:486
+msgid "Portfolio Settings"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:51
+msgid "Here you can customize your project details."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:57
+msgid "Project Images"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:58
+msgid "Choose project images."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:64
+msgid "Subtitle"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:65
+msgid "Enter the subtitle for this portfolio item"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:71
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:57
+msgid "Client Name"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:72
+msgid "Enter the client name of the project"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:78
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:101
+msgid "Project Date"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:79
+msgid "Choose the project date."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:85
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:103
+msgid "Project URL"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:86
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:72
+msgid "Enter the project URL"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:100
+#: includes/post-type/ShaplaTools_Portfolio.php:81
+msgid "Skills"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Portfolio_Metabox.php:102
+msgid "Client"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:41
 msgid "Team Member Image"
 msgstr ""
 
-#: includes/post-type/team.php:129
-msgid "Team Member Name"
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:50
+msgid "Team Member Details"
 msgstr ""
 
-#: includes/post-type/team.php:139
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:51
+msgid "Here you can customize your team members details."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:57
 msgid "Team Member Designation"
 msgstr ""
 
-#: includes/post-type/team.php:149
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:58
+msgid "Enter team member designation."
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:64
 msgid "Member Short Description"
 msgstr ""
 
-#: includes/post-type/testimonials.php:4
-msgid "Testimonials"
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:65
+msgid "Enter team member short description."
 msgstr ""
 
-#: includes/post-type/testimonials.php:5
-msgid "Testimonial"
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:79
+msgid "Team Member Name"
 msgstr ""
 
-#: includes/post-type/testimonials.php:7
-msgid "Add New Testimonial"
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:80
+msgid "Designation"
 msgstr ""
 
-#: includes/post-type/testimonials.php:8
-msgid "Edit Testimonial"
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:81
+msgid "Short Description"
 msgstr ""
 
-#: includes/post-type/testimonials.php:9
-msgid "New Testimonial"
+#: includes/meta-box/ShaplaTools_Team_Metabox.php:82
+msgid "Member Image"
 msgstr ""
 
-#: includes/post-type/testimonials.php:10
-msgid "View Testimonial"
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:41
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:91
+msgid "Client's Avatar"
 msgstr ""
 
-#: includes/post-type/testimonials.php:11
-msgid "Search Testimonials"
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:50
+msgid "Testimonial Details"
 msgstr ""
 
-#: includes/post-type/testimonials.php:12
-msgid "No Testimonials found"
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:51
+msgid "Here you can customize your testimonial details."
 msgstr ""
 
-#: includes/post-type/testimonials.php:13
-msgid "No Testimonials in trash"
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:58
+msgid "Enter the client name"
 msgstr ""
 
-#: includes/post-type/testimonials.php:62
-msgid "Client's Name (optional)"
-msgstr ""
-
-#: includes/post-type/testimonials.php:72
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:64
 msgid "Business/Site Name (optional)"
 msgstr ""
 
-#: includes/post-type/testimonials.php:82
-msgid "Link (optional)"
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:65
+msgid "Enter the client business/site name"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:71
+msgid "Business/Site Link (optional)"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:86
+#: includes/widgets/widget-twitter.php:182
+msgid "Title"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:87
+msgid "Testimonial"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:88
+msgid "Client's Name"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:89
+msgid "Business/Site"
+msgstr ""
+
+#: includes/meta-box/ShaplaTools_Testimonial_Metabox.php:90
+msgid "Link"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:40
+msgctxt "Post Type General Name"
+msgid "Features"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:41
+msgctxt "Post Type Singular Name"
+msgid "Feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:42
+msgid "Features"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:43
+msgid "Parent Feature:"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:44
+msgid "All Features"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:45
+msgid "View Feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:46
+msgid "Add New Feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:47
+#: includes/post-type/ShaplaTools_Portfolio.php:44
+#: includes/post-type/ShaplaTools_Slide.php:47
+#: includes/post-type/ShaplaTools_Team.php:42
+#: includes/post-type/ShaplaTools_Testimonial.php:48
+msgid "Add New"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:48
+msgid "Edit Feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:49
+msgid "Update Feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:50
+msgid "Search Feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:51
+#: includes/post-type/ShaplaTools_Slide.php:53
+#: includes/post-type/ShaplaTools_Testimonial.php:52
+msgid "Not found"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:52
+#: includes/post-type/ShaplaTools_Slide.php:54
+#: includes/post-type/ShaplaTools_Testimonial.php:53
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:55
+#: includes/settings/settings.php:470
+msgid "feature"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Feature.php:56
+msgid "Add features"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:42
+#: includes/post-type/ShaplaTools_Portfolio.php:43
+msgid "Portfolio"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:45
+msgid "Add New Portfolio"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:46
+msgid "Edit Portfolio"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:47
+msgid "New Portfolio"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:48
+msgid "View Portfolio"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:49
+msgid "Search Portfolio"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:50
+msgid "No Portfolios found"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:51
+msgid "No Portfolios found in trash"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Portfolio.php:82
+msgid "Skill"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:40
+msgctxt "Post Type General Name"
+msgid "Slides"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:41
+msgctxt "Post Type Singular Name"
+msgid "Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:42
+#: includes/post-type/ShaplaTools_Slide.php:43
+msgid "Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:44
+msgid "Parent Slide:"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:45
+msgid "All Slides"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:46
+msgid "Add New Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:48
+msgid "New Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:49
+msgid "Edit Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:50
+msgid "Update Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:51
+msgid "View Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:52
+msgid "Search Slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:57
+#: includes/settings/settings.php:442
+msgid "slide"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Slide.php:58
+msgid "Create slide for your site"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:40
+#: includes/post-type/ShaplaTools_Team.php:41
+msgid "Team"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:43
+msgid "Add New Team Member"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:44
+msgid "Edit Team Member"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:45
+msgid "New Team Member"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:46
+msgid "View Team Member"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:47
+msgid "Search Team Member"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:48
+msgid "No Team Member found"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Team.php:49
+msgid "No Team Member in trash"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:41
+msgctxt "Post Type General Name"
+msgid "Testimonials"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:42
+msgctxt "Post Type Singular Name"
+msgid "Testimonial"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:43
+msgid "Testimonials"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:44
+msgid "Parent Testimonial:"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:45
+msgid "All Testimonials"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:46
+msgid "View Testimonial"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:47
+msgid "Add New Testimonial"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:49
+msgid "Edit Testimonial"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:50
+msgid "Update Testimonial"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:51
+msgid "Search Testimonial"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:56
+msgid "testimonials"
+msgstr ""
+
+#: includes/post-type/ShaplaTools_Testimonial.php:57
+msgid "Post Type Description"
 msgstr ""
 
 #: includes/settings/settings.php:97
@@ -473,6 +847,10 @@ msgstr ""
 msgid "Social"
 msgstr ""
 
+#: includes/settings/settings.php:99
+msgid "Custom Post Types"
+msgstr ""
+
 #: includes/settings/settings.php:155
 msgid "Settings Updated"
 msgstr ""
@@ -481,11 +859,12 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: includes/settings/settings.php:217
+#: includes/settings/settings.php:217 includes/settings/settings.php:437
+#: includes/settings/settings.php:478
 msgid "Configure the general settings"
 msgstr ""
 
-#: includes/settings/settings.php:222 shaplatools.php:358
+#: includes/settings/settings.php:222 shaplatools.php:479
 msgid "Google Analytics ID"
 msgstr ""
 
@@ -493,25 +872,198 @@ msgstr ""
 msgid "Enter Google Analytics ID like (UA-XXXXX-X)"
 msgstr ""
 
-#: includes/settings/settings.php:417
-msgid "Portfolio Slug"
+#: includes/settings/settings.php:228
+msgid "Autocomplete search form"
 msgstr ""
 
-#: includes/settings/settings.php:418
-msgid "Enter the slug of custom post type <strong>portfolio</strong>."
+#: includes/settings/settings.php:229
+msgid "Enable autocomplete search with twitter typeahead"
 msgstr ""
 
-#: includes/settings/settings.php:424
-msgid "Skills Slug"
+#: includes/settings/settings.php:240
+msgid "Retina graphics for your website"
 msgstr ""
 
-#: includes/settings/settings.php:425
-msgid "Enter the slug of custom post taxonomy <strong>skill</strong>."
+#: includes/settings/settings.php:241
+msgid ""
+"To serve high-resolution images to devices with retina displays. This plugin "
+"will use open source script retina.js and for using retina.js script, a "
+"higher quality version of image will be created and stored with @2x added to "
+"the filename when an image is uploaded."
 msgstr ""
 
-#: includes/settings/settings.php:438
+#: includes/settings/settings.php:436
+msgid "Custom Post Types Settings"
+msgstr ""
+
+#: includes/settings/settings.php:443
+msgid "Check to enable custom post type <strong>slide</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:449
+msgid "portfolio"
+msgstr ""
+
+#: includes/settings/settings.php:450
+msgid "Check to enable custom post type <strong>portfolio</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:456
+msgid "team"
+msgstr ""
+
+#: includes/settings/settings.php:457
+msgid "Check to enable custom post type <strong>team</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:463
+msgid "testimonial"
+msgstr ""
+
+#: includes/settings/settings.php:464
+msgid "Check to enable custom post type <strong>testimonial</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:471
+msgid "Check to enable custom post type <strong>feature</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:477
+msgid "Default Meta Box Settings"
+msgstr ""
+
+#: includes/settings/settings.php:483
+msgid "slide default meta"
+msgstr ""
+
+#: includes/settings/settings.php:484
+msgid ""
+"Check to enable default meta for custom post type <strong>slide</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:490
+msgid "portfolio default meta"
+msgstr ""
+
+#: includes/settings/settings.php:491
+msgid ""
+"Check to enable default meta for custom post type <strong>portfolio</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:497
+msgid "team default meta"
+msgstr ""
+
+#: includes/settings/settings.php:498
+msgid ""
+"Check to enable default meta for custom post type <strong>team</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:504
+msgid "testimonial default meta"
+msgstr ""
+
+#: includes/settings/settings.php:505
+msgid ""
+"Check to enable default meta for custom post type <strong>testimonial</"
+"strong>."
+msgstr ""
+
+#: includes/settings/settings.php:511
+msgid "feature default meta"
+msgstr ""
+
+#: includes/settings/settings.php:512
+msgid ""
+"Check to enable default meta for custom post type <strong>feature</strong>."
+msgstr ""
+
+#: includes/settings/settings.php:525
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:10
+msgid "Shapla Contact Form"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:11
+msgid "A simple AJAX contact form."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:36
+msgid "NAME"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:37
+msgid "EMAIL"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:38
+msgid "MESSAGE"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:42
+msgid "SEND MESSAGE"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:95
+msgid "Your cannot resend message within "
+msgstr ""
+
+#: includes/widgets/widget-contact.php:95
+msgid " minute(s)."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:101
+msgid "Your name should be at least 3 characters."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:107
+msgid "You entered an invalid email address."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:113
+msgid "Your message should be at least 15 characters."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:122
+msgid "Someone sent you a message from "
+msgstr ""
+
+#: includes/widgets/widget-contact.php:126
+msgid "This mail is sent via contact form "
+msgstr ""
+
+#: includes/widgets/widget-contact.php:138
+msgid "Thanks, your email was sent successfully."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:142
+msgid "Please check the error bellow."
+msgstr ""
+
+#: includes/widgets/widget-contact.php:166
+msgid "Send a Direct Message"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:170
+#: includes/widgets/widget-dribbble.php:88
+#: includes/widgets/widget-fb_like_box.php:121
+#: includes/widgets/widget-flickr.php:80
+#: includes/widgets/widget-instagram.php:75
+#: includes/widgets/widget-testimonials.php:46
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:174
+msgid "Contact Form Email Address:"
+msgstr ""
+
+#: includes/widgets/widget-contact.php:176
+msgid ""
+"Enter the email address where you would like to receive emails from the "
+"contact form."
 msgstr ""
 
 #: includes/widgets/widget-dribbble.php:8
@@ -530,13 +1082,6 @@ msgstr ""
 msgid "Dribbble Shots"
 msgstr ""
 
-#: includes/widgets/widget-dribbble.php:88
-#: includes/widgets/widget-fb_like_box.php:121
-#: includes/widgets/widget-flickr.php:80
-#: includes/widgets/widget-instagram.php:75
-msgid "Title:"
-msgstr ""
-
 #: includes/widgets/widget-dribbble.php:93
 #: includes/widgets/widget-instagram.php:80
 msgid "Username:"
@@ -548,10 +1093,6 @@ msgstr ""
 
 #: includes/widgets/widget-dribbble.php:104
 msgid "Open links in new window?"
-msgstr ""
-
-#: includes/widgets/widget-event.php:46
-msgid "View All Events"
 msgstr ""
 
 #: includes/widgets/widget-fb_like_box.php:11
@@ -694,6 +1235,38 @@ msgstr ""
 msgid "Instagram has returned invalid data."
 msgstr ""
 
+#: includes/widgets/widget-testimonials.php:9
+msgid "Shapla Testimonials"
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:10
+msgid "Display client testimonials."
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:49
+msgid "Number of Testimonials:"
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:53
+msgid "Order By"
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:56
+msgid "ID"
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:57
+msgid "Date"
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:58
+msgid "Modified"
+msgstr ""
+
+#: includes/widgets/widget-testimonials.php:59
+msgid "Random"
+msgstr ""
+
 #: includes/widgets/widget-twitter.php:13
 msgid "Shapla Latest Tweets"
 msgstr ""
@@ -702,126 +1275,121 @@ msgstr ""
 msgid "Displays your latest tweets from Twitter."
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:41
+#: includes/widgets/widget-twitter.php:71
 msgid "right now"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:46
+#: includes/widgets/widget-twitter.php:76
 msgid "seconds ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:51
+#: includes/widgets/widget-twitter.php:81
 msgid "about 1 minute ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:56
+#: includes/widgets/widget-twitter.php:86
 msgid "minutes ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:61
+#: includes/widgets/widget-twitter.php:91
 msgid "about 1 hour ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:66
+#: includes/widgets/widget-twitter.php:96
 msgid "hours ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:71
+#: includes/widgets/widget-twitter.php:101
 msgid "yesterday"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:76
+#: includes/widgets/widget-twitter.php:106
 msgid "days ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:80
+#: includes/widgets/widget-twitter.php:110
 msgid "over a year ago"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:105
-msgid "Please fill all widget settings."
+#: includes/widgets/widget-twitter.php:158
+msgid "Error fetching feeds. Please verify the Twitter settings in the widget."
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:120
-msgid "Couldn't retrieve tweets! Wrong username!"
-msgstr ""
-
-#: includes/widgets/widget-twitter.php:128
-msgid ""
-"You will need to regenerate it <a href=\"//dev.twitter.com/apps\">here</a>."
-msgstr ""
-
-#: includes/widgets/widget-twitter.php:217
+#: includes/widgets/widget-twitter.php:172
 msgid "Latest Tweets"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:227
-msgid "Title"
-msgstr ""
-
-#: includes/widgets/widget-twitter.php:233
+#: includes/widgets/widget-twitter.php:188
 msgid "Twitter Username (without @)"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:239
+#: includes/widgets/widget-twitter.php:194
 msgid "Number of Tweets to Display"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:245
+#: includes/widgets/widget-twitter.php:200
 msgid "Consumer Key"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:252
+#: includes/widgets/widget-twitter.php:203
+msgid ""
+"Don't know your Consumer Key, Consumer Secret, Access Token and Access Token "
+"Secret? <a target=\"_blank\" href=\"http://sayful1.wordpress.com/2014/06/14/"
+"how-to-generate-twitter-api-key-api-secret-access-token-access-token-secret/"
+"\">Click here to get help.</a>"
+msgstr ""
+
+#: includes/widgets/widget-twitter.php:207
 msgid "Consumer Secret"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:258
+#: includes/widgets/widget-twitter.php:213
 msgid "Access Token"
 msgstr ""
 
-#: includes/widgets/widget-twitter.php:264
+#: includes/widgets/widget-twitter.php:219
 msgid "Access Token Secret"
 msgstr ""
 
-#: shaplatools.php:80
+#: shaplatools.php:82
 msgid "Settings"
 msgstr ""
 
-#: shaplatools.php:130
+#: shaplatools.php:110
 msgid "ShaplaTools Options"
 msgstr ""
 
 #. #-#-#-#-#  plugin.pot (ShaplaTools 1.0.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: shaplatools.php:130
+#: shaplatools.php:110
 msgid "ShaplaTools"
 msgstr ""
 
-#: shaplatools.php:345
+#: shaplatools.php:466
 msgid "For more information:"
 msgstr ""
 
-#: shaplatools.php:346
+#: shaplatools.php:467
 msgid ""
 "Visit the <a href=\"%s\" target=\"_blank\">documentation</a> on the "
 "WordPress Directory."
 msgstr ""
 
-#: shaplatools.php:348
+#: shaplatools.php:469
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Post an issue</a> on <a href=\"%s\" target="
 "\"_blank\">Support Forum</a>."
 msgstr ""
 
-#: shaplatools.php:356
+#: shaplatools.php:477
 msgid "ShaplaTools General Settings"
 msgstr ""
 
-#: shaplatools.php:357
+#: shaplatools.php:478
 msgid "Here you can find how to configure general options of this plugin."
 msgstr ""
 
-#: shaplatools.php:359
+#: shaplatools.php:480
 msgid ""
 "In order to use Google Analytics service, go to <a href=\"%s\" target="
 "\"_blank\">Google Analytics</a> and click Access Google Analytics and "
@@ -830,49 +1398,49 @@ msgid ""
 "and click save."
 msgstr ""
 
-#: shaplatools.php:366
+#: shaplatools.php:487
 msgid ""
 "You can use the following settigns to control the slug/taxonomies for custom "
 "post type portfolio and skills."
 msgstr ""
 
-#: shaplatools.php:367
+#: shaplatools.php:488
 msgid ""
 "<strong>Portfolio Slug</strong> - This settings is used to set the slug of "
 "custom post type &lsquo;portfolio&rsquo;."
 msgstr ""
 
-#: shaplatools.php:368
+#: shaplatools.php:489
 msgid ""
 "<strong>Skills Slug</strong> - This settings is used to set the slug of "
 "custom post taxonomy &lsquo;skill&rsquo;."
 msgstr ""
 
-#: shaplatools.php:374
+#: shaplatools.php:495
 msgid "Using Social Icons"
 msgstr ""
 
-#: shaplatools.php:375
+#: shaplatools.php:496
 msgid "Using Social Icons Shortcode"
 msgstr ""
 
-#: shaplatools.php:376
+#: shaplatools.php:497
 msgid "To use the social icon use the following shortcode:"
 msgstr ""
 
-#: shaplatools.php:377
+#: shaplatools.php:498
 msgid "It would display all social icons with non-empty profile URLs."
 msgstr ""
 
-#: shaplatools.php:378
+#: shaplatools.php:499
 msgid "or you can pass specific ids."
 msgstr ""
 
-#: shaplatools.php:379
+#: shaplatools.php:500
 msgid "Using Different Styled Icons"
 msgstr ""
 
-#: shaplatools.php:380
+#: shaplatools.php:501
 msgid ""
 "You can use the social icons in two different styles: normal and square. "
 "Just pass the <code>style</code> argument in sidebar.<br>E.g.: <code>"
@@ -1353,10 +1921,6 @@ msgstr ""
 msgid "Choose Image Alignment"
 msgstr ""
 
-#: shortcodes/config.php:334 shortcodes/config.php:440
-msgid "None"
-msgstr ""
-
 #: shortcodes/config.php:335
 msgid "Left"
 msgstr ""
@@ -1525,6 +2089,14 @@ msgstr ""
 
 #: shortcodes/shortcodes.php:298
 msgid "Title Goes Here"
+msgstr ""
+
+#: shortcodes/shortcodes.php:666
+msgid "All"
+msgstr ""
+
+#: shortcodes/shortcodes.php:725
+msgid "It looks like nothing was found at this location."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
