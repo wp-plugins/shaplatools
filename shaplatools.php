@@ -67,6 +67,7 @@ class ShaplaTools {
 
 		// Include required files
 		$this->includes();
+		$this->shapla_load_post_types();
 	}
 
 	/**
@@ -107,6 +108,27 @@ class ShaplaTools {
 	 */
 	function shapla_add_options_page() {
 		add_options_page( __( 'ShaplaTools Options', 'shapla' ), __( 'ShaplaTools', 'shapla' ), 'manage_options', 'shaplatools', 'shaplatools_options_page' );
+	}
+
+	/**
+	 * Setup post types.
+	 *
+	 * @return void
+	 */
+	function shapla_load_post_types() {
+		$this->options = get_option('shaplatools_options');
+
+		if( isset($this->options['team']) && $this->options['team'] == 'on' ) run_shaplatools_team();
+		if( isset($this->options['slide']) && $this->options['slide'] == 'on' ) run_shaplatools_slide();
+		if( isset($this->options['feature']) && $this->options['feature'] == 'on' ) run_shaplatools_feature();
+		if( isset($this->options['portfolio']) && $this->options['portfolio'] == 'on' ) run_shaplatools_portfolio();
+		if( isset($this->options['testimonial']) && $this->options['testimonial'] == 'on' ) run_shaplatools_testimonial();
+
+		if( isset($this->options['team_meta']) && $this->options['team_meta'] == 'on' ) run_shaplatools_team_meta();
+		if( isset($this->options['slide_meta']) && $this->options['slide_meta'] == 'on' ) run_shaplatools_nivoslide_meta();
+		if( isset($this->options['feature_meta']) && $this->options['feature_meta'] == 'on' ) run_shaplatools_feature_meta();
+		if( isset($this->options['portfolio_meta']) && $this->options['portfolio_meta'] == 'on' ) run_shaplatools_portfolio_meta();
+		if( isset($this->options['testimonial_meta']) && $this->options['testimonial_meta'] == 'on' ) run_shaplatools_testimonial_meta();
 	}
 
 	/**

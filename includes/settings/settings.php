@@ -96,7 +96,7 @@ function shaplatools_get_settings_tabs() {
 	$tabs              = array();
 	$tabs['general']   = __( 'General', 'shapla' );
 	$tabs['social']    = __( 'Social', 'shapla' );
-	$tabs['portfolio'] = __( 'Portfolio', 'shapla' );
+	$tabs['post_type'] = __( 'Custom Post Types', 'shapla' );
 
 	return apply_filters( 'shaplatools_settings_tabs', $tabs );
 }
@@ -429,21 +429,89 @@ function shaplatools_get_registered_settings() {
 				),
 			)
 		),
-		'portfolio' => apply_filters( 'shaplatools_portfolio_settings',
+		'post_type' => apply_filters( 'shaplatools_post_type_settings',
 			array(
-				'portfolio_slug' => array(
-					'id'   => 'portfolio_slug',
-					'name' => __( 'Portfolio Slug', 'shapla' ),
-					'desc' => __( 'Enter the slug of custom post type <strong>portfolio</strong>.', 'shapla' ),
-					'type' => 'text',
-					'std'  => 'portfolio'
+				'post_type_settings' => array(
+					'id'   => 'post_type_settings',
+					'name' => '<strong>' . __( 'Custom Post Types Settings', 'shapla' ) . '</strong>',
+					'desc' => __( 'Configure the general settings', 'shapla' ),
+					'type' => 'header'
 				),
-				'skills_slug' => array(
-					'id'   => 'skills_slug',
-					'name' => __( 'Skills Slug', 'shapla' ),
-					'desc' => __( 'Enter the slug of custom post taxonomy <strong>skill</strong>.', 'shapla' ),
-					'type' => 'text',
-					'std'  => 'skill',
+				'slide' => array(
+					'id'   => 'slide',
+					'name' => __( 'slide', 'shapla' ),
+					'desc' => __( 'Check to enable custom post type <strong>slide</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => ''
+				),
+				'portfolio' => array(
+					'id'   => 'portfolio',
+					'name' => __( 'portfolio', 'shapla' ),
+					'desc' => __( 'Check to enable custom post type <strong>portfolio</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'team' => array(
+					'id'   => 'team',
+					'name' => __( 'team', 'shapla' ),
+					'desc' => __( 'Check to enable custom post type <strong>team</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'testimonial' => array(
+					'id'   => 'testimonial',
+					'name' => __( 'testimonial', 'shapla' ),
+					'desc' => __( 'Check to enable custom post type <strong>testimonial</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'feature' => array(
+					'id'   => 'feature',
+					'name' => __( 'feature', 'shapla' ),
+					'desc' => __( 'Check to enable custom post type <strong>feature</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'meta_box_settings' => array(
+					'id'   => 'meta_box_settings',
+					'name' => '<strong>' . __( 'Default Meta Box Settings', 'shapla' ) . '</strong>',
+					'desc' => __( 'Configure the general settings', 'shapla' ),
+					'type' => 'header'
+				),
+				'slide_meta' => array(
+					'id'   => 'slide_meta',
+					'name' => __( 'slide default meta', 'shapla' ),
+					'desc' => __( 'Check to enable default meta for custom post type <strong>slide</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => ''
+				),
+				'portfolio_meta' => array(
+					'id'   => 'portfolio_meta',
+					'name' => __( 'portfolio default meta', 'shapla' ),
+					'desc' => __( 'Check to enable default meta for custom post type <strong>portfolio</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'team_meta' => array(
+					'id'   => 'team_meta',
+					'name' => __( 'team default meta', 'shapla' ),
+					'desc' => __( 'Check to enable default meta for custom post type <strong>team</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'testimonial_meta' => array(
+					'id'   => 'testimonial_meta',
+					'name' => __( 'testimonial default meta', 'shapla' ),
+					'desc' => __( 'Check to enable default meta for custom post type <strong>testimonial</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
+				),
+				'feature_meta' => array(
+					'id'   => 'feature_meta',
+					'name' => __( 'feature default meta', 'shapla' ),
+					'desc' => __( 'Check to enable default meta for custom post type <strong>feature</strong>.', 'shapla' ),
+					'type' => 'checkbox',
+					'std'  => '',
 				)
 			)
 		)
