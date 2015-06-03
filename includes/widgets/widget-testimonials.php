@@ -59,6 +59,6 @@ class Shapla_Testimonial extends WP_Widget {
 	}
 }
 // Register the Widget
-function register_shapla_testimonial_widgets() {
+function shaplatools_register_widget_testimonial() {
 	register_widget( 'Shapla_Testimonial' );
 }

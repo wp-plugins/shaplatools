@@ -13,6 +13,7 @@ class ShaplaTools_Event {
 
 	public function __construct(){
 		add_action( 'init', array ($this, 'post_type') );
+		add_action( 'widgets_init', 'shaplatools_register_widget_event' );
 	}
 
 	/**
