@@ -22,7 +22,6 @@ ShaplaTools is a powerful plugin to extend functionality to your WordPress theme
 	<li>Team</li>
 	<li>Features</li>
 </ul>
-To include custom post types at your theme read the <a href="https://wordpress.org/plugins/shaplatools/faq/">FAQ</a>
 
 = Widgets =
 
@@ -79,17 +78,6 @@ Installing the plugins is just like installing other WordPress plugins. If you d
 
 == Frequently Asked Questions ==
 
-= How can I add Custom Post Types in my theme? =
-
-To add Custom Post Types in your theme go to your theme functions.php file and add the following code:
-<pre><code>
-add_theme_support( 'shapla-portfolio' );
-add_theme_support( 'shapla-testimonials' );
-add_theme_support( 'shapla-event' );
-add_theme_support( 'shapla-slides' );
-add_theme_support( 'shapla-team' );
-add_theme_support( 'shapla-features' );
-</code></pre>
 
 == Changelog ==
 
@@ -97,10 +85,6 @@ add_theme_support( 'shapla-features' );
 
 * Initial release 
 
-
-== CREDIT ==
-
-1.This plugin was developed by [Sayful Islam](http://sayful.net)
 
 == CONTACT ==
 

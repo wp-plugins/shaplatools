@@ -5,7 +5,7 @@
  * Description:       ShaplaTools is a powerful plugin to extend functionality to your WordPress themes. 
  * Version:           1.0.0
  * Author:            Sayful Islam
- * Author URI:        http://sayful.net
+ * Author URI:        https://profiles.wordpress.org/sayful/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       shapla
