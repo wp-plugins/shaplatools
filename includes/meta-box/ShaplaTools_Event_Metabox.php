@@ -16,6 +16,7 @@ class ShaplaTools_Event_Metabox {
 	 */
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'event_image' ) );
 
 		add_filter( 'manage_edit-event_columns', array ($this, 'columns_head') );
 		add_action( 'manage_event_posts_custom_column', array ($this, 'columns_content') );
@@ -33,6 +34,11 @@ class ShaplaTools_Event_Metabox {
 		}
 
 		return self::$instance;
+	}
+
+	public function event_image(){
+		remove_meta_box( 'postimagediv', 'event', 'side' );
+		add_meta_box('postimagediv', __('Event Featured Image', 'shapla'), 'post_thumbnail_meta_box', 'event', 'side', 'low'		);
 	}
 
 	/**
@@ -93,20 +99,20 @@ class ShaplaTools_Event_Metabox {
 
 	public function columns_content( $column_name ) {
 
-		$start_date = get_post_meta( get_the_ID(), '_shapla_event_start', true );
-		$end_date 	= get_post_meta( get_the_ID(), '_shapla_event_end', true );
+		$start_date = strtotime( get_post_meta( get_the_ID(), '_shapla_event_start', true ) );
+		$end_date 	= strtotime( get_post_meta( get_the_ID(), '_shapla_event_end', true ) );
 		$venue 		= get_post_meta( get_the_ID(), '_shapla_event_venue', true );
 
 		if ( 'start_date' == $column_name ) {
 
 			if ( ! empty( $start_date ) )
-			echo $start_date;
+				echo date_i18n( get_option( 'date_format' ), $start_date );
 		}
 
 		if ( 'end_date' == $column_name ) {
 
 			if ( ! empty( $end_date ) )
-			echo $end_date;
+				echo date_i18n( get_option( 'date_format' ), $end_date );
 		}
 
 		if ( 'venue' == $column_name ) {
@@ -117,9 +123,9 @@ class ShaplaTools_Event_Metabox {
 	}
 }
 
-function run_shaplatools_event_default_meta(){
+function run_shaplatools_event_meta(){
 	if (is_admin())
 		ShaplaTools_Event_Metabox::get_instance();
 }
-//run_shaplatools_event_default_meta();
+//run_shaplatools_event_meta();
 endif;

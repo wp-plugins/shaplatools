@@ -16,6 +16,7 @@ class ShaplaTools_Portfolio_Metabox {
 	 */
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'portfolio_image' ) );
 
 		add_filter( 'manage_edit-portfolio_columns', array ($this, 'columns_head') );
 		add_action( 'manage_portfolio_posts_custom_column', array ($this, 'columns_content') );
@@ -33,6 +34,11 @@ class ShaplaTools_Portfolio_Metabox {
 		}
 
 		return self::$instance;
+	}
+
+	public function portfolio_image(){
+		remove_meta_box( 'postimagediv', 'portfolio', 'side' );
+		add_meta_box('postimagediv', __('Portfolio Featured Image', 'shapla'), 'post_thumbnail_meta_box', 'portfolio', 'side', 'low'		);
 	}
 
 	/**
@@ -107,12 +113,8 @@ class ShaplaTools_Portfolio_Metabox {
 
 		if ( 'project_date' == $column_name ) {
 
-			if (! empty( $date )) {
-				$portfolio_date = date_i18n( get_option( 'date_format' ), $date );
-			} else {
-				$portfolio_date = '';
-			}
-			echo $portfolio_date;
+			if (! empty( $date ))
+				echo date_i18n( get_option( 'date_format' ), $date );
 		}
 
 		if ( 'skill' == $column_name ) {

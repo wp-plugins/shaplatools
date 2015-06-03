@@ -16,6 +16,7 @@ class ShaplaTools_Testimonial_Metabox {
 	 */
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'client_avatar' ) );
 
 		add_filter( 'manage_edit-testimonial_columns', array ($this, 'columns_head') );
 		add_action( 'manage_testimonial_posts_custom_column', array ($this, 'columns_content') );
@@ -33,6 +34,11 @@ class ShaplaTools_Testimonial_Metabox {
 		}
 
 		return self::$instance;
+	}
+
+	public function client_avatar(){
+		remove_meta_box( 'postimagediv', 'testimonial', 'side' );
+		add_meta_box('postimagediv', __('Client\'s Avatar', 'shapla'), 'post_thumbnail_meta_box', 'testimonial', 'side', 'low'		);
 	}
 
 	/**

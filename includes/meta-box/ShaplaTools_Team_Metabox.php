@@ -54,13 +54,6 @@ class ShaplaTools_Team_Metabox {
 		    'priority' => 'core',
 		    'fields' => array(
 		        array(
-		            'name' => __('Team Member Name', 'shapla'),
-		            'desc' => __('Enter team member name.', 'shapla'),
-		            'id' => '_shapla_team_name',
-		            'type' => 'text',
-		            'std' => ''
-		        ),
-		        array(
 		            'name' => __('Team Member Designation', 'shapla'),
 		            'desc' => __('Enter team member designation.', 'shapla'),
 		            'id' => '_shapla_team_designation',
@@ -83,10 +76,9 @@ class ShaplaTools_Team_Metabox {
 	public function columns_head( $defaults ) {
 		$defaults = array(
 			'cb' 					=> '<input type="checkbox">',
-			'title' 				=> 'Title',
-			'member_name' 			=> 'Team Member Name',
+			'title' 				=> 'Team Member Name',
 			'member_designation' 	=> 'Designation',
-			'member_designation'	=> 'Short Description',
+			'member_description'	=> 'Short Description',
 			'member_image'			=> 'Member Image',
 		);
 
@@ -95,15 +87,9 @@ class ShaplaTools_Team_Metabox {
 
 	public function columns_content( $column_name ) {
 
-		$name 			= get_post_meta( get_the_ID(), '_shapla_team_name', true );
 		$designation 	= get_post_meta( get_the_ID(), '_shapla_team_designation', true );
 		$description 	= get_post_meta( get_the_ID(), '_shapla_team_description', true );
-
-		if ( 'member_name' == $column_name ) {
-
-			if ( ! empty( $name ) )
-			echo $name;
-		}
+		$member_image 	= get_the_post_thumbnail( get_the_ID(), array( 50,50 ) );
 
 		if ( 'member_designation' == $column_name ) {
 
@@ -111,7 +97,7 @@ class ShaplaTools_Team_Metabox {
 			echo $designation;
 		}
 
-		if ( 'member_designation' == $column_name ) {
+		if ( 'member_description' == $column_name ) {
 
 			if ( ! empty( $description ) )
 			echo $description;
@@ -119,7 +105,7 @@ class ShaplaTools_Team_Metabox {
 
 		if ( 'member_image' == $column_name ) {
 
-			echo get_the_post_thumbnail( get_the_ID(), array(50,50));
+			echo $member_image;
 		}
 	}
 }

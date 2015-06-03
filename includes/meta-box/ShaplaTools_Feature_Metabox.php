@@ -57,9 +57,9 @@ class ShaplaTools_Feature_Metabox {
 	}
 }
 
-function run_shaplatools_feature_default_meta(){
+function run_shaplatools_feature_meta(){
 	if (is_admin())
 		ShaplaTools_Feature_Metabox::get_instance();
 }
-//run_shaplatools_feature_default_meta();
+//run_shaplatools_feature_meta();
 endif;
