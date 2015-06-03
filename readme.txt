@@ -29,7 +29,7 @@ To include custom post types at your theme read the <a href="https://wordpress.o
 
 <ul>
 	<li>Facebook Like Box</li>
-	<li>Latest Tweets</li>
+	<li>Latest Tweets (PHP 5.3 or higher, cURL required)</li>
 	<li>Dribbble Shots</li>
 	<li>Flickr Photos</li>
 	<li>Instagram Photos</li>
@@ -53,9 +53,6 @@ To include custom post types at your theme read the <a href="https://wordpress.o
 	<li>Google Maps with 5 predefined styles</li>
 	<li>Image with CSS3 filters</li>
 	<li>Videos ( supports Embeds )</li>
-	<li>Filterable Portfolio (for Portfolio post type)</li>
-	<li>Slide (jQury NIVO Slider for Slider post type)</li>
-	<li>Testimonial (For Testimonial Custom Post Type)</li>
 </ul>
 
 == Installation ==
