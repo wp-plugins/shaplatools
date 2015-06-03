@@ -167,12 +167,10 @@ class ShaplaTools {
 		include_once( 'includes/widgets/widget-fb_like_box.php' );
 		include_once( 'includes/widgets/widget-contact.php' );
 		include_once( 'includes/widgets/widget-testimonials.php' );
-		include_once( 'includes/widgets/widget-event.php' );
 		include_once( 'includes/widgets/widget-testimonials.php' );
 
 		// Post Types
 		include_once( 'includes/post-type/ShaplaTools_Team.php' );
-		include_once( 'includes/post-type/ShaplaTools_Event.php' );
 		include_once( 'includes/post-type/ShaplaTools_Slide.php' );
 		include_once( 'includes/post-type/ShaplaTools_Feature.php' );
 		include_once( 'includes/post-type/ShaplaTools_Portfolio.php' );
@@ -194,7 +192,6 @@ class ShaplaTools {
 		// Meta Box
 		include_once( 'includes/meta-box/ShaplaTools_Portfolio_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_Feature_Metabox.php' );
-		include_once( 'includes/meta-box/ShaplaTools_Event_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_NivoSlide_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_Testimonial_Metabox.php' );
 		include_once( 'includes/meta-box/ShaplaTools_Team_Metabox.php' );
@@ -519,7 +516,6 @@ function shaplatools_activation_deactivation() {
 	ShaplaTools_Portfolio::post_type();
 	ShaplaTools_Portfolio::taxonomy();
 	ShaplaTools_Team::post_type();
-	ShaplaTools_Event::post_type();
 	ShaplaTools_Feature::post_type();
 	ShaplaTools_Testimonial::post_type();
 
@@ -527,27 +523,3 @@ function shaplatools_activation_deactivation() {
 }
 register_activation_hook( __FILE__, 'shaplatools_activation_deactivation' );
 register_deactivation_hook( __FILE__, 'shaplatools_activation_deactivation' );
-
-
-/**
- * Get all available image size
- */
-
-if ( !function_exists('shaplatools_available_img_size') ):
-
-function shaplatools_available_img_size(){
-
-	$shaplatools_img_size = get_intermediate_image_sizes();
-	array_push($shaplatools_img_size, 'full');
-
-	$singleArray = array();
-
-	foreach ($shaplatools_img_size as $key => $value){
-
-	    $singleArray[$value] = $value;
-	}
-
-	return $singleArray;
-}
-
-endif;

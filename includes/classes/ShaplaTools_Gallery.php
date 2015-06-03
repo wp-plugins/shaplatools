@@ -23,7 +23,7 @@ class ShaplaTools_Gallery {
 
 	        add_meta_box(
 	            'shaplatools_gallery',
-	            __( 'Image Gallery (will be used as slider in single post or page instate of Featured Image)', 'shaplatools' ),
+	            __( 'Image Gallery (will be used as slider in single post or page instate of Featured Image)', 'shapla' ),
 	            array( $this, 'shaplatools_image_gallery_callback'),
 	            $screen,
 	            'normal',
@@ -54,7 +54,7 @@ class ShaplaTools_Gallery {
 	                                    <div class="thumbnail">
 	                                        ' . wp_get_attachment_image( $attachment_id, 'thumbnail' ) . '
 	                                    </div>
-	                                    <a href="#" class="delete check" title="' . __( 'Remove image', 'shaplatools' ) . '">
+	                                    <a href="#" class="delete check" title="' . __( 'Remove image', 'shapla' ) . '">
 	                                        <div class="media-modal-icon"></div>
 	                                    </a>
 	                                       
@@ -72,14 +72,14 @@ class ShaplaTools_Gallery {
 	    <tr valign="top">
 	        <p class="add_gallery_images hide-if-no-js">
 	            <a href="#">
-	                <?php _e( 'Add gallery images', 'shaplatools' ); ?>
+	                <?php _e( 'Add gallery images', 'shapla' ); ?>
 	            </a>
 	        </p>
 	    </tr>
 	    <tr valign="top">
 	        <th scope="row">
 	            <label for="shaplatools_available_image_size">
-	                <?php _e('Select Gallery Images Size', 'shaplatools'); ?>
+	                <?php _e('Select Gallery Images Size', 'shapla'); ?>
 	            </label>
 	        </th>
 	        <td>
@@ -134,9 +134,9 @@ class ShaplaTools_Gallery {
 	                // Create the media frame.
 	                shaplatools_image_gallery_frame = wp.media.frames.downloadable_file = wp.media({
 	                    // Set the title of the modal.
-	                    title: '<?php _e( 'Add Images to Gallery', 'shaplatools' ); ?>',
+	                    title: '<?php _e( 'Add Images to Gallery', 'shapla' ); ?>',
 	                    button: {
-	                        text: '<?php _e( 'Add to gallery', 'shaplatools' ); ?>',
+	                        text: '<?php _e( 'Add to gallery', 'shapla' ); ?>',
 	                    },
 	                    multiple: true
 	                });
@@ -159,7 +159,7 @@ class ShaplaTools_Gallery {
 	                                        <div class="thumbnail">\
 	                                            <img src="' + attachment.url + '" />\
 	                                        </div>\
-	                                       <a href="#" class="delete check" title="<?php _e( 'Remove image', 'shaplatools' ); ?>"><div class="media-modal-icon"></div></a>\
+	                                       <a href="#" class="delete check" title="<?php _e( 'Remove image', 'shapla' ); ?>"><div class="media-modal-icon"></div></a>\
 	                                    </div>\
 	                                </li>');
 

@@ -223,8 +223,9 @@ class ShaplaTools_NivoSlide_Metabox {
 	public function columns_head( $defaults ) {
 		unset( $defaults['date'] );
 
-		$defaults['shortcode'] = __( 'Shortcode', 'shapla' );
-		$defaults['images'] = __( 'Images', 'shapla' );
+		$defaults['id'] 		= __( 'Slide ID', 'shapla' );
+		$defaults['shortcode'] 	= __( 'Shortcode', 'shapla' );
+		$defaults['images'] 	= __( 'Images', 'shapla' );
 
 		return $defaults;
 	}
@@ -232,6 +233,10 @@ class ShaplaTools_NivoSlide_Metabox {
 	public function columns_content( $column_name ) {
 
 		$image_ids 	= explode(',', get_post_meta( get_the_ID(), '_shapla_image_ids', true) );
+
+		if ( 'id' == $column_name ) {
+			echo get_the_ID();
+		}
 
 		if ( 'shortcode' == $column_name ) {
 			echo '<pre><code>[shapla_slide id="'.get_the_ID().'"]</pre></code>';

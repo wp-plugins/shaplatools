@@ -83,12 +83,12 @@ class ShaplaTools_Testimonial_Metabox {
 	public function columns_head( $columns ) {
 		$columns = array(
 			'cb' => '<input type="checkbox">',
-			'title' => 'Title',
-			'testimonial' => 'Testimonial',
-			'testimonial-client-name' => 'Client\'s Name',
-			'testimonial-source' => 'Business/Site',
-			'testimonial-link' => 'Link',
-			'testimonial-avatar' => 'Client\'s Avatar'
+			'title' => __('Title', 'shapla'),
+			'testimonial' => __('Testimonial', 'shapla'),
+			'testimonial-client-name' => __('Client\'s Name', 'shapla'),
+			'testimonial-source' => __('Business/Site', 'shapla'),
+			'testimonial-link' => __('Link', 'shapla'),
+			'testimonial-avatar' => __('Client\'s Avatar', 'shapla')
 		);
 
 		return $columns;

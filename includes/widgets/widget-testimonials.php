@@ -4,8 +4,11 @@
  */
 class Shapla_Testimonial extends WP_Widget {
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'shapla_testimonial', 'description' => 'Display testimonial post type' );
-		parent::__construct( 'shapla_testimonial', 'Shapla Testimonials', $widget_ops );
+		parent::__construct( 
+			'shapla_testimonial', 
+			__( 'Shapla Testimonials', 'shapla' ),
+			array( 'description' => __( 'Display client testimonials.', 'shapla' ), )
+		);
 	}
 
 	public function widget( $args, $instance ) {
@@ -40,20 +43,20 @@ class Shapla_Testimonial extends WP_Widget {
 		$posts_per_page = (int) $instance['posts_per_page'];
 		$orderby = strip_tags( $instance['orderby'] );
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'shapla'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>">Number of Testimonials: </label>
+		<p><label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e('Number of Testimonials:', 'shapla'); ?></label>
 		<input type="number" min="1" max="6" class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" value="<?php echo esc_attr( $posts_per_page ); ?>" />
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id( 'orderby' ); ?>">Order By</label>
+		<p><label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e('Order By', 'shapla'); ?></label>
 		<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
-			<option value="none" <?php selected( $orderby, 'none' ); ?>>None</option>
-			<option value="ID" <?php selected( $orderby, 'ID' ); ?>>ID</option>
-			<option value="date" <?php selected( $orderby, 'date' ); ?>>Date</option>
-			<option value="modified" <?php selected( $orderby, 'modified' ); ?>>Modified</option>
-			<option value="rand" <?php selected( $orderby, 'rand' ); ?>>Random</option>
+			<option value="none" <?php selected( $orderby, 'none' ); ?>><?php _e('None', 'shapla'); ?></option>
+			<option value="ID" <?php selected( $orderby, 'ID' ); ?>><?php _e('ID', 'shapla'); ?></option>
+			<option value="date" <?php selected( $orderby, 'date' ); ?>><?php _e('Date', 'shapla'); ?></option>
+			<option value="modified" <?php selected( $orderby, 'modified' ); ?>><?php _e('Modified', 'shapla'); ?></option>
+			<option value="rand" <?php selected( $orderby, 'rand' ); ?>><?php _e('Random', 'shapla'); ?></option>
 		</select></p>
 		<?php
 	}

@@ -7,8 +7,8 @@ class ShaplaContactFormAJAX extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'shapla_ajax_contact',
-            __('Shapla Contact Form', 'shaplatools' ),
-            array( 'description' => __( 'A simple AJAX contact form.', 'shaplatools' ), )
+            __('Shapla Contact Form', 'shapla' ),
+            array( 'description' => __( 'A simple AJAX contact form.', 'shapla' ), )
         );
 
         add_action( 'wp_ajax_the_ajax_hook', array( &$this, 'shapla_contact_form_widget_function' ) );
@@ -58,12 +58,22 @@ class ShaplaContactFormAJAX extends WP_Widget {
 	    echo $args['after_widget'];
 	}
 
+	private static function is_session_started() {
+	    if ( php_sapi_name() !== 'cli' ) {
+	        if ( version_compare(phpversion(), '5.4.0', '>=') ) {
+	            return session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;
+	        } else {
+	            return session_id() === '' ? FALSE : TRUE;
+	        }
+	    }
+	    return FALSE;
+	}
+
 	// THE FUNCTION
 	function shapla_contact_form_widget_function( $instance ){
 
-		if (session_status() !== PHP_SESSION_ACTIVE){
-			session_start();
-		}
+		if ( self::is_session_started() === FALSE ) session_start();
+
 		/* this area is very simple but being serverside it affords the possibility of retreiving data from the server and passing it back to the javascript function */
 		if ( isset( $_POST['shapla_contact_widget_nonce'] ) && wp_verify_nonce( $_POST['shapla_contact_widget_nonce'], 'shapla_contact_widget_action' )) {
 
@@ -109,11 +119,11 @@ class ShaplaContactFormAJAX extends WP_Widget {
 
 					$to = ! empty( $instance['email'] ) ? $instance['email'] : get_option('admin_email');
 
-			        $subject = 'Someone sent you a message from '.get_bloginfo('name');
+			        $subject = __('Someone sent you a message from ', 'shapla' ).get_bloginfo('name');
 
 			        $body = "Name: $fullname \n\nEmail: $email \n\nMessage: $message \n\n";
 			        $body .= "--\n";
-			        $body .= "This mail is sent via contact form ".get_bloginfo('name')."\n";
+			        $body .= __("This mail is sent via contact form ", "shapla" ).get_bloginfo('name')."\n";
 			        $body .= home_url();
 
 					$headers = 'From: '.$fullname.' <'.$email.'>' . "\r\n" . 'Reply-To: ' . $email;
@@ -153,17 +163,17 @@ class ShaplaContactFormAJAX extends WP_Widget {
 
 	function form( $instance ) {
 		// Output admin widget options form
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Send a Direct Message', 'shaplatools' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Send a Direct Message', 'shapla' );
 		$email = ! empty( $instance['email'] ) ? $instance['email'] : get_option('admin_email');
 		?>
 	    <p>
-	    	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'shaplatools') ?></label>
+	    	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'shapla') ?></label>
 	    	<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php if(isset($title)){echo esc_attr( $title );} ?>" />
 	    </p>
 	    <p>
-	    	<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Contact Form Email Address:', 'shaplatools') ?></label>
+	    	<label for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e('Contact Form Email Address:', 'shapla') ?></label>
 	    	<input type="email" class="widefat" id="<?php echo $this->get_field_id( 'email' ); ?>" name="<?php echo $this->get_field_name( 'email' ); ?>" value="<?php if(isset($email)){echo esc_attr( $email );} ?>" />
-	    	<small><?php _e('Enter the email address where you would like to receive emails from the contact form.', 'shaplatools'); ?></small>
+	    	<small><?php _e('Enter the email address where you would like to receive emails from the contact form.', 'shapla'); ?></small>
 	    </p>
 		<?php
 	}

@@ -76,10 +76,10 @@ class ShaplaTools_Team_Metabox {
 	public function columns_head( $defaults ) {
 		$defaults = array(
 			'cb' 					=> '<input type="checkbox">',
-			'title' 				=> 'Team Member Name',
-			'member_designation' 	=> 'Designation',
-			'member_description'	=> 'Short Description',
-			'member_image'			=> 'Member Image',
+			'title' 				=> __('Team Member Name', 'shapla'),
+			'member_designation' 	=> __('Designation', 'shapla'),
+			'member_description'	=> __('Short Description', 'shapla'),
+			'member_image'			=> __('Member Image', 'shapla'),
 		);
 
 		return $defaults;
@@ -114,5 +114,5 @@ function run_shaplatools_team_meta(){
 	if (is_admin())
 		ShaplaTools_Team_Metabox::get_instance();
 }
-run_shaplatools_team_meta();
+//run_shaplatools_team_meta();
 endif;

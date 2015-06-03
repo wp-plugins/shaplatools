@@ -68,46 +68,46 @@ class Shapla_Tweet_Widget extends WP_Widget{
 	 
 	        // If less than 3 seconds.
 	        if ( $difference < 3 ) {
-	            return __( 'right now', 'sistweets' );
+	            return __( 'right now', 'shapla' );
 	        }
 	 
 	        // If less than minute.
 	        if ( $difference < $minute ) {
-	            return floor( $difference ) . ' ' . __( 'seconds ago', 'sistweets' );;
+	            return floor( $difference ) . ' ' . __( 'seconds ago', 'shapla' );;
 	        }
 	 
 	        // If less than 2 minutes.
 	        if ( $difference < $minute * 2 ) {
-	            return __( 'about 1 minute ago', 'sistweets' );
+	            return __( 'about 1 minute ago', 'shapla' );
 	        }
 	 
 	        // If less than hour.
 	        if ( $difference < $hour ) {
-	            return floor( $difference / $minute ) . ' ' . __( 'minutes ago', 'sistweets' );
+	            return floor( $difference / $minute ) . ' ' . __( 'minutes ago', 'shapla' );
 	        }
 	 
 	        // If less than 2 hours.
 	        if ( $difference < $hour * 2 ) {
-	            return __( 'about 1 hour ago', 'sistweets' );
+	            return __( 'about 1 hour ago', 'shapla' );
 	        }
 	 
 	        // If less than day.
 	        if ( $difference < $day ) {
-	            return floor( $difference / $hour ) . ' ' . __( 'hours ago', 'sistweets' );
+	            return floor( $difference / $hour ) . ' ' . __( 'hours ago', 'shapla' );
 	        }
 	 
 	        // If more than day, but less than 2 days.
 	        if ( $difference > $day && $difference < $day * 2 ) {
-	            return __( 'yesterday', 'sistweets' );;
+	            return __( 'yesterday', 'shapla' );;
 	        }
 	 
 	        // If less than year.
 	        if ( $difference < $day * 365 ) {
-	            return floor( $difference / $day ) . ' ' . __( 'days ago', 'sistweets' );
+	            return floor( $difference / $day ) . ' ' . __( 'days ago', 'shapla' );
 	        }
 	 
 	        // Else return more than a year.
-	        return __( 'over a year ago', 'sistweets' );
+	        return __( 'over a year ago', 'shapla' );
 	    }
 	}
 
@@ -142,18 +142,7 @@ class Shapla_Tweet_Widget extends WP_Widget{
 	        // Add links to URL and username mention in tweets.
 	        $patterns = array( '@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.]*(\?\S+)?)?)?)@', '/@([A-Za-z0-9_]{1,15})/' );
 	        $replace = array( '<a href="$1">$1</a>', '<a href="http://twitter.com/$1">@$1</a>' );
-	 		
-	        ob_start();
-	        ?>
-			<style type="text/css">
-				.widget_shapla-latest-tweets ul {margin: 0;padding: 0;list-style: none;}
-				.widget_shapla-latest-tweets ul li{border-top: 1px solid rgba(51, 51, 51, 0.2);padding: 12px 0;}
-				.widget_shapla-latest-tweets ul li:first-child{border-top: 0 none;padding-top: 0;}
-				.widget_shapla-latest-tweets ul li a{display: block;}
-			</style>
-	        <?php
-	        echo ob_get_clean();
-	        
+	 			        
 	 		echo '<ul>';
 	        foreach ( $timelines as $timeline ) {
 	            $result = preg_replace( $patterns, $replace, $timeline->text );
@@ -166,7 +155,7 @@ class Shapla_Tweet_Widget extends WP_Widget{
 	        echo '</ul>';
 	 
 	    } else {
-	        _e( 'Error fetching feeds. Please verify the Twitter settings in the widget.', 'twitter_tweets_widget' );
+	        _e( 'Error fetching feeds. Please verify the Twitter settings in the widget.', 'shapla' );
 	    }
 	 
 	    echo $args['after_widget'];
@@ -180,7 +169,7 @@ class Shapla_Tweet_Widget extends WP_Widget{
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-     	$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Latest Tweets', 'sistweets' );
+     	$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Latest Tweets', 'shapla' );
      	$twitter_username = ! empty( $instance['twitter_username'] ) ? $instance['twitter_username'] : '';
      	$update_count = ! empty( $instance['update_count'] ) ? $instance['update_count'] : '';
      	$oauth_access_token = ! empty( $instance['oauth_access_token'] ) ? $instance['oauth_access_token'] : '';
@@ -190,44 +179,44 @@ class Shapla_Tweet_Widget extends WP_Widget{
 		?>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-	            <?php echo __( 'Title', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Title', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php if(isset($title)){echo esc_attr( $title );} ?>" />
 	    </p>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'twitter_username' ); ?>">
-	            <?php echo __( 'Twitter Username (without @)', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Twitter Username (without @)', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'twitter_username' ); ?>" name="<?php echo $this->get_field_name( 'twitter_username' ); ?>" type="text" value="<?php if(isset($twitter_username)){echo esc_attr( $twitter_username );} ?>" />
 	    </p>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'update_count' ); ?>">
-	            <?php echo __( 'Number of Tweets to Display', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Number of Tweets to Display', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'update_count' ); ?>" name="<?php echo $this->get_field_name( 'update_count' ); ?>" type="number" value="<?php if(isset($update_count)){echo esc_attr( $update_count );} ?>" />
 	    </p>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'consumer_key' ); ?>">
-	            <?php echo __( 'Consumer Key', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Consumer Key', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'consumer_key' ); ?>" name="<?php echo $this->get_field_name( 'consumer_key' ); ?>" type="text" value="<?php if(isset($consumer_key)){echo esc_attr( $consumer_key );} ?>" />
-	        <small>Don't know your Consumer Key, Consumer Secret, Access Token and Access Token Secret? <a target="_blank" href="http://sayful1.wordpress.com/2014/06/14/how-to-generate-twitter-api-key-api-secret-access-token-access-token-secret/">Click here to get help.</a></small>
+	        <small><?php _e('Don\'t know your Consumer Key, Consumer Secret, Access Token and Access Token Secret? <a target="_blank" href="http://sayful1.wordpress.com/2014/06/14/how-to-generate-twitter-api-key-api-secret-access-token-access-token-secret/">Click here to get help.</a>', 'shapla'); ?></small>
 	    </p>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'consumer_secret' ); ?>">
-	            <?php echo __( 'Consumer Secret', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Consumer Secret', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'consumer_secret' ); ?>" name="<?php echo $this->get_field_name( 'consumer_secret' ); ?>" type="text" value="<?php if(isset($consumer_secret)){echo esc_attr( $consumer_secret );} ?>" />
 	    </p>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'oauth_access_token' ); ?>">
-	            <?php echo __( 'Access Token', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Access Token', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'oauth_access_token' ); ?>" name="<?php echo $this->get_field_name( 'oauth_access_token' ); ?>" type="text" value="<?php if(isset($oauth_access_token)){echo esc_attr( $oauth_access_token );} ?>" />
 	    </p>
 	    <p>
 	        <label for="<?php echo $this->get_field_id( 'oauth_access_token_secret' ); ?>">
-	            <?php echo __( 'Access Token Secret', 'sistweets' ) . ':'; ?>
+	            <?php _e( 'Access Token Secret', 'shapla' ); ?>
 	        </label>
 	        <input class="widefat" id="<?php echo $this->get_field_id( 'oauth_access_token_secret' ); ?>" name="<?php echo $this->get_field_name( 'oauth_access_token_secret' ); ?>" type="text" value="<?php if(isset($oauth_access_token_secret)){echo esc_attr( $oauth_access_token_secret );} ?>" />
 	    </p>

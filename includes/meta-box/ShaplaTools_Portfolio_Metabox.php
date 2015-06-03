@@ -97,10 +97,10 @@ class ShaplaTools_Portfolio_Metabox {
 	public function columns_head( $defaults ) {
 		unset( $defaults['date'] );
 
-		$defaults['skill'] = __( 'Skills', 'shaplatools' );
-		$defaults['project_date'] = __( 'Project Date', 'shaplatools' );
-		$defaults['project_client'] = __( 'Client', 'shaplatools' );
-		$defaults['project_url'] = __( 'Project URL', 'shaplatools' );
+		$defaults['skill'] 			= __( 'Skills', 'shapla' );
+		$defaults['project_date'] 	= __( 'Project Date', 'shapla' );
+		$defaults['project_client'] = __( 'Client', 'shapla' );
+		$defaults['project_url'] 	= __( 'Project URL', 'shapla' );
 
 		return $defaults;
 	}
