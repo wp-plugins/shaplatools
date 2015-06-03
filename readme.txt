@@ -19,7 +19,6 @@ ShaplaTools is a powerful plugin to extend functionality to your WordPress theme
 	<li>Slider (for jQuery NIVO Slider)</li>
 	<li>Testimonial</li>
 	<li>Portfolio</li>
-	<li>Event</li>
 	<li>Team</li>
 	<li>Features</li>
 </ul>
@@ -35,7 +34,6 @@ To include custom post types at your theme read the <a href="https://wordpress.o
 	<li>Instagram Photos</li>
 	<li>Ajax Contact Form</li>
 	<li>Testimonial (For Testimonial Custom Post Type)</li>
-	<li>Event (For Event Custom Post Type)</li>
 </ul>
 
 = Shortcodes =
