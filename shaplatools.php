@@ -124,11 +124,13 @@ class ShaplaTools {
 		if( isset($this->options['portfolio']) && $this->options['portfolio'] == 'on' ) run_shaplatools_portfolio();
 		if( isset($this->options['testimonial']) && $this->options['testimonial'] == 'on' ) run_shaplatools_testimonial();
 
-		if( isset($this->options['team_meta']) && $this->options['team_meta'] == 'on' ) run_shaplatools_team_meta();
-		if( isset($this->options['slide_meta']) && $this->options['slide_meta'] == 'on' ) run_shaplatools_nivoslide_meta();
-		if( isset($this->options['feature_meta']) && $this->options['feature_meta'] == 'on' ) run_shaplatools_feature_meta();
-		if( isset($this->options['portfolio_meta']) && $this->options['portfolio_meta'] == 'on' ) run_shaplatools_portfolio_meta();
-		if( isset($this->options['testimonial_meta']) && $this->options['testimonial_meta'] == 'on' ) run_shaplatools_testimonial_meta();
+		if(is_admin()){
+			if( isset($this->options['slide_meta']) && $this->options['slide_meta'] == 'on' ) run_shaplatools_nivoslide_meta();
+			if( isset($this->options['team_meta']) && $this->options['team_meta'] == 'on' ) run_shaplatools_team_meta();
+			if( isset($this->options['feature_meta']) && $this->options['feature_meta'] == 'on' ) run_shaplatools_feature_meta();
+			if( isset($this->options['portfolio_meta']) && $this->options['portfolio_meta'] == 'on' ) run_shaplatools_portfolio_meta();
+			if( isset($this->options['testimonial_meta']) && $this->options['testimonial_meta'] == 'on' ) run_shaplatools_testimonial_meta();
+		}
 	}
 
 	/**
