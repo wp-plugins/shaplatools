@@ -513,22 +513,6 @@ endif;
 add_shortcode( 'shapla_columns', 'shapla_columns' );
 
 
-
-if ( ! function_exists( 'shaplatools_image_gallery_shortcode' ) ) :
-/**
- * Shortcode
- *
- * @since 1.0
- */
-
-function shaplatools_image_gallery_shortcode() {
-
-	return shaplatools_image_gallery();
-}
-endif;
-add_shortcode( 'shaplatools_image_gallery', 'shaplatools_image_gallery_shortcode' );
-
-
 if ( ! function_exists( 'shaplatools_image_gallery' ) ) :
 /**
  * Output Slider
@@ -537,81 +521,47 @@ if ( ! function_exists( 'shaplatools_image_gallery' ) ) :
  */
 function shaplatools_image_gallery() {
 
-	global $post;
+	$images_size 	= get_post_meta( get_the_ID(), '_shaplatools_available_image_size', true );
+	$images_ids 	= get_post_meta( get_the_ID(), '_shaplatools_image_gallery', true );
+	$images_ids 	= explode(',', $images_ids );
+	$images_ids 	= array_filter( $images_ids );
 
-	if( ! isset( $post->ID) )
-		return;
+	ob_start();
+	if( $images_ids ) : ?>
 
-	$attachment_ids = get_post_meta( $post->ID, '_shaplatools_image_gallery', true );
-	$attachment_ids = explode( ',', $attachment_ids );
-
-	if ( $attachment_ids ) { ?>
-
-    <?php
-
-		$has_gallery_images = get_post_meta( get_the_ID(), '_shaplatools_image_gallery', true );
-
-		if ( !$has_gallery_images )
-			return;
-
-		// convert string into array
-		$has_gallery_images = explode( ',', get_post_meta( get_the_ID(), '_shaplatools_image_gallery', true ) );
-
-		// clean the array (remove empty values)
-		$has_gallery_images = array_filter( $has_gallery_images );
-
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-		$image_title = esc_attr( get_the_title( get_post_thumbnail_id( $post->ID ) ) );
-
-		$id = get_the_ID();
-
-		ob_start();
-?>
-	<div class="row">
-    <div id="carousel_slider-<?php echo $id; ?>" class="owl-carousel">
-    <?php
-		foreach ( $attachment_ids as $attachment_id ) {
-
-			$gallery_images_size = get_post_meta( $post->ID, '_shaplatools_available_image_size', true );
-
-			$image = wp_get_attachment_image(
-						$attachment_id, 
-						$gallery_images_size,
-						'',
-						array(
-							'alt' => trim( strip_tags( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) ) 
-						)
-					);
-
-			$image_caption = get_post( $attachment_id )->post_excerpt ? get_post( $attachment_id )->post_excerpt : '';
-
-			$html = sprintf( '<div>%s</div>', $image );
-
-			echo apply_filters( 'shaplatools_image_gallery_html', $html, $image_caption, $image, $attachment_id, $post->ID );
-		}
-?>
-    </div></div>
-    <script type="text/javascript">
-		jQuery(document).ready(function($) {
-  			$('#carousel_slider-<?php echo $id; ?>').owlCarousel({
-				items : 1,
-				dotsEach: true,
-				loop : true,
-				autoplay: true,
-				autoplayHoverPause: true,
-    			animateIn: 'fadeIn',
-				animateOut: 'fadeOut',
+		<ul id="shapla-slider-<?php echo get_the_ID(); ?>" class="shapla-slider">
+			<?php
+				foreach ($images_ids as $images_id) {
+					if(!$images_id) continue;
+					$src = wp_get_attachment_image_src( $images_id, $images_size );
+					echo "<li><img src='{$src[0]}' width='{$src[1]}' height='{$src[2]}'></li>";
+				}
+			?>
+		</ul>
+	    <script type="text/javascript">
+			jQuery(document).ready(function($) {
+	  			if( $().responsiveSlides ){
+			        $("#shapla-slider-<?php echo get_the_ID(); ?>").responsiveSlides({
+			            auto: true,
+			            timeout: 4000,
+			            nav: false,
+			            speed: 500,
+			            maxwidth: 1170,
+			            pager: false,
+			            namespace: "shapla-slides"
+			        });
+			    }
 			});
-		});
-    </script>
+	    </script><?php
 
-    <?php
-		$gallery = ob_get_clean();
+	elseif( has_post_thumbnail() ):
 
-		return apply_filters( 'shaplatools_image_gallery', $gallery );
-	?>
+		the_post_thumbnail('full');
 
-    <?php }
+	endif;
+
+	return ob_get_clean();
+
 }
 endif;
 
@@ -622,22 +572,10 @@ if ( ! function_exists( 'shapla_thumbnail_gallery' ) ) :
  * @since 1.0
  */
 function shapla_thumbnail_gallery() {
+
+	if( function_exists( 'shaplatools_image_gallery' ) ) {
 		
-    $image_gallery = get_post_meta( get_the_ID(), '_shaplatools_image_gallery', true );
-
-	if( ! empty( $image_gallery ) ){
-
-		if( function_exists( 'shaplatools_image_gallery' ) ) {
-
-			echo shaplatools_image_gallery();
-
-		}
-
-	} else {
-		
-		if ( has_post_thumbnail() ) {
-			the_post_thumbnail();
-		} 
+		echo shaplatools_image_gallery();
 
 	}
 }
