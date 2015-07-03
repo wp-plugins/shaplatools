@@ -544,10 +544,10 @@ function shaplatools_image_gallery() {
 			        $("#shapla-slider-<?php echo get_the_ID(); ?>").responsiveSlides({
 			            auto: true,
 			            timeout: 4000,
-			            nav: false,
+			            nav: true,
 			            speed: 500,
 			            maxwidth: 1170,
-			            pager: false,
+			            pager: true,
 			            namespace: "shapla-slides"
 			        });
 			    }
