@@ -715,8 +715,14 @@ function shapla_image_slider( $atts, $content=null ){
 				if(!$image) continue;
 				$src = wp_get_attachment_image_src( $image, $img_size );
 				$thumb = wp_get_attachment_image_src( $image, array(50, 50) );
+				$caption = get_post( $image )->post_excerpt ? get_post( $image )->post_excerpt : '';
+				$description = get_post( $image )->post_content ? get_post( $image )->post_content : '';
 				
-				$slider .= '<img src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" data-thumb="'.$thumb[0].'" alt="" title="">';
+				if (!filter_var($description, FILTER_VALIDATE_URL) === false) {
+					$slider .='<a href="'.$description.'"><img src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" data-thumb="'.$thumb[0].'" alt="" title="'.$caption.'"></a>';
+				} else {
+					$slider .= '<img src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" data-thumb="'.$thumb[0].'" alt="" title="'.$caption.'">';
+				}
 			}
 
 		$slider .= '</div></div>';	
