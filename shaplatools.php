@@ -3,7 +3,7 @@
  * Plugin Name:       ShaplaTools
  * Plugin URI:        https://wordpress.org/plugins/shaplatools/
  * Description:       ShaplaTools is a powerful plugin to extend functionality to your WordPress themes. 
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Sayful Islam
  * Author URI:        https://profiles.wordpress.org/sayful/
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ class ShaplaTools {
 	/**
 	* @var string
 	*/
-	public $version = '1.0.0';
+	public $version = '1.0.1';
 
 	/**
 	* @var string
@@ -54,9 +54,6 @@ class ShaplaTools {
 	 * @return void
 	 */
 	public function __construct() {
-		// Define version constant
-		define( 'SHAPLATOOLS_VERSION', $this->version );
-
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_action( 'init', array( &$this, 'init' ) );
@@ -277,9 +274,9 @@ class ShaplaTools {
 		 * Enqueue Owl Carousel plugin
 		 * Enqueue Owl Carousel Style
 		 */
-		wp_enqueue_style( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
-		wp_enqueue_style( 'owl-carousel-theme', $this->plugin_url(). '/assets/library/owl-carousel/owl.theme.green.css', array(), $this->version, 'all' );
-		wp_enqueue_script( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
+		wp_register_style( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.css', array(), $this->version, 'all' );
+		wp_register_style( 'owl-carousel-theme', $this->plugin_url(). '/assets/library/owl-carousel/owl.theme.green.css', array(), $this->version, 'all' );
+		wp_register_script( 'owl-carousel', $this->plugin_url(). '/assets/library/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
 
 
 
@@ -314,6 +311,13 @@ class ShaplaTools {
 
 	    if ( isset($this->options['retina_graphics']) && $this->options['retina_graphics'] == 'retina_yes' ) {
 	    	wp_enqueue_script( 'retina-js', $this->plugin_url(). '/assets/js/retina.min.js', array( 'jquery' ), '1.3.0', true );
+	    }
+
+	    if( is_a( $post, 'WP_Post' ) && ( has_shortcode( $post->post_content, 'shapla_testimonials') || has_shortcode( $post->post_content, 'shapla_teams') ) ) {
+	    	
+			wp_enqueue_style( 'owl-carousel' );
+			wp_enqueue_style( 'owl-carousel-theme' );
+			wp_enqueue_script( 'owl-carousel' );
 	    }
 
 		//wp_enqueue_style( 'animate-css' );
@@ -482,16 +486,6 @@ class ShaplaTools {
 							'<p>' . sprintf( __( 'In order to use Google Analytics service, go to <a href="%s" target="_blank">Google Analytics</a> and click Access Google Analytics and register for a service for your site. You will get a Google Analytics ID like this formate (UA-XXXXX-X), paste this ID in Google Analytics ID field and click save.', 'shapla' ), esc_url( 'https://www.google.com/analytics/' ) ) . '</p>'
 		) );
 
-		//if ( current_theme_supports( 'post-type',  array( 'portfolio' ) ) ) :
-		$screen->add_help_tab( array(
-			'id'	    => 'shaplatools-help-portfolio',
-			'title'	    => __( 'Portfolio Settings', 'shapla' ),
-			'content'	=>  '<p>'. __( 'You can use the following settigns to control the slug/taxonomies for custom post type portfolio and skills.', 'shapla' ) .'</p>'.
-							'<p>'. __( '<strong>Portfolio Slug</strong> - This settings is used to set the slug of custom post type &lsquo;portfolio&rsquo;.', 'shapla' ) .'</p>'.
-							'<p>'. __( '<strong>Skills Slug</strong> - This settings is used to set the slug of custom post taxonomy &lsquo;skill&rsquo;.', 'shapla' ) .'</p>'
-		) );
-		//endif;
-
 		$screen->add_help_tab( array(
 			'id'	    => 'shaplatools-help-social',
 			'title'	    => __( 'Using Social Icons', 'shapla' ),
@@ -547,3 +541,11 @@ function shaplatools_activation_deactivation() {
 }
 register_activation_hook( __FILE__, 'shaplatools_activation_deactivation' );
 register_deactivation_hook( __FILE__, 'shaplatools_activation_deactivation' );
+
+
+function shaplatools_activation_redirect( $plugin ) {
+    if( $plugin == plugin_basename( __FILE__ ) ) {
+        exit( wp_redirect( admin_url( 'options-general.php?page=shaplatools' ) ) );
+    }
+}
+add_action( 'activated_plugin', 'shaplatools_activation_redirect' );

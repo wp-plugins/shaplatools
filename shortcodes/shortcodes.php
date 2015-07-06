@@ -850,10 +850,10 @@ function shapla_testimonials_slide($id = null, $posts_per_page = -1, $items_desk
 
 endif;
 
-if( ! function_exists('shapla_teams' ) ) :
+if( ! function_exists('shapla_testimonials_slide_shortcode' ) ) :
 function shapla_testimonials_slide_shortcode( $atts, $content = null ){
 	extract(shortcode_atts(array(
-                        'id' => null,
+                        'id' => rand(0, 99),
                         'posts_per_page' => -1,
                         'items_desktop' => 4,
                         'items_tablet' => 3,
@@ -863,8 +863,8 @@ function shapla_testimonials_slide_shortcode( $atts, $content = null ){
 
 	return shapla_testimonials_slide($id, $posts_per_page, $items_desktop, $items_tablet, $items_tablet_small, $items_mobile );
 }
+add_shortcode( 'shapla_testimonials', 'shapla_testimonials_slide_shortcode' );
 endif;
-add_shortcode( 'shapla_testimonials_shortcode', 'shapla_testimonials_slide_shortcode' );
 
 if( ! function_exists('shapla_teams' ) ) :
 
@@ -885,11 +885,11 @@ function shapla_teams(){
 		while ( $query->have_posts() ) : $query->the_post();
 
 
-		$team = get_post_meta( get_the_ID(), '_shaplatools_team', true );
+		$designation = get_post_meta( get_the_ID(), '_shapla_team_designation', true );
+		$description = get_post_meta( get_the_ID(), '_shapla_team_description', true );
 
-		$member_name = ( empty( $team['member_name'] ) ) ? '' : $team['member_name'];
-		$member_designation = ( empty( $team['member_designation'] ) ) ? '' : $team['member_designation'];
-		$member_description = ( empty( $team['member_description'] ) ) ? '' : $team['member_description'];
+		$designation = ( empty( $designation ) ) ? '' : $designation;
+		$description = ( empty( $description ) ) ? '' : $description;
 
 		?>
 			<!-- SINGLE TEAM -->
@@ -904,14 +904,14 @@ function shapla_teams(){
 					</div>
 					<div class="team-info">
 						<div class="team-name">
-							<?php echo $member_name; ?>
+							<?php the_title(); ?>
 						</div>
 						<div class="company">
-							<?php echo $member_designation; ?>
+							<?php echo $designation; ?>
 						</div>
 					</div>
 					<p class="message">
-						<?php echo $member_description; ?>
+						<?php echo $description; ?>
 					</p>
 				</div>
 			</div>
@@ -928,18 +928,26 @@ endif;
 
 if( ! function_exists('shapla_teams_slide' ) ) :
 
-function shapla_teams_slide($items = 1){
+function shapla_teams_slide( $atts, $content = null ){
+	extract(shortcode_atts(array(
+        'id' 					=> rand(0, 99),
+        'items_desktop' 		=> 4,
+        'items_tablet' 			=> 3,
+        'items_tablet_small' 	=> 2,
+        'items_mobile' 			=> 1
+    ), $atts));
+
 	ob_start();
 	?>
 	<div class="row">
-	    <div id="teams" class="owl-carousel">
+	    <div id="teams-<?php echo $id; ?>" class="owl-carousel">
 	    	<?php echo shapla_teams(); ?>
 	    </div>
 	</div>
     <script type="text/javascript">
 		jQuery(document).ready(function($) {
-  			$('#teams').owlCarousel({
-				items : <?php echo $items; ?>,
+  			$('#teams-<?php echo $id; ?>').owlCarousel({
+				items : <?php echo $items_desktop; ?>,
 				nav : true,
 				dots: false,
 				loop : true,
@@ -947,10 +955,10 @@ function shapla_teams_slide($items = 1){
 				autoplayHoverPause: true,
 				responsiveClass:true,
 			    responsive:{
-			        320:{ items:1 }, // Mobile portrait
-			        600:{ items:2 }, // Small tablet portrait
-			        768:{ items:3 }, // Tablet portrait
-			        979:{ items:4 }  // Desktop
+			        320:{ items:<?php echo $items_mobile; ?> }, // Mobile portrait
+			        600:{ items:<?php echo $items_tablet_small; ?> }, // Small tablet portrait
+			        768:{ items:<?php echo $items_tablet; ?> }, // Tablet portrait
+			        979:{ items:<?php echo $items_desktop; ?> }  // Desktop
 			    }
 			});
 		});
@@ -959,5 +967,6 @@ function shapla_teams_slide($items = 1){
 	$feedback = ob_get_clean();
 	echo $feedback;
 }
+add_shortcode( 'shapla_teams', 'shapla_teams_slide' );
 
 endif;
