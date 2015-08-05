@@ -238,7 +238,7 @@ function shaplatools_get_registered_settings() {
 				'retina_graphics' => array(
 					'id'   => 'retina_graphics',
 					'name' => __( 'Retina graphics for your website', 'shapla' ),
-					'desc' => __( 'To serve high-resolution images to devices with retina displays. This plugin will use open source script retina.js and for using retina.js script, a higher quality version of image will be created and stored with @2x added to the filename when an image is uploaded.', 'shapla' ),
+					'desc' => __( 'Check to enable retina graphics for your website.', 'shapla' ),
 					'type' => 'checkbox',
 					'std'  => ''
 				),

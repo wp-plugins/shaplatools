@@ -479,11 +479,15 @@ class ShaplaTools {
 		);
 
 		$screen->add_help_tab( array(
-			'id'	    => 'shaplatools-help-google_analytics',
+			'id'	    => 'shaplatools-help-general',
 			'title'	    => __( 'ShaplaTools General Settings', 'shapla' ),
 			'content'	=>  '<p>' . __( 'Here you can find how to configure general options of this plugin.', 'shapla' ) . '</p>'.
 							'<h5>' . __( 'Google Analytics ID', 'shapla' ) . '</h5>'.
-							'<p>' . sprintf( __( 'In order to use Google Analytics service, go to <a href="%s" target="_blank">Google Analytics</a> and click Access Google Analytics and register for a service for your site. You will get a Google Analytics ID like this formate (UA-XXXXX-X), paste this ID in Google Analytics ID field and click save.', 'shapla' ), esc_url( 'https://www.google.com/analytics/' ) ) . '</p>'
+							'<p>' . sprintf( __( 'In order to use Google Analytics service, go to <a href="%s" target="_blank">Google Analytics</a> and click Access Google Analytics and register for a service for your site. You will get a Google Analytics ID like this formate (UA-XXXXX-X), paste this ID in Google Analytics ID field and click save.', 'shapla' ), esc_url( 'https://www.google.com/analytics/' ) ) . '</p>'.
+							'<h5>'.__('Autocomplete search form').'</h5>'.
+							'<p>'.sprintf( __('Autocomplete search form use <a href="%s" target="_blank">twitter typeahead.js JavaScript library</a> for AJAX search. In order to use this feature select "Enable for WordPress Default Search" to enable AJAX search for WordPress default search or select "Enable for WooCommerce Product Search" to enable WooCommerce products search.'), esc_url( 'https://twitter.github.io/typeahead.js/' ) ).'</p>'.
+							'<h5>'.__('Retina graphics for your website').'</h5>'.
+							'<p>'.sprintf( __('To serve high-resolution images to devices with retina displays. This plugin will use open source script <a href="%s" target="_blank">retina.js JavaScript library</a> and for using retina.js script, a higher quality version of image will be created and stored with @2x added to the filename when an image is uploaded.'), esc_url( 'http://imulus.github.io/retinajs/' ) ).'</p>'
 		) );
 
 		$screen->add_help_tab( array(
@@ -495,6 +499,13 @@ class ShaplaTools {
 							'<pre>[shapla_social id="facebook,twitter,google-plus"] // '. __( 'or you can pass specific ids.', 'shapla' ) .'</pre>'.
 							'<h5>'. __( 'Using Different Styled Icons' ) .'</h5>'.
 							'<p>'. __( 'You can use the social icons in two different styles: normal and square. Just pass the <code>style</code> argument in sidebar.<br>E.g.: <code>[shapla_social id="twitter,facebook" style="square"]</code>.' ) .'</p>'
+		) );
+
+		$screen->add_help_tab( array(
+			'id'	    => 'shaplatools-help-custom_post',
+			'title'	    => __( 'Custom Post Types', 'shapla' ),
+			'content'	=>  '<h5>'. __( 'Using Custom Post Types' ) .'</h5>'.
+							'<p>'. sprintf( __( 'This plugin includes five most used custom post type. You can enable them by checking custom post name. You can also use it by adding function in your theme function.php file. To enable in your theme function.php file, write the following function. <br>For slide: <code>%s</code><br>For portfolio: <code>%s</code><br>For team: <code>%s</code><br>For testimonial: <code>%s</code><br>For feature: <code>%s</code>'), 'if (function_exists(\'run_shaplatools_slide\')) run_shaplatools_slide();', 'if (function_exists(\'run_shaplatools_portfolio\')) run_shaplatools_portfolio();', 'if (function_exists(\'run_shaplatools_team\')) run_shaplatools_team();', 'if (function_exists(\'run_shaplatools_testimonial\')) run_shaplatools_testimonial();', 'if (function_exists(\'run_shaplatools_feature\')) run_shaplatools_feature();' ) .'</p>'
 		) );
 
 		return $contextual_help;
