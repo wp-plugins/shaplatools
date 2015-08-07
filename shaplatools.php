@@ -5,7 +5,7 @@
  * Description:       ShaplaTools is a powerful plugin to extend functionality to your WordPress themes. 
  * Version:           1.0.1
  * Author:            Sayful Islam
- * Author URI:        https://profiles.wordpress.org/sayful/
+ * Author URI:        https://sayfulit.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       shapla
@@ -505,7 +505,7 @@ class ShaplaTools {
 			'id'	    => 'shaplatools-help-custom_post',
 			'title'	    => __( 'Custom Post Types', 'shapla' ),
 			'content'	=>  '<h5>'. __( 'Using Custom Post Types' ) .'</h5>'.
-							'<p>'. sprintf( __( 'This plugin includes five most used custom post type. You can enable them by checking custom post name. You can also use it by adding function in your theme function.php file. To enable in your theme function.php file, write the following function. <br>For slide: <code>%s</code><br>For portfolio: <code>%s</code><br>For team: <code>%s</code><br>For testimonial: <code>%s</code><br>For feature: <code>%s</code>'), 'if (function_exists(\'run_shaplatools_slide\')) run_shaplatools_slide();', 'if (function_exists(\'run_shaplatools_portfolio\')) run_shaplatools_portfolio();', 'if (function_exists(\'run_shaplatools_team\')) run_shaplatools_team();', 'if (function_exists(\'run_shaplatools_testimonial\')) run_shaplatools_testimonial();', 'if (function_exists(\'run_shaplatools_feature\')) run_shaplatools_feature();' ) .'</p>'
+							'<p>'.sprintf(  __( 'This plugin includes five most used custom post type. You can enable them by checking custom post name. Also check default meta for full functionality. If you want to add your own meta box in your theme function.php file, you can do that. For using custom post types and default meta in your theme, You can read documentation of plugin <a href="%s" target="_blank">FAQ page</a>.'), esc_url( 'https://wordpress.org/plugins/shaplatools/faq/' )) .'</p>'
 		) );
 
 		return $contextual_help;

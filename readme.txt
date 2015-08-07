@@ -80,6 +80,22 @@ Installing the plugins is just like installing other WordPress plugins. If you d
 
 == Frequently Asked Questions ==
 
+= How to add custom post types in my theme? =
+
+You can enable custom post types in your theme by option page. Go to <b>Settings -> ShaplaTools</b> and then click on "Custom Post Types" tab and check which custom post types you want to enable for your theme.
+If you want to include these custom post types in your theme, you can add the following function in your theme function.php file.
+For slide: <code>if (function_exists(\'run_shaplatools_slide\')) run_shaplatools_slide();</code><br>
+For portfolio: <code>if (function_exists(\'run_shaplatools_portfolio\')) run_shaplatools_portfolio();</code><br>
+For team: <code>if (function_exists(\'run_shaplatools_team\')) run_shaplatools_team();</code><br>
+For testimonial: <code>if (function_exists(\'run_shaplatools_testimonial\')) run_shaplatools_testimonial();</code><br>
+For feature: <code>if (function_exists(\'run_shaplatools_feature\')) run_shaplatools_feature();</code><hr>
+
+To enable default meta you can write the following function.<br>
+For slide meta:<code>if (function_exists(\'run_shaplatools_nivoslide_meta\')) run_shaplatools_nivoslide_meta();</code><br>
+For portfolio meta:<code>if (function_exists(\'run_shaplatools_portfolio_meta\')) run_shaplatools_portfolio_meta();</code><br>
+For team meta:<code>if (function_exists(\'run_shaplatools_team_meta\')) run_shaplatools_team_meta();</code><br>
+For testimonial meta:<code>if (function_exists(\'run_shaplatools_testimonial_meta\')) run_shaplatools_testimonial_meta();</code><br>
+For feature meta:<code>if (function_exists(\'run_shaplatools_feature_meta\')) run_shaplatools_feature_meta();</code>
 
 == Changelog ==
 
